@@ -1,0 +1,188 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Gardiens à 2 pattes
+{% endblock %}
+
+{% block javascripts %}
+	{# recharge les scripts de la page parente (base.html.twig) #}
+	{{parent() }}
+	<script type="text/javascript" src="{{asset ('js/main/mainSearchForm.js')}}" defer></script>
+{% endblock %}
+
+{% block titreh1 %}
+	{% trans %}Vos compagnons entre de bonnes pattes{% endtrans %}
+{% endblock %}
+
+{% block body %}
+	<section>
+		<div class="home-img">
+			<img src="{{ asset('img/main-background.webp') }}" alt="un petit chien mignon portant un tee-shirt">
+		</div>
+		<article class="container">
+			<div class="container">
+				<div class="main-search-form-title">
+					<p class="center third-color">{% trans %}On sait à quel point il est important de trouver la personne parfaite pour 
+																	s'occuper de votre boule de poils lorsque vous devez vous absenter.{% endtrans %}
+					</p>
+					<h2>{% trans %}Chercher un gardien par:{% endtrans %}</h2>
+				</div>
+				<div class="main-search-form">
+					<form class="form row" name="gardien_search" method="get" action="{{ path('home') }}">
+						<div class="input-field col s12">
+							<label class="validate">{% trans %}Nom{% endtrans %}</label>
+							<input class="secondary-color" type="text" name="pseudo"/>
+						</div>
+						<div class="choice-field col s12">
+							<label>{% trans %}Catégorie d'animal prise en charge{% endtrans %}</label>
+							<select name="categories[]" multiple>
+								<option value=""></option>
+								{# chargement des catégorie d'animal #}
+								{% for cat in categ %}
+									<option value="{{cat.nom}}">{{cat.nom}}</option>
+								{% endfor %}
+							</select>
+						</div>
+						<div class="choice-field col s12">
+							<label>{% trans %}Localité{% endtrans %}</label>
+							<select name="localite" id="gardien_search_localite">
+								<option value=""></option>
+								<option value="région Bruxelles capitale">{% trans %}région Bruxelles capitale{% endtrans %}
+								</option>
+								<option value="province de liège">{% trans %}province de Liège{% endtrans %}
+								</option>
+								<option value="province du hainaut">{% trans %}province du hainaut{% endtrans %}
+								</option>
+								<option value="province du brabant wallon">{% trans %}province du brabant wallon{% endtrans %}
+								</option>
+								<option value="province d'anvers">{% trans %}province d'anvers{% endtrans %}
+								</option>
+								<option value="province de flandre occidentale">{% trans %}province de flandre occidentale{% endtrans %}
+								</option>
+								<option value="province de flandre orientale">{% trans %}province de flandre orientale{% endtrans %}
+								</option>
+								<option value="province du brabant flamand">{% trans %}province du brabant flamand{% endtrans %}
+								</option>
+								<option value="province du brabant flamand (Louvain)">{% trans %}province du brabant flamand (Louvain){% endtrans %}
+								</option>
+								<option value="province du luxembourg">{% trans %}province du luxembourg{% endtrans %}
+								</option>
+								<option value="province du limbourg">{% trans %}province du limbourg{% endtrans %}
+								</option>
+								<option value="province de namur">{% trans %}province de namur{% endtrans %}
+								</option>
+							</select>
+						</div>
+						<div class="choice-field col s6 m6 l6">
+							<label>{% trans %}Commune{% endtrans %}</label>
+							<select name="commune" id="gardien_search_commune"></select>
+						</div>
+						<div class="choice-field col s6 m6 l6">
+							<label>{% trans %}Code postal{% endtrans %}</label>
+							<select name="codePostal" id="gardien_search_cp"></select>
+						</div>
+						<div class="input-field col s12">
+							<div class="col s6">
+								<label>
+									<input type="checkbox" class="filled-in" name="veterinaire" value="yes"/>
+									<span>{% trans %}Compétences vétérinaire{% endtrans %}</span>
+								</label>
+							</div>
+							<div class="col s6">
+								<label>
+									<input type="checkbox" class="filled-in" name="jardin" value="yes"/>
+									<span>{% trans %}Possède un jardin{% endtrans %}</span>
+								</label>
+							</div>
+							<div class="col s6">
+								<label>
+									<input type="checkbox" class="filled-in" name="voiture" value="yes"/>
+									<span>{% trans %}Possède une voiture{% endtrans %}</span>
+								</label>
+							</div>
+							<div class="col s6">
+								<label>
+									<input type="checkbox" class="filled-in" name="gardeDomicile" value="yes"/>
+									<span>{% trans %}Garde à domicile{% endtrans %}</span>
+								</label>
+							</div>
+						</div>
+						<div class="center-align">
+							<button class="waves-effect waves-light btn-large" type="submit" name="submit">
+								{% trans %}Rechercher{% endtrans %}<i class="material-icons right">search</i>
+							</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</article>
+
+		<article>
+			<div class="carousel">
+				{% for img in imgCarrousel %}
+					<a class="carousel-item" href="#">
+						<img src="{{ asset('img/uploads/') ~ img.image }}" alt="image carrousel"/>
+					</a>
+				{% endfor %}
+			</div>
+		</article>
+
+		{# div parallax + 4 derniers prestataires #}
+		{% if last4prestataires != null %}
+			<h2 class="secondary-color center">
+				{% trans %}Les derniers gardiens inscrits{% endtrans %}
+			</h2>
+		{% endif %}
+		<div class="parallax-container1">
+			<article class="container">
+				<div class="row">
+					{% if last4prestataires is defined %}
+						{% for p in last4prestataires %}
+							<div class="col s6 m3 l3">
+								<a href="{{ path ('detail_gardien',{id : p.id}) }}">
+									<div class="custom-card">
+										<div class="custom-card-image">
+											{% if p.images[0] is defined and p.images[0].image != '' %}
+												<img src="{{ asset('img/uploads/') ~ p.images[0].image }}" alt="photo de profil du gardien">
+											{% else %}
+												<img src="{{ asset('img/avatars/blank_profile.webp') }}" alt="photo de profil vide">
+											{% endif %}
+										</div>
+										<div class="custom-card-content">
+											{% if p.utilisateur.pseudo %}
+												<span class="card-title white-text">{{p.utilisateur.pseudo|capitalize  }}</span>
+											{% else %}
+												<span class="card-title white-text">{{p.utilisateur.prenom}}
+													{{p.utilisateur.nom|slice(0, 1)}}.</span>
+											{% endif %}
+											{% if p.utilisateur.adresse.commune is defined %}
+												<p class="grey-text text-lighten-1 center-align">{{p.utilisateur.adresse.commune|capitalize}}</p>
+											{% endif %}
+										</div>
+									</div>
+								</a>
+							</div>
+						{% endfor %}
+					{% else %}
+						<h3 class="center third-color">
+							{% trans %}Il n'y a pas encore de prestataire inscrit sur le site{% endtrans %}
+						</h3>
+					{% endif %}
+				</div>
+			</article>
+		</div>
+
+		<article class="container">
+			{% if commentaires %}
+				<h3 class="center section secondary-color">{% trans %}Temoignages{% endtrans %}</h3>
+				{% for com in commentaires %}
+					<div class="someSpaceUp">
+						<h3 class="center third-color">"{{ com.commentaire }}"</h3>
+						<p class="center third-color">{{com.maitre.utilisateur.pseudo }}</p>
+					</div>
+				{% endfor %}
+			{% endif %}
+
+		</article>
+	</section>
+{% endblock %}

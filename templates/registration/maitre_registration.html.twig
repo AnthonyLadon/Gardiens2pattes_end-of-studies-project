@@ -1,0 +1,97 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% trans %}Inscription maître{% endtrans %}{% endblock %}
+
+{% block titreh1 %}
+    {% trans %}inscription maître{% endtrans %}
+{% endblock %}
+
+{% block body %}
+<div class="container row">
+    {% for flash_error in app.flashes('verify_email_error') %}
+        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+    {% endfor %}
+
+    <div class="col s12 m6 l6 registration-form-img">
+    </div>
+    <div class="col s12 m6 l6">
+        {{ form_start(registrationForm) }}
+        <div class="row">
+            <div class="input-field col s6 m6 l6">
+                {{ form_label(registrationForm.prenom)}}
+                {{ form_widget(registrationForm.prenom, {'attr': {'class': 'secondary-color validate '}}) }}
+                <span class="helper-text" data-error="Ce champ est requis" data-success=""></span>
+            </div>
+            <div class="input-field col s6 m6 l6">
+                {{ form_label(registrationForm.nom) }}   
+                {{ form_widget(registrationForm.nom, {'attr': {'class': 'secondary-color validate'}}) }}
+                <span class="helper-text" data-error="Ce champ est requis" data-success=""></span>
+            </div>
+        </div>
+        <div class="input-field">
+            <span class="error-message-form">{{ form_errors(registrationForm.numero) }}</span>
+            {{ form_label(registrationForm.email)}}
+            {{ form_widget(registrationForm.email, {'attr': {'class': 'secondary-color validate'}})}}
+            <span class="helper-text" data-error="Veuillez entrer un email valide" data-success=""></span>
+        </div>
+        <div class="input-field">
+            {{ form_label(registrationForm.pseudo) }}
+            {{ form_widget(registrationForm.pseudo, {'attr': {'class': 'secondary-color validate'}}) }}
+        </div>
+        <div class="input-field">
+            <span class="error-message-form">{{ form_errors(registrationForm.telNum) }}</span>
+            {{ form_label(registrationForm.telNum) }}
+            {{ form_widget(registrationForm.telNum, {'attr': {'class': 'secondary-color validate'}}) }}
+        </div>
+        <div>
+            {{ form_label(registrationForm.bio) }}
+            {{ form_widget(registrationForm.bio, {'attr': {'class': 'materialize-textarea secondary-color'}}) }}
+        </div>
+        <div class="input-field">
+            {{ form_label(registrationForm.rue) }}
+            {{ form_widget(registrationForm.rue, {'attr': {'class': 'secondary-color validate'}}) }}
+        </div>
+        <div class="row">
+            <div class="input-field col s6 m6 l6">
+                <span class="error-message-form">{{ form_errors(registrationForm.numero) }}</span>
+                {{ form_label(registrationForm.numero) }}
+                {{ form_widget(registrationForm.numero, {'attr': {'class': 'secondary-color validate'}}) }}
+            </div>
+            <div class="input-field col s6 m6 l6">
+                <span class="error-message-form">{{ form_errors(registrationForm.CodePostal) }}</span>
+                {{ form_label(registrationForm.CodePostal) }}
+                {{ form_widget(registrationForm.CodePostal, {'attr': {'class': 'secondary-color validate'}}) }}
+            </div>
+        </div>
+        <div class="input-field">
+            {{ form_label(registrationForm.commune) }}
+            {{ form_widget(registrationForm.commune, {'attr': {'class': 'secondary-color validate'}}) }}
+        </div>
+        <div class="row-passwords">
+            {{form_label(registrationForm.plainPassword.first) }}
+            {{ form_widget(registrationForm.plainPassword.first, {'attr': {'class': 'secondary-color'}})}}
+            {{form_label(registrationForm.plainPassword.second) }}
+            {{ form_widget(registrationForm.plainPassword.second, {'attr': {'class': 'secondary-color'}})}}
+            <i class="fa-solid fa-eye third-color" onclick="showRegisterMaitrePassword()" id="show-password-register-maitre"></i>
+                <p class="grey-text font-small">{% trans %}Votre mot de passe doit contenir au minimum 7 caractères dont une majuscule, un chiffre et un symbole{% endtrans %}</p>
+        </div>
+        <div>
+            <label>
+                {{ form_widget(registrationForm.agreeTerms) }}
+                <span>{{ form_label(registrationForm.agreeTerms) }}</span>
+            </label>
+        </div>
+        <div>
+            <label>
+                {{form_widget(registrationForm.newsLetter)}}
+                <span>{{form_label(registrationForm.newsLetter)}}</span>
+            </label>
+        </div>
+        <button type="submit" class="btn">{% trans %}M'inscrire{% endtrans %}</button>
+        {{ form_end(registrationForm) }}
+        <div class='section'>
+            <p><a class='secondary-color' href="{{path('conditions') }}">Voir les conditions d'utilisation du site</a></p>
+        </div>
+    </div>
+</div>
+{% endblock %}

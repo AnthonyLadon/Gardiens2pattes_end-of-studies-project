@@ -1,0 +1,126 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% trans %}Mes favoris{% endtrans %}{% endblock %}
+
+{% block titreh1 %}
+Mes gardiens favoris
+{% endblock %}
+
+{% block body %}
+
+{% if app.user == maitre.utilisateur %}
+  <div class="container">
+    {% if pagination %}
+    <div class="row">
+        {% for fav in pagination %}
+        <div class="col s6 m4 l3">
+            <a href="{{ path('detail_gardien',{id: fav.prestataire.id}) }}">
+            <div class="custom-card">
+
+                <div class="custom-card-image">
+                
+                {% if fav.prestataire.images[0] is defined and fav.prestataire.images[0].image != '' %}
+                    <img src="{{ asset('img/uploads/') ~ fav.prestataire.images[0].image }}" alt="photo de profil du gardien">
+                    {% else %}
+                    <img src="{{ asset('img/avatars/blank_profile.webp') }}" alt="photo de profil vide">
+                {% endif %}
+                </div>
+                <div class="custom-card-content">
+                {% if fav.prestataire.utilisateur.pseudo is defined %}
+                <span class="card-title brown lighten-5 secondary-color">{{fav.prestataire.utilisateur.pseudo|capitalize  }}</span>
+
+                <div class="divider brown lighten-3"></div>
+                {% else %}
+                <span class="card-title secondary-color">{{fav.prestataire.utilisateur.prenom}} {{fav.prestataire.utilisateur.nom|slice(0, 1)}}.</span>
+                {% endif %}
+                {% if fav.prestataire.utilisateur.adresse.commune %}
+                <span class="card-title brown-text text-ligthen-3">{{fav.prestataire.utilisateur.adresse.commune}}</span>  
+                {% endif %}
+            </a>
+                <div class="third-color">
+                    <ul class="row">
+
+                    {% if fav.prestataire.specialisations is not empty %}
+                    <ul class="collapsible collapsible-custom text-white">
+                    <li>
+                        <div class="collapsible-header">{% trans %}Catégories animaux{% endtrans %}</div>
+                        <div class="collapsible-body">
+                        {% for specialisation in fav.prestataire.specialisations %}
+                        {% if specialisation.nom == "Chats" %}
+                            <i class="fa-solid fa-cat small text-white"></i>
+                        {% elseif specialisation.nom == "Chiens" %}
+                            <i class="fa-solid fa-dog small text-white"></i>
+                        {% elseif specialisation.nom == "Reptiles" %}
+                            <i class="fa-solid fa-worm small text-white"></i>
+                        {% elseif specialisation.nom == "Arachnides" %}
+                            <i class="fa-solid fa-spider v small text-white"></i>
+                        {% elseif specialisation.nom == "Insectes" %}
+                            <i class="fa-solid fa-locust small text-white"></i>
+                        {% elseif specialisation.nom == "Poissons" %}
+                            <i class="fa-solid fa-fish-fins small text-white"></i>
+                        {% elseif specialisation.nom == "Amphibiens" %}
+                            <i class="fa-solid fa-frog small text-white"></i>
+                        {% elseif specialisation.nom == "Ruminants" %}
+                            <i class="fa-solid fa-horse small text-white"></i>
+                        {% elseif specialisation.nom == "Rongeurs" %}
+                            <i class="fa-solid fa-carrot small text-white"></i>
+                        {% elseif specialisation.nom == "Oiseaux" %}
+                            <i class="fa-solid fa-kiwi-bird v small text-white"></i>
+                        {% else %}
+                            <i class="fa-solid fa-paw small text-white"></i>
+                        {% endif %}
+                        <p>{{specialisation.nom }}</p>
+                        {% endfor %}
+                    </li>
+                    </ul>              
+                    {% else %}
+                    <p class="brown-text text-lighten-3">{% trans %}Aucune catégorie d'animal{% endtrans %}</p>
+                    {% endif %}
+
+                    {% if fav.prestataire.soinsVeto or fav.prestataire.gardeDomicile or fav.prestataire.jardin or fav.prestataire.vehicule %}
+                    <ul class="collapsible collapsible-custom text-white">
+                        <li>
+                        <div class="collapsible-header">{% trans %}Compétences{% endtrans %}</div>
+                        <div class="collapsible-body">
+                            {% if fav.prestataire.gardeDomicile %}
+                            <i class="fa-solid fa-house small text-white"></i>
+                            <p>{% trans %}Hebergement{% endtrans %}</p>
+                            {% endif %}
+                            {% if fav.prestataire.soinsVeto %}
+                            <i class="fa-solid fa-syringe small text-white"></i>
+                            <p>{% trans %}Soins{% endtrans %}</p>
+                            {% endif %}
+                            {% if fav.prestataire.jardin %}
+                            <i class="fa-solid fa-leaf small text-white"></i>
+                            <p>{% trans %}Jardin{% endtrans %}</p>
+                            {% endif %}
+                            {% if fav.prestataire.vehicule %}
+                            <i class="fa-solid fa-car small text-white"></i>
+                            <p>{% trans %}Véhicule{% endtrans %}</p>
+                            {% endif %}
+                        <li>
+                    </ul>
+                    {% endif %}
+                </div>
+                </div>
+            </div>
+        </div> 
+        {% endfor %}
+        {% else %}
+        <div class="col s12">
+            <p>{% trans %}Aucun gardien trouvé{% endtrans %}</p>
+        </div>
+        {% endif %}
+  </div>
+
+    {# display navigation #}
+    <div class="main-pagination">
+            {{ knp_pagination_render(pagination) }}
+    </div>
+{% endif %}
+    <div class="row center">
+        <a class="btn-flat brown-text" href="{{ path('profil_maitre', {id: app.user.maitre.id}) }}">{% trans %}retour profil{% endtrans %}</a>
+    </div>
+    
+{% endblock %}
+

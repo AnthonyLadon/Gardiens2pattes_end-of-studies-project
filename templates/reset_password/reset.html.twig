@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% trans %}Reinitialisation mot de passe{% endtrans %}{% endblock %}
+
+{% block titreh1 %}{% trans %}Reinitialisation mot de passe{% endtrans %}{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>{% trans %}Reinitialiser votre mot de passe{% endtrans %}</h1>
+
+        {{ form_start(resetForm) }}
+            {{ form_row(resetForm.plainPassword) }}
+            <button class="btn btn-primary">{% trans %}Reinitialiser{% endtrans %}</button>
+        {{ form_end(resetForm) }}
+
+    </div>
+{% endblock %}

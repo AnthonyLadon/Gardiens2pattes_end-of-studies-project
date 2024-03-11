@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion images carrousel{% endblock %}
+
+{% block titreh1 %}
+    Admin Carrousel
+{% endblock %}
+
+{% block body %}
+
+
+<div class="container">
+
+<a class="link-login" href="{{ path('app_forgot_password_request') }}">{% trans %}Mot de passe oublié ?{% endtrans %}</a>
+
+{% if carrouselCount < 11 %}
+    {{ form_start(form) }}
+        <div class="file-field input-field">
+            <div class="btn waves-effect waves-light teal">
+                <span>{% trans %}Ajouter une image{% endtrans %}</span>
+                {{form_widget(form.imageFile,{attr: {'type': 'file'}})}}
+            </div>
+            <div class="file-path-wrapper">
+                <input class="file-path validate" type="text">
+            </div>
+        </div>
+        <div class="row center">
+            {{ form_widget(form.enregistrer,{'attr': {'class': 'register-form-submit btn'}}) }}
+        </div>
+        {{ form_end(form) }}
+    {% else %}
+    <p>Vous avez atteint le nombre maximum d'images (limite = 10 images)</p>
+    <p>Pour uploader une nouvelle image libérez une place</p>
+{% endif %}
+
+    <div class="row section">
+        {% for img in carrouselImages %}
+            <div class="col s3">
+                <a class="third-color" href="{{path('admin_suppr_carrousel', {id: img.id}) }}">Supprimer</a>
+                <img class="responsive-img" src="{{ asset('img/uploads/') ~ img.image }}" alt="image du carrousel">
+            </div>
+        {% endfor %}
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contact
+{% endblock %}
+
+{% block titreh1 %}
+	{% trans %}Formulaire de contact
+	{% endtrans %}
+{% endblock %}
+
+{% block body %}
+
+	<div class="container">
+
+		{% if not app.user %}
+			<p>{% trans %}Vous n'etes pas authentifié. Renseignez votre email ou{% endtrans %}
+				<a href="{{path('app_login') }}">{% trans %}connectez-vous{% endtrans %}</a>
+			</p>
+		{% endif %}
+
+		<form name"contact" method="post">
+			<select name="objet">
+				<option value="Demande de renseignement">{% trans %}Demande de renseignement{% endtrans %}</option>
+				<option value="Réservation">{% trans %}Réservation{% endtrans %}</option>
+				<option value="Compte bloqué">{% trans %}Compte bloqué{% endtrans %}</option>
+				<option value="Signalement commentaire">{% trans %}Signalement commentaire</option {% endtrans %}>
+						<option value="prolème technique">{% trans %}problème technique{% endtrans %}</option>
+						<option value="Autre">{% trans %}Autre{% endtrans %}</option>
+					</select>
+					{% if app.user == false %}
+						<input type="email" name="nonRegistratedUserMail" placeholder="Votre adresse email" required>
+					{% endif %}
+					<p>Message</p>
+					<textarea name="message" id="" cols="30" rows="10" required></textarea>
+					<button class="waves-effect waves-light btn center" type="submit" name="submit">
+						{% trans %}Envoyer{% endtrans %}</button>
+				</option>
+			</form>
+
+		</div>
+
+	{% endblock %}

@@ -1,0 +1,318 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Les Gardiens
+{% endblock %}
+
+{% block javascripts %}
+	{# recharge les scripts de la page parente (base.html.twig) #}
+	{{ parent() }}
+	{# Toujours mettre ce script aprés le CSS de Leaflet #}
+	<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+{% endblock %}
+
+{% block titreh1 %}
+	{% trans %}Les gardiens{% endtrans %}
+{% endblock %}
+
+{% block body %}
+
+	<div class="list-gardien-counter-results-wrap">
+		<div class="counter-wrap center">
+			{{ pagination.getTotalItemCount }}
+			{% trans %}gardien(s) trouvé(s){% endtrans %}
+			{% if app.user and is_granted('ROLE_MAITRE') and app.user.isVerified == true %}
+				<div class="gardiens-list-link-to-map" onclick="window.location='#map';">
+					Voir les résultats sur la carte
+				</div>
+			{% endif %}
+		</div>
+		{% if app.user and is_granted('ROLE_MAITRE') and app.user.isVerified == true %}
+			<div class="row">
+				<form class="form row center" name="gardien_zone_deplacement_filter" method="get" action="{{ path('gardiens_list') }}">
+					<button class="waves-effect waves-light btn-small" name="submit-zone-deplacement">
+						<i class="fa-solid fa-map-location-dot"></i>&nbsp;Les gardiens qui se déplacent jusque chez moi
+					</button>
+				</form>
+			</div>
+		{% endif %}
+	</div>
+
+
+	<div class="container list-gardien-container">
+		{% if pagination %}
+			<div class="row">
+				{% for prest in pagination %}
+					<div class="col s6 m4 l3">
+						<div class="custom-card">
+							<a href="{{ path('detail_gardien',{id : prest.id}) }}">
+								<div
+									class="custom-card-image">
+									{# Affichage icone favoris du maitre connecté #}
+									{% if app.user and is_granted('ROLE_MAITRE') and app.user.isVerified == true and favoris is defined %}
+										{% if prest.id in favoris %}
+											<span class="favori-card-icon">
+												<i class="fa-solid fa-bookmark secondary-color"></i>
+											</span>
+										{% else %}
+											<span class="favori-card-icon"></span>
+										{% endif %}
+									{% endif %}
+
+									{% if prest.images[0] is defined and prest.images[0].image != '' %}
+										<img src="{{ asset('img/uploads/') ~ prest.images[0].image }}" alt="photo de profil du gardien">
+									{% else %}
+										<img src="{{ asset('img/avatars/blank_profile.webp') }}" alt="photo de profil vide">
+									{% endif %}
+								</div>
+							</a>
+							<div class="custom-card-content">
+								{% if prest.utilisateur.pseudo is defined %}
+									<span class="card-title brown lighten-5 secondary-color">{{prest.utilisateur.pseudo|capitalize  }}</span>
+
+									<div class="divider brown lighten-3"></div>
+								{% else %}
+									<span class="card-title secondary-color">{{prest.utilisateur.prenom}}
+										{{prest.utilisateur.nom|slice(0, 1)}}.</span>
+								{% endif %}
+								{% if prest.utilisateur.adresse.commune %}
+									<span class="card-title brown-text text-ligthen-3">{{prest.utilisateur.adresse.commune}}</span>
+								{% endif %}
+								<div class="third-color">
+									<ul class="row">
+
+										{% if prest.specialisations is not empty %}
+											<ul class="collapsible collapsible-custom text-white">
+												<li>
+													<div class="collapsible-header">{% trans %}Catégories animaux{% endtrans %}</div>
+													<div class="collapsible-body">
+														{% for specialisation in prest.specialisations %}
+															{% if specialisation.nom == "Chats" %}
+																<i class="fa-solid fa-cat small text-white"></i>
+															{% elseif specialisation.nom == "Chiens" %}
+																<i class="fa-solid fa-dog small text-white"></i>
+															{% elseif specialisation.nom == "Reptiles" %}
+																<i class="fa-solid fa-worm small text-white"></i>
+															{% elseif specialisation.nom == "Arachnides" %}
+																<i class="fa-solid fa-spider v small text-white"></i>
+															{% elseif specialisation.nom == "Insectes" %}
+																<i class="fa-solid fa-locust small text-white"></i>
+															{% elseif specialisation.nom == "Poissons" %}
+																<i class="fa-solid fa-fish-fins small text-white"></i>
+															{% elseif specialisation.nom == "Amphibiens" %}
+																<i class="fa-solid fa-frog small text-white"></i>
+															{% elseif specialisation.nom == "Ruminants" %}
+																<i class="fa-solid fa-horse small text-white"></i>
+															{% elseif specialisation.nom == "Rongeurs" %}
+																<i class="fa-solid fa-carrot small text-white"></i>
+															{% elseif specialisation.nom == "Oiseaux" %}
+																<i class="fa-solid fa-kiwi-bird v small text-white"></i>
+															{% else %}
+																<i class="fa-solid fa-paw small text-white"></i>
+															{% endif %}
+															<p>{{specialisation.nom }}</p>
+														{% endfor %}
+													</div>
+												</li>
+											</ul>
+										{% else %}
+											<p class="brown-text text-lighten-3">{% trans %}Aucune catégorie d'animal{% endtrans %}</p>
+										{% endif %}
+
+										{% if prest.soinsVeto or prest.gardeDomicile or prest.jardin or prest.vehicule %}
+											<ul class="collapsible collapsible-custom text-white">
+												<li>
+													<div class="collapsible-header">{% trans %}Compétences{% endtrans %}</div>
+													<div class="collapsible-body">
+														{% if prest.gardeDomicile %}
+															<i class="fa-solid fa-house small text-white"></i>
+															<p>{% trans %}Hebergement{% endtrans %}</p>
+														{% endif %}
+														{% if prest.soinsVeto %}
+															<i class="fa-solid fa-syringe small text-white"></i>
+															<p>{% trans %}Soins{% endtrans %}</p>
+														{% endif %}
+														{% if prest.jardin %}
+															<i class="fa-solid fa-leaf small text-white"></i>
+															<p>{% trans %}Jardin{% endtrans %}</p>
+														{% endif %}
+														{% if prest.vehicule %}
+															<i class="fa-solid fa-car small text-white"></i>
+															<p>{% trans %}Véhicule{% endtrans %}</p>
+														{% endif %}
+													</div>
+												</li>
+												<li></li>
+											</ul>
+										{% endif %}
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			{% else %}
+				<div class="col s12">
+					<p>{% trans %}Aucun gardien trouvé{% endtrans %}</p>
+				</div>
+			{% endif %}
+		</div>
+
+		{% if app.user and is_granted('ROLE_MAITRE') %}
+			<div class="">
+				<div class="gardien-list-form-zone-km">
+					<form class="form row" name="gardien_filter" method="get" action="{{ path('gardiens_list') }}">
+						<div class="range-field">
+							<label for="">Zone d'affichage des gardiens (en km):</label>
+							<input class="secondary-color" value="{{rayon}}" type="range" min="1" max="50" name="rayon"/>
+						</div>
+						<div class="center-align">
+							<button class="waves-effect waves-light btn" name="submit-rayon">
+								Filtrer
+								<i class="material-icons right">search</i>
+							</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		{% endif %}
+	</div>
+
+	{# display navigation #}
+	<div class="main-pagination">
+		{{ knp_pagination_render(pagination) }}
+	</div>
+
+	<div
+		class="container">
+		{#* Zone affichage carte Leaflet #}
+		<div id="map"></div>
+
+		{# On vérifie si l'utilisateur est connecté et a renseigné une adresse valide #}
+		{% if app.user.adresse.latitude is defined and app.user.adresse.longitude is defined %}
+			{% set maitreLat = app.user.adresse.latitude %}
+			{% set maitreLng = app.user.adresse.longitude %}
+		{% else %}
+			{% set maitreLat = 0 %}
+			{% set maitreLng = 0 %}
+		{% endif %}
+
+
+		{# Script pour la carte Leaflet #}
+		<script>
+
+			// valeur 0 si pas de maitre connecté (pas d'affichage sur la carte)
+let maitreLat = {{ maitreLat }};
+let maitreLng = {{ maitreLng }};
+
+
+// Si pas de maitre connecté, on centre la carte sur la Belgique
+if (maitreLat == 0 && maitreLng == 0) { // On passe les valeurs lat et longitude à la carte et au marqeur
+var map = L.map("map").setView([
+50.499527, 4.475402500000001
+], 8);
+} else { // On passe les valeurs lat et longitude du maitre connecté à la carte et au marqeur
+var map = L.map("map").setView([
+maitreLat, maitreLng
+], 8);
+}
+
+// Désactiver le zoom via le scroll de la souris
+map.scrollWheelZoom.disable();
+
+L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+maxZoom: 19,
+attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+}).addTo(map);
+
+{
+# Vérification si lat et lng sont définis pour chaque prestataire #
+}
+{% for prestataire in prestataires %}{% if  prestataire.utilisateur.adresse.latitude is defined %}
+var lat = {{ prestataire.utilisateur.adresse.latitude }};
+{% else %}
+var lat = null;{% endif %}{% if  prestataire.utilisateur.adresse.longitude is defined %}
+var lng = {{ prestataire.utilisateur.adresse.longitude }};
+{% else %}
+var lng = null;{% endif %}var gardienIcon = L.icon({
+{% if prestataire.images[0].image is defined %}
+iconUrl : '{{ asset('img/uploads/') ~ prestataire.images[0].image }}',
+{% else %}
+iconUrl : '{{ asset('img/avatars/') ~ 'blank_profile.webp' }}', // si pas d'image prestataire
+{% endif %}
+iconSize: [
+52, 52
+],
+className: 'mapUserIcon', // Taille de l'icône en pixels
+});
+
+var gardienMarker = L.marker([
+lat, lng
+], {
+className: 'mapUserIcon',
+icon: gardienIcon
+}).addTo(map);
+
+gardienMarker.bindTooltip("{{ prestataire.utilisateur.pseudo }}- voir mon profil", {
+className: 'GardienTooltip',
+direction: 'right'
+});
+
+// ajouter un lien vers la page du prestataire
+gardienMarker.on('click', function (e) {
+window.location.href = "{{ path('detail_gardien', {'id': prestataire.id}) }}";
+});{% endfor %}if (maitreLat != 0 && maitreLng != 0) { // icone du maitre
+var maitreIcon = L.icon({
+iconUrl: '{{ asset('img/home-point-logo.webp') }}',
+iconSize: [
+62, 62
+], // Taille de l'icône en pixels
+shadowSize: [
+50, 64
+], // Taille de l'ombre de l'icône en pixels
+className: 'userIcon'
+});
+
+// Marqueur de l'adresse du Maitre
+var maitreMarker = L.marker([
+maitreLat, maitreLng
+], {icon: maitreIcon}).addTo(map);
+
+maitreMarker.bindTooltip("Mon domicile", {
+className: 'MaitreTooltip',
+direction: 'right'
+}).openTooltip();
+}
+		</script>
+
+		<style>
+			#map {
+				width: 100%;
+			}
+			.MaitreTooltip {
+				background-color: rgba(5, 93, 209, 0.81);
+				color: white;
+				font-size: 14px;
+				font-weight: bold;
+				border-radius: 15px;
+				border: 2px solid rgba(5, 93, 209, 0.81);
+				padding: 5px;
+				position: relative;
+				left: 30px
+			}
+			.Gardientooltip {
+				background-color: #f5f5f5;
+				font-size: 12px;
+				font-weight: bold;
+				border-radius: 5px;
+				padding: 5px;
+				position: relative;
+				left: 20px
+			}
+			.userIcon {
+				border-radius: 50%;
+				border: 1px solid rgba(5, 93, 209, 0.81);
+			}
+		</style>
+	</div>
+</div>{% endblock %}

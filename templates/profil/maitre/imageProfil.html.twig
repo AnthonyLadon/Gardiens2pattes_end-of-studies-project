@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% trans %}Ma photo de profil{% endtrans %}{% endblock %}
+
+{% block body %}
+
+{# Affichage si l'Id du gardien authentifié correspond a la variable $id envoyée #}
+{% if app.user.maitre.id == id %}
+  <div class="container">
+
+    <div class="row">
+        <h2 class="center third-color">{% trans %}Modification de ma photo{% endtrans %}</h2>
+    </div>
+
+    {{ form_start(form) }}
+      <div class="file-field input-field">
+        <div class="btn waves-effect waves-light">
+          <span>Image</span>
+          {{form_widget(form.imageFile,{attr: {'type': 'file'}})}}
+        </div>
+        <div class="file-path-wrapper">
+          <input class="file-path validate" type="text">
+        </div>
+      </div>
+      <div class="row center">
+        {{ form_widget(form.enregistrer,{'attr': {'class': 'register-form-submit btn'}}) }}
+      </div>
+    {{ form_end(form) }}
+    
+  </div>
+{% else %}
+<p class="center red">{% trans %}Désolé, vous n'avez pas les droits pour visiter cette page de profil{% endtrans %}</p>
+{% endif %}
+
+    <div class="row center">
+        <a class="btn-flat brown-text" href="{{ path('profil_maitre', {id: app.user.maitre.id}) }}">{% trans %}retour profil{% endtrans %}</a>
+    </div>
+    
+{% endblock %}
+

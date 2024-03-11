@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Detail newsletter{% endblock %}
+
+{% block titreh1 %}
+    Detail de la newsletter
+{% endblock %}
+
+
+{% block body %}
+<div class="container">
+
+    {% if newsletter.isSent == false %}
+        <div class='admin-detail-newsletter'>
+            <div>
+                <h2>{{ newsletter.nom}}</h2>
+                <p>{{ newsletter.contenu}}</p>
+                <p>Date de création: {{ newsletter.dateCreation|date('d/m/Y')}}</p>
+            </div>
+            <div class='admin-detail-newsletter-links'>
+                <a href="{{path('modifier_newsletter', {id:newsletter.id}) }}">Modifier</a>
+                <a href="{{path('supprimer_newsletter', {id:newsletter.id}) }}">Supprimer</a>
+                <a href="{{path('envoyer_newsletter', {id:newsletter.id}) }}">Envoyer</a>
+            </div>
+        </div>
+        {% else %}
+            <div class='admin-detail-newsletter'>
+                <h2>Titre: {{ newsletter.nom}}</h2>
+                <p>Contenu: {{ newsletter.contenu}}</p>
+                <p>Date de création: {{ newsletter.dateCreation|date('d/m/Y')}}</p>
+                <p>Envoyée le {{newsletter.dateEnvoi|date('d/m/Y') }}</p>
+            </div>
+        </div>
+    {% endif %}
+
+    <div class='admin-detail-newsletter-back-button'>
+        <a href="{{path('newsletters') }}">retour liste newsletters</a>
+    </div>
+</div>
+{% endblock %}

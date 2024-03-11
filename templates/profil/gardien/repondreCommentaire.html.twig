@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% trans %}Reponse commentaire{% endtrans %}{% endblock %}
+
+{% block titreh1 %}{% trans %}Repondre au commentaire{% endtrans %}{% endblock %}
+
+{% block body %}
+
+        <div class="container">
+            <div class="row center">
+                <div class="teal-text">
+                        <p>"{{commentaire.commentaire}}"</p>
+                </div>
+            </div>
+
+        <div class="container">
+            {{form(form) }}
+        </div>
+
+{% endblock %}

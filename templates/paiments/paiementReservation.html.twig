@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Paiement{% endblock %}
+
+{% block body %}
+
+    <div class='container section'>
+
+    {% if reservation.validationPrestataire == true and app.user.maitre.id == reservation.maitre.id %}
+        <p class="teal-text center">{% trans %}Afin de finaliser la réservation veuillez régler le montant de {% endtrans %}{{reservation.prixTotal}}€</p>
+
+        <form action="" method="post" class="center">
+        <label for="prix"></label>
+            <script
+                    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                    data-key= {{stripe_public_key}}
+                    {# x100 car le prix est en centimes #}
+                    data-amount="{{reservation.prixTotal * 100}}"
+                    data-name="{{reservation.gardien.utilisateur.pseudo}}"
+                    data-currency="eur"
+                    data-description="Paiement de la réservation"
+                    data-image="{{ asset('img/Gardiens-logo.webp') }}"
+                    data-locale="auto"
+                    data-label="Payer la reservation"
+                    data-email="{{app.user.email }}"> // remplissage avec l'email de l'utilisateur
+            </script>
+        </form>
+        {% elseif reservation.validationPrestataire == false and app.user.maitre.id == reservation.maitre.id %}
+        <p class="center third-color">Le gardien n'a pas encore accepté votre réservation, vous recevrez un email lorsque ce 
+        sera fait, ainsi vous pourrez effectuer le paiment pour la réservation
+        </p>
+        {% else %}
+        <p class="center third-color">{% trans %}Cette réservation ne vous concerne pas, vous ne pouvez pas la payer{% endtrans %}</p>
+    {% endif %}
+
+        <div class="row center">
+            <a class="btn-flat brown-text" href="{{path('detail_reservation_maitre', {'idReservation': reservation.id, id: app.user.maitre.id})}}">Retour à la réservation</a>
+        </div>
+
+    </div>
+
+{% endblock %}

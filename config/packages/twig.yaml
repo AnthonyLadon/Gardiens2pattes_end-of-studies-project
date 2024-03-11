@@ -1,0 +1,13 @@
+twig:
+
+    default_path: '%kernel.project_dir%/templates'
+
+    globals:
+    # variable stockéee dans le fichier .env
+            DOMAIN_NAME: '%env(DOMAIN_NAME)%'
+            # variable globale locales disponibles (langues)
+            locales: '%app.locales%'
+
+when@test:
+    twig:
+        strict_variables: true

@@ -1,0 +1,27 @@
+<div style="background-color: #f7e9d6; padding:16px">
+
+	<h1 style="color: #7b3c04;">{% trans %}Bienvenue chez les Gardiens à 2 pattes!{% endtrans %}</h1>
+
+	<p style="color: #7b3c04;">
+		{% trans %}Veuillez s'il vous plait confirmer votre adresse email en cliquant sur le lien suivant:{% endtrans %}
+		<br><br>
+		<div>
+			<button style="display: flex; margin: auto;">
+				<a style="text-decoration: none; color:#7b3c04;" href="{{ signedUrl|raw }}">{% trans %}Confirmer mon email{% endtrans %}</a>
+			</button>
+		</div>
+	</p>
+	<p style="color: #7b3c04;">
+		{% trans %}Ce lien expirera dans
+		{% endtrans %}
+		{{ expiresAtMessageKey|trans(expiresAtMessageData, 'VerifyEmailBundle') }}.
+	</p>
+
+	<p style="color: #7b3c04;">
+		{% trans %}À très bientôt sur le site!{% endtrans %}
+	</p>
+
+	<img src="{{ DOMAIN_NAME ~ asset('img/Gardiens_logo_main.jpg') }}" class="logo" alt="logo" style="display: block; margin: 5px auto 0 auto; width: 300px; height: 200px;" width="300" height="200">
+
+
+</div>

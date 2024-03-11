@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% trans %}Gestion des indisponibilités{% endtrans %}{% endblock %}
+
+{% block titreh1 %}
+    {% trans %}Ajout période d'indisponibilité{% endtrans %}
+{% endblock %}
+
+{% block body %}
+
+{# Affichage si l'utilisateur connecté est bien le propriétaire du profil #}
+{% if app.user.prestataire == prestataire %}
+    <div class="container">
+        <div class="row">
+            {{ form_start(form) }}
+            <div class="col s6">
+                {{ form_label(form.dateDebut)}}
+                {{ form_widget(form.dateDebut, {'attr': {'class': ''}})}}
+            </div>
+            <div class="col s6">
+                {{ form_label(form.dateFin) }}
+                {{ form_widget(form.dateFin, {'attr': {'class': ''}}) }}
+            </div>
+            <button type="submit" class="btn waves-effect waves-light">Enregistrer</button>
+            {{ form_end(form) }}
+        </div>
+    </div>
+    {% endif %}
+    <div class="row center">
+        <a class="btn-flat brown-text" href="{{path('profil_gardien',{id: app.user.prestataire.id})}}">{% trans %}retour profil{% endtrans %}</a>
+    </div>
+{% endblock %}

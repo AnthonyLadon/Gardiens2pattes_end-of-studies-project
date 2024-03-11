@@ -1,0 +1,44 @@
+<div style="background-color: #f7e9d6; padding:16px;">
+
+	<h1 style="color: #7b3c04;">{% trans %}Bonjour,{% endtrans %}</h1>
+
+	<h2 style="color: #7b3c04;">{% trans %}votre demande de reservation pour le gardiennage de{% endtrans %}
+		{{reservation.animal.nom }}
+		{% trans %}du:{% endtrans %}
+		{{reservation.dateDebut|date('d/m/Y')}}
+		{% trans %}au:{% endtrans %}
+		{{reservation.dateFin|date('d/m/Y')}}
+		{% trans %}a été acceptée par{% endtrans %}
+		{{reservation.gardien.utilisateur.pseudo}}</h2>
+
+
+	{% if reservation.hebergement == true %}
+		<p style="color: #7b3c04;">{% trans %}Hebergement souhaité{% endtrans %}
+			({{reservation.gardien.tarif}}{% trans %}€/jour{% endtrans %})</p>
+	{% endif %}
+
+	{% if reservation.nbPassages > 0 %}
+		<p style="color: #7b3c04;">{% trans %}Nombre de passages par jour désirés:{% endtrans %}
+			{{reservation.nbPassages}}
+			({{reservation.gardien.tarifDeplacement}}€/dépacement)</p>
+	{% endif %}
+
+	<p style="color: #7b3c04;">{% trans %}Pour une durée de
+		{% endtrans %}{{nbJours}}
+		{% trans %}jours le prix du gardiennage est de:{% endtrans %}
+		{{reservation.prixTotal}}€</p>
+
+	<div>
+		<button style="display: flex; margin: auto;">
+			<a style="text-decoration: none; color:#7b3c04;" href="{{url ('detail_reservation_maitre', {id: reservation.maitre.id, idReservation: reservation.id} ) }}">{% trans %}Voir à la reservation{% endtrans %}</a>
+		</button>
+	</div>
+
+	<p style="color: #7b3c04;">{% trans %}Vous pouvez contacter le gardien à tout moment depuis la messagerie du 
+			site ou par email:{% endtrans %}
+		<a style="text-decoration: none; color:brown;" href="{{reservation.gardien.utilisateur.email}}">email</a>
+	</p>
+
+	<img src="{{ absolute_url (asset ('img/Gardiens_logo_main.jpg')) }}" class="logo" alt="logo" style="display: block; margin: 5px auto 0 auto; width: 300px; height: 200px;" width="300" height="200">
+
+</div>

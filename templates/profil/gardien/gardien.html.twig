@@ -1,0 +1,295 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% trans %}Profil gardien{% endtrans %}
+{% endblock %}
+
+{% block titreh1 %}
+	{% if app.user == prestataire.utilisateur %}
+		{% if prestataire.utilisateur.pseudo is defined %}
+			{{prestataire.utilisateur.pseudo|capitalize }}
+		{% else %}
+			{{prestataire.utilisateur.prenom}}
+			{{prestataire.utilisateur.nom|slice(0, 1)}}.
+		{% endif %}
+	{% endif %}
+{% endblock %}
+
+{% block body %}
+	{# Affichage si le gardien connecté est bien le propriétaire du profil #}
+	<div class="container">
+		{% if app.user == prestataire.utilisateur %}
+			{% if app.user %}
+				<div class="row center">
+					<a class="link-profile" href="{{ path('app_logout') }}">{% trans %}Me déconnecter{% endtrans %}</a>
+				</div>
+			{% endif %}
+			<p class="center grey-text text-lighten-1">Inscrit(e) depuis le
+				{{prestataire.utilisateur.dateInscription|date('d/m/Y')}}</p>
+			<div class="row center">
+
+			<div class="center">
+				{% if prestataire.images[0] is defined and prestataire.images[0].image != '' %}
+					<img class="responsive-img-custom z-depth-3" src="{{ asset('img/uploads/') ~ prestataire.images[0].image }}" alt="photo de profil du gardien">
+				{% else %}
+					<img class="responsive-img-custom z-depth-3" src="{{ asset('img/avatars/blank_profile.webp') }}" alt="photo de profil vide">
+				{% endif %}
+				<p>
+					<a class="link-profile" href="{{path('addImageGardien', {id: prestataire.id}) }}">{% trans %}Modifier ma photo de profil{% endtrans %}</a>
+				</p>
+			</div>
+
+			<div class='profil-module'>
+				<h3>Informations générales</h3>
+				<p><a class='link-profile' href="{{path ('update_infos_prest', {id: prestataire.id}) }}">{% trans %}Modifier mes informations{% endtrans %}</a></p>
+				<p><a class="link-profile" href="{{path ('update_adress_prest', {id: app.user.id})}}">{% trans %}Modifier mon adresse{% endtrans %}</a></p>
+			</div>
+
+			<div class="profil-module">
+				<h3>Messagerie</h3>
+				{% if nvMsgNonLus == 1 %}
+					<p class="teal-text">{% trans %}Vous avez{% endtrans %} {{nvMsgNonLus}} {% trans %}message non lu{% endtrans %}</p>
+					<a class='link-profile' href="{{path('messages',{id:app.user.id}) }}"><i class="fa-regular fa-envelope"></i>&nbsp;{% trans %}Voir message{% endtrans %}</a>
+					{% elseif nvMsgNonLus > 1 %}
+					<p class="red-text">{% trans %}Vous avez{% endtrans %} {{nvMsgNonLus}} {% trans %}messages non lus{% endtrans %}</p>
+					<a class='link-profile' href="{{path('messages',{id:app.user.id}) }}"><i class="fa-regular fa-envelope"></i>&nbsp;{% trans %}Voir message{% endtrans %}</a>
+					{% elseif nvMsgNonLus == 0 %}
+					<p class="secondary-color">{% trans %}Vous n'avez pas de nouveau message{% endtrans %}</p>
+				{% endif %}
+			</div>
+
+			<div class="profil-module">
+				<h3>Réservations</h3>
+				{% if nbReservations and nbReservations > 1 %}
+					<p class="teal-text center">
+						<i class="fa-solid fa-circle-exclamation small"></i>&nbsp;&nbsp;{{nbReservations }}
+						{% trans %}demandes de réservation à valider{% endtrans %}</p>
+				{% elseif nbReservations and nbReservations == 1 %}
+					<p class="teal-text center">
+						<i class="fa-solid fa-circle-exclamation small"></i>&nbsp;&nbsp;{{nbReservations }}
+						{% trans %}demande de réservation à valider{% endtrans %}</p>
+				{% endif %}
+
+				{# script JS initialisation calendrier FullCalendar #}
+				<script type="text/javascript">
+					// initialisation du calendrier & paramétrage
+					document.addEventListener('DOMContentLoaded', function () {
+
+					var calendarEl = document.getElementById('calendar');
+					var calendar = new FullCalendar.Calendar(calendarEl, {
+
+							initialView: 'dayGridMonth',
+							locale: 'fr',
+							firstDay: 1,
+							timeZone: "Europe/Brussels",
+
+							headerToolbar: {
+								left: 'today',
+								center: 'title',
+								right: 'prev,next'
+							},
+							// boutons de navigation
+							buttonText: {
+								month: 'mois',
+								agendaDay: 'Jour',
+								agendaWeek: 'semaine',
+								today: 'Aujourd\'hui'
+							},
+							// récupération des indispos & reservations (format json) et affichage dans le calendrier
+							eventSources: [{{ resas|raw }},{{ indispos|raw }}, {{ resaEnAtttente|raw }}]
+						});
+						calendar.render();
+					});
+				</script>
+
+				{# Affichage du calendrier FullCalendar #}
+				<div id='calendar'></div>
+				<p><a class="link-profile" href="{{path('reservations_gardien', {id: prestataire.id}) }}"><i class="fa-regular fa-calendar"></i>&nbsp;{% trans %}Gérer mes réservations{% endtrans %}</a></p>
+				<p><a class="link-profile" href="{{path('indisponibilite_gardien', {id: prestataire.id}) }}"><i class="fa-regular fa-calendar-xmark"></i>&nbsp;{% trans %}Ajouter une indisponibilité{% endtrans %}</a></p>
+			</div>
+
+			<div class="profil-module">
+				<h3>Mes tarifs</h3>
+				{% if prestataire.tarif %}
+					<p>{% trans %}Hebergement animal:{% endtrans %}
+						{{prestataire.tarif}}€/jour</p>
+				{% else %}
+					<p>{% trans %}tarif herbergement:{% endtrans %}
+						{{prestataire.tarifDeplacement }}</p>
+				{% endif %}
+				{% if prestataire.tarifDeplacement %}
+					<p>{% trans %}Visites à domicile:{% endtrans %}
+						{{prestataire.tarifDeplacement}}{% trans %}€/passage{% endtrans %}</p>
+				{% else %}
+					<p>{% trans %}tarif par passage à domicile{% endtrans %}</p>
+				{% endif %}
+				{% if prestataire.tarifPromenade %}
+					<p>{% trans %}Tarif par promenade:{% endtrans %}
+						{{prestataire.tarifPromenade}}{% trans %}€/promenade{% endtrans %}</p>
+				{% endif %}
+				{% if prestataire.zoneGardiennage %}
+					<p>{% trans %}Ma zone de gardiennage:{% endtrans %}
+						{{prestataire.zoneGardiennage}}{% trans %}km à partir de mon adresse{% endtrans %}</p>
+				{% else %}
+					<p>{% trans %}Pas encore de zone définie{% endtrans %}</p>
+				{% endif %}
+			</div>
+
+			<div class="profil-module">
+				<h3>{% trans %}Les animaux que je prend en charge{% endtrans %}</h3>
+				<ul>
+					{% if prestataire.specialisations is not empty %}
+						{% for specialisation in prestataire.specialisations %}
+							<li class="collection-item">
+								{% if specialisation.nom == "Chats" %}
+									<i class="fa-solid fa-cat small"></i>
+								{% elseif specialisation.nom == "Chiens" %}
+									<i class="fa-solid fa-dog small"></i>
+								{% elseif specialisation.nom == "Reptiles" %}
+									<i class="fa-solid fa-worm small"></i>
+								{% elseif specialisation.nom == "Insectes" %}
+									<i class="fa-solid fa-locust small"></i>
+								{% elseif specialisation.nom == "Poissons" %}
+									<i class="fa-solid fa-fish-fins small"></i>
+								{% elseif specialisation.nom == "Amphibiens" %}
+									<i class="fa-solid fa-frog small"></i>
+								{% elseif specialisation.nom == "Ruminants" %}
+									<i class="fa-solid fa-horse small"></i>
+								{% elseif specialisation.nom == "Rongeurs" %}
+									<i class="fa-solid fa-carrot small"></i>
+								{% elseif specialisation.nom == "Oiseaux" %}
+									<i class="fa-solid fa-kiwi-bird small"></i>
+								{% elseif specialisation.nom == "Arachnides" %}
+									<i class="fa-solid fa-spider small"></i>
+								{% else %}
+									<i class="fa-solid fa-paw small"></i>
+								{% endif %}
+								&nbsp;&nbsp;{{specialisation.nom|capitalize }}
+							</li>
+						{% endfor %}
+					{% else %}
+						<li>{% trans %}Je n'ai pas encore renseigné de catégorie d'animal{% endtrans %}</li>
+					{% endif %}
+			</div>
+
+		<div class="profil-module">
+			<h4>{% trans %}Mes compétences{% endtrans %}</h4>
+			<ul>
+				{% if prestataire.soinsVeto %}
+					<li class="collection-item">
+						<i class="fa-solid fa-syringe small"></i>&nbsp;&nbsp;{% trans %}J'ai des compétences véterinaires{% endtrans %}</li>
+				{% endif %}
+				{% if prestataire.gardeDomicile %}
+					<li class="collection-item">
+						<i class="fa-solid fa-house small"></i>&nbsp;&nbsp;{% trans %}Je peux garder l'animal à mon domicile{% endtrans %}</li>
+				{% endif %}
+				{% if prestataire.jardin %}
+					<li class="collection-item">
+						<i class="fa-solid fa-leaf small"></i>&nbsp;&nbsp;{% trans %}Je possède un jardin{% endtrans %}</li>
+				{% endif %}
+				{% if prestataire.vehicule %}
+					<li class="collection-item">
+						<i class="fa-solid fa-car small"></i>&nbsp;&nbsp;{% trans %}Je suis véhiculé{% endtrans %}</li>
+				{% endif %}
+			</ul>
+		</div>
+
+
+	<p>
+		{% if maitre.utilisateur.adresse.rue is defined %}
+			{{maitre.utilisateur.adresse.rue}}
+		{% endif %}
+		{% if maitre.utilisateur.adresse.numero is defined %}
+			{{maitre.utilisateur.adresse.numero}}
+		{% endif %}
+	</p>
+	<p>
+		{% if maitre.utilisateur.adresse.commune is defined %}
+			{{maitre.utilisateur.adresse.commune|capitalize }}
+		{% endif %}
+		{% if maitre.utilisateur.adresse.codePostal is defined %}
+			{{maitre.utilisateur.adresse.codePostal}}
+			-
+		{% endif %}
+		{% if maitre.utilisateur.adresse.localite is defined %}
+			{{maitre.utilisateur.adresse.localite|capitalize }}
+		{% endif %}
+	</p>
+
+		{# Carrousel photos prestataire #}
+		{% if prestataire.imgGallerie is not empty and prestataire.imgGallerie|length < 2 %}
+			<div class="single-gallery-img">
+				{% for img in prestataire.imgGallerie %}
+					<img class="prestaire_img" src="{{ asset('img/uploads/' ~ img.image) }}" alt="photo carrousel"/>
+				{% endfor %}
+			{% elseif prestataire.imgGallerie is not empty %}
+			<div class="gallery">
+					{% for img in prestataire.imgGallerie %}
+						<img class="prestaire_img" src="{{ asset('img/uploads/' ~ img.image) }}" alt="photo carrousel"/>
+					{% endfor %}
+				{% else %}
+					<p class="third-color center">{% trans %}Oops, je n'ai pas encore de photo dans ma gallerie..{% endtrans %}</p>
+				{% endif %}
+			</div>
+			<p class="center"><a class="link-profile" href="{{path ('images_carrousel_gardien', {id: app.user.prestataire.id})}}">{% trans %}Gérer les photos de la gallerie{% endtrans %}</a></p>
+
+
+		<div class="profil-module">
+			{% if commentaires %}
+				<h3>{% trans %}Les commentaires que j'ai reçus{% endtrans %}</h3>
+				{% for com in commentaires %}
+					<div class="card brown lighten-5">
+						<div class="card-title center">
+							<h3 class="brown-text text-darken-1 section">{{com.titre }}</h3>
+						</div>
+						<div class="card-content center brown-text text-darken-1">
+							<p>{{com.commentaire }}</p>
+						</div>
+						<div class="card-footer">
+							<p class="center brown-text ">
+								{% trans %}Note donnée: {% endtrans %}{% for note in notes %}
+									{% if note.maitre == com.maitre %}
+										{{note.note}} sur 5
+									{% endif %}
+								{% endfor %}
+							</p>
+							<p class="brown-text text-lighten-2 center section">{% trans %}Par{% endtrans %}
+								{{com.maitre.utilisateur.pseudo }}, le
+								{{com.date|date("d/m/Y") }}
+							</p>
+
+							{% if com.signalement %}
+								{% for signalement in com.signalement %}
+									{% if signalement and signalement.estTraite == false %}
+										<p class="red-text center">{% trans %}Vous avez signalé ce commentaire{% endtrans %}</p>
+									{% endif %}
+								{% endfor %}
+							{% endif %}
+							
+							<div class="row section">
+								<a class="btn-flat brown lighten-4 col s3" href="{{path('repondre_commentaire', {id:prestataire.id, id_commentaire: com.id}) }}">Répondre</a>
+								<a class="btn-flat red lighten-3 col s3" href="{{path('signaler_commentaire', {id:prestataire.id, id_commentaire: com.id}) }}">Signaler</a>
+							</div>
+						</div>
+					</div>
+					
+					{% if com.reponseGardien %}
+					<div class="card brown lighten-4">
+						<div class="card-content center brown-text text-darken-1">
+						<p class="brown-text text-lighten-2">{% trans %}Ma réponse:{% endtrans %}</p>
+							<p>{{com.reponseGardien }}</p>
+						</div>
+					</div>
+					{% endif %}
+
+				{% endfor %}
+			{% else %}
+				<h3>{% trans %}je n'ai pas encore reçu de commentaire{% endtrans %}</h3>
+			{% endif %}
+		</div>
+
+	</div>
+{% else %}
+	<p class="center red">{% trans %}Désolé, vous n'avez pas les droits pour visiter cette page de profil{% endtrans %}</p>
+{% endif %}
+
+{% endblock %}

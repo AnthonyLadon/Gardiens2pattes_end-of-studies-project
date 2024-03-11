@@ -1,0 +1,97 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reservations
+{% endblock %}
+
+{% block titreh1 %}Mes reservations
+{% endblock %}
+
+{% block body %}
+
+	{% if app.user == maitre.utilisateur %}
+		<div class="container">
+			<div class="profil-reservations-list">
+				<h3 class="row">{% trans %}En attente de validation{% endtrans %}</h3>
+				<ul>
+					{% for resa in reservations %}
+						{% if resa.validationPrestataire == false and date(resa.dateFin) > date() %}
+							<li>
+								<a href="{{path('detail_reservation_maitre', {id: maitre.id, idReservation:resa.id}) }}">{{ resa.animal.nom }}
+									{% trans %}
+									du:
+									{% endtrans %}
+									{{ resa.dateDebut|date('d/m/Y') }}
+									{% trans %}au:
+									{% endtrans %}
+									{{ resa.dateFin|date('d/m/Y') }}</a>
+							</li>
+						{% endif %}
+					{% endfor %}
+				</ul>
+			</div>
+
+			<div class="profil-reservations-list">
+				<h3 class="row">{% trans %}Gardiennages à venir{% endtrans %}</h3>
+				<ul>
+					{% for resa in reservations %}
+						{% if resa.validationPrestataire == true and date(resa.dateDebut) > date() %}
+							<li>
+								<a href="{{path('detail_reservation_maitre', {id: maitre.id, idReservation:resa.id}) }}">{% trans %}Du:
+									{% endtrans %}{{ resa.dateDebut|date('d/m/Y') }}
+									{% trans %}au:
+									{% endtrans %}
+									{{ resa.dateFin|date('d/m/Y') }}
+									:
+									{{ resa.animal.nom }}</a>
+							</li>
+						{% endif %}
+					{% endfor %}
+				</ul>
+			</div>
+
+			<div class="profil-reservations-list">
+				<h3>{% trans %}Gardiennages effectués{% endtrans %}</h3>
+				<ul>
+					{% for resa in reservations %}
+						{% if date(resa.dateFin)< date() %}
+							<li>
+								<a href="{{path('detail_reservation_maitre', {id: maitre.id, idReservation:resa.id}) }}">{% trans %}Du:
+									{% endtrans %}
+									{{ resa.dateDebut|date('d/m/Y') }}
+									{% trans %}au:
+									{% endtrans %}{{ resa.dateFin|date('d/m/Y') }}
+									:
+									{{ resa.animal.nom }}</a>
+							</li>
+						{% endif %}
+					{% endfor %}
+				</ul>
+			</div>
+
+			<div class="profil-reservations-list">
+				<h3>{% trans %}Gardiennages annulés{% endtrans %}</h3>
+				<p class='center red lighten-3'>Gardiennages non prestés</p>
+				<ul>
+					{% for resa in reservations %}
+						{% if date(resa.dateDebut)< date() %}
+							<li>
+								<a href="{{path('detail_reservation_maitre', {id: maitre.id, idReservation:resa.id}) }}">{% trans %}Du:
+									{% endtrans %}
+									{{ resa.dateDebut|date('d/m/Y') }}
+									{% trans %}au:
+									{% endtrans %}{{ resa.dateFin|date('d/m/Y') }}
+									:
+									{{ resa.animal.nom }}</a>
+							</li>
+						{% endif %}
+					{% endfor %}
+				</ul>
+			</div>
+
+			<div class="row center">
+				<a class="btn-flat brown-text" href="{{ path('profil_maitre', {id: app.user.maitre.id}) }}">{% trans %}retour profil{% endtrans %}</a>
+			</div>
+		</div>
+	{% endif %}
+
+{% endblock %}

@@ -1,0 +1,181 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% trans %}Profil Maître{% endtrans %}{% endblock %}
+
+
+{% block titreh1 %}
+	{% if app.user == maitre.utilisateur %}
+		{{maitre.utilisateur.pseudo|capitalize }}
+	{% endif %}
+{% endblock %}
+
+{% block body %}
+	{% if app.user == maitre.utilisateur %}
+		<div class="container">
+			{% if app.user %}
+				<div class="row center">
+					<a class="link-profile" href="{{ path('app_logout') }}">{% trans %}Me déconnecter{% endtrans %}</a>
+				</div>
+			{% endif %}
+			<p class="center grey-text text-lighten-1">Inscrit(e) depuis le
+				{{maitre.utilisateur.dateInscription|date('d/m/Y')}}</p>
+			<div class="row center">
+				{% if maitre.images[0] is defined and maitre.images[0].image != '' %}
+					<img class="responsive-img-custom z-depth-3" src="{{ asset('img/uploads/') ~ maitre.images[0].image }}" alt="photo de profil du gardien">
+				{% else %}
+					<img class="responsive-img-custom z-depth-3" src="{{ asset('img/avatars/blank_profile.webp') }}" alt="photo de profil vide">
+				{% endif %}
+			</div>
+			<div class="row center">
+				<p><a class="link-profile" href="{{path('addImageMaitre', {id: maitre.id}) }}"><i class="fa-solid fa-image"></i>&ensp;{% trans %}Modifier ma photo de profil{% endtrans %}</a></p>
+				<p><a class="link-profile" href="{{path('pseudo_maitre', {id: maitre.id}) }}"><i class="fa-solid fa-user"></i>&ensp;modifier mon pseudo</a></p>
+				<p><a class="link-profile" href="{{path('reservations_maitre', {id: maitre.id}) }}"><i class="fa-solid fa-calendar-check"></i>{% trans %}&ensp;Mes reservations{% endtrans %}</a></p>
+				<p><a class="link-profile" href="{{path ('favoris_maitre', {id: maitre.id}) }}"><i class="fa-solid fa-star"></i>&ensp;{% trans %}Mes gardiens favoris{% endtrans %}</a></p>
+			</div>
+
+
+			<div class="profil-module">
+				<h3 class="third-color center">{% trans %}Ma présentation{% endtrans %}</h3>
+				<p class="third-color">{{maitre.bio }}</p>
+				<p class='center'>
+					<a class="link-profile" href="{{path ('update_infos_maitre', {id: maitre.id}) }}">{% trans %}Modifier ma présentation{% endtrans %}</a>
+				</p>
+			</div>
+
+			<div class="profil-module">
+				{% if maitre.newsletter %}
+				<p>Je suis abonné à la newsletter</p>
+					<a class="link-profile" href="{{path('newsletter_maitre', {id : maitre.id}) }}"><i class="fa-solid fa-newspaper"></i>&ensp;{% trans %}Je me désabonne{% endtrans %}</a>
+				{% else %}
+				<p>Je ne suis pas abonné à la newsletter</p>
+					<a class="link-profile" href="{{path('newsletter_maitre', {id : maitre.id}) }}"><i class="fa-solid fa-newspaper"></i>&ensp;{% trans %}Je m'abonne{% endtrans %}</a>
+				{% endif %}
+			</div>
+
+
+			<div class="profil-module">
+
+			<h3 class='center third-color'>{% trans %}Mon adresse{% endtrans %}</h3>
+				<p>
+					{% if maitre.utilisateur.adresse.rue is defined %}
+						{{maitre.utilisateur.adresse.rue}}
+					{% endif %}
+					{% if maitre.utilisateur.adresse.numero is defined %}
+						{{maitre.utilisateur.adresse.numero}}
+					{% endif %}
+				</p>
+				<p>
+					{% if maitre.utilisateur.adresse.commune is defined %}
+						{{maitre.utilisateur.adresse.commune|capitalize }}
+					{% endif %}
+					{% if maitre.utilisateur.adresse.codePostal is defined %}
+						{{maitre.utilisateur.adresse.codePostal}}
+						-
+					{% endif %}
+					{% if maitre.utilisateur.adresse.localite is defined %}
+						{{maitre.utilisateur.adresse.localite|capitalize }}
+					{% endif %}
+				</p>
+
+				{% if maitre.utilisateur.id %}
+				{% endif %}
+				<p class='center'>
+					<a class="link-profile" href="{{path('update_adress_maitre', {id: maitre.utilisateur.id}) }}"><i class="fa-solid fa-location-dot"></i>&ensp;Modifier mon adresse</a>
+				</p>
+			</div>
+
+			<div class="profil-maitre-animaux">
+				<h3 class="third-color center">{% trans %}Mes animaux{% endtrans %}</h3>
+				<div>
+					{% for pet in maitre.animal %}
+						<div class="carte-annimal">
+							{# Verifier si animal a une image sinon affichage d'une image par defaut #}
+							<div class='carte-annimal-img'>
+								{% if pet.images is not empty %}
+									<img src="{{ asset('img/uploads/') ~ pet.images.0.image }}" alt="photo de l'animal">
+								{% else %}
+									<img src="{{ asset('img/avatars/blank_profile_animal.jpg') }}" alt="photo de profil animal vide">
+								{% endif %}
+							</div>
+
+							<h3>{{pet.nom|capitalize }}</h3>
+							<p><span>Description: </span>{{pet.description }}</p>
+							<p><span>{% trans %}age:{% endtrans %}</span>
+								{{pet.age }}
+								<span>{% trans %}ans{% endtrans %}</span>
+							<p><span>{% trans %}catégorie:{% endtrans %}</span>
+								{{pet.categorieAnimal.nom|capitalize  }}</p>
+							<p><span>Poids: </span>{{pet.poids}}Kg</p>
+							<p><span>Antécedents médicaux: </span>{{pet.antecedentsMedicaux}}</p>
+							<p><span>Sociablitlité: </span>{{pet.sociabilite}}</p>
+							<a class="waves-effect waves-light modal-trigger blue-text btn white" href="#modifier{{pet.id}}">{% trans %}Modifier{% endtrans %}</a>
+							{# Modal Trigger suppression #}
+							<a class="waves-effect waves-light modal-trigger brown-text text-lighten-1 btn white" href="#{{pet.nom }}">{% trans %}supprimer l'animal{% endtrans %}</a>
+						</div>
+
+						{# Structure du modal modification #}
+						<div id="modifier{{pet.id}}" class="modal modal-fixed-footer">
+							<div class="modal-content">
+								<h3>{% trans %}Que voulez-vous modifier?{% endtrans %}</h3>
+								<div>
+									<p>
+										<a class="modal-close waves-effect waves-green btn white blue-text" href="{{path ('ajout_photo_animal', {id: pet.maitre.id , animal_id: pet.id}) }}">{% trans %}Photo de profil{% endtrans %}</a>
+									</p>
+									<p>
+										<a class="modal-close waves-effect waves-green btn white  blue-text" href="{{path ('modifier_infos_animal_maitre', {id: pet.maitre.id, id_animal: pet.id}) }}">{% trans %}Informations de l'animal{% endtrans %}</a>
+									</p>
+								</div>
+							</div>
+							<div class="modal-footer">
+								<p class="modal-close waves-effect waves-green btn-flat red-text">{% trans %}Annuler{% endtrans %}</p>
+							</div>
+						</div>
+
+						{# Structure du modal suppression #}
+						<div id="{{pet.nom }}" class="modal modal-fixed-footer">
+							<div class="modal-content">
+								<h3>{% trans %}Voulez-vous vraiment supprimer cet animal?{% endtrans %}</h3>
+							</div>
+							<div class="modal-footer">
+								<a href="{{path('supprimer_animal_maitre', {id : pet.id}) }}" class="modal-close waves-effect waves-green btn-flat blue-text">{% trans %}Supprimer{% endtrans %}
+									{{pet.nom }}</a>
+								<p class="modal-close waves-effect waves-green btn-flat red-text">{% trans %}Annuler{% endtrans %}</p>
+							</div>
+						</div>
+					{% endfor %}
+				</div>
+				<p class="center">
+					<a class="link-profile" href="{{path ('animal_maitre', {id : maitre.id}) }}"><i class="fa-solid fa-paw"></i>&ensp;{% trans %}Ajouter un animal{% endtrans %}</a>
+				</p>
+			</div>
+
+			<div class='center'>
+				{# bouton gestion photos carrousel maitre #}
+				{% if maitre.imgGallerieMaitre is empty %}
+						<p>
+							<a class="btn" href="{{ path ('ajout_photo_carrousel', {id : maitre.id}) }}">{% trans %}Ajouter des photos{% endtrans %}</a>
+						</p>
+					{% else %}
+						<p class='center'>
+							<a class="link-profile" href="{{ path ('ajout_photo_carrousel', {id : maitre.id}) }}">{% trans %}Gestions des photos de ma gallerie{% endtrans %}</a>
+						</p>
+				{% endif %}
+				{# Affichage carrousel photos maitre #}
+				{% if maitre.imgGallerieMaitre is not empty and maitre.imgGallerieMaitre|length < 2 %}
+					<div class="single-gallery-img">
+						{% for img in maitre.imgGallerieMaitre %}
+							<img class="prestaire_img" src="{{ asset('img/uploads/' ~ img.image) }}" alt="photo carrousel"/>
+						{% endfor %}
+					{% elseif maitre.imgGallerieMaitre is not empty %}
+						<div class="gallery">
+							{% for img in maitre.imgGallerieMaitre %}
+								<img class="prestaire_img" src="{{ asset('img/uploads/' ~ img.image) }}" alt="photo carrousel"/>
+							{% endfor %}
+					{% else %}
+						<p class="third-color">{% trans %}Il n'y a pas encore de photo dans ma gallerie{% endtrans %}</p>
+					{% endif %}
+					</div>
+				{% endif %}
+			</div>
+		</div>
+		{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+  {% trans %}Commentaire{% endtrans %} {{prestataire.utilisateur.pseudo|capitalize }}
+{% endblock %}
+
+{% block titreh1 %}
+    {% trans %}Votre commentaire{% endtrans %}
+{% endblock %}
+
+{% block body %}
+
+<div class="container row">
+    {{ form_start(form) }}
+    <div class="input-field">
+        {{form_label(form.titre) }}
+        {{form_widget(form.titre, {'attr': {'class': 'secondary-color validate '}}) }}
+    </div>
+    <div class="input-field">
+        {{form_label(form.commentaire) }}
+        {{form_widget(form.commentaire, {'attr': {'class': 'secondary-color validate '}}) }}
+    </div>
+    <div class="choice-field">
+        {% if notePrecedante %}
+            {{ form_widget(form.note, {'attr': {'class': ''}}) }}
+            <p class="red-text">{% trans %}Vous aviez donné la note de{% endtrans %} {{ notePrecedante }}</p>
+        {% else %}
+            <label>{% trans %}Donnez une note (sur 5) au prestataire{% endtrans %}</label>
+            {{ form_widget(form.note, {'attr': {'class': ''}}) }}
+        {% endif %}
+    </div>
+
+    <button type="submit" class="btn waves-effect waves-light">{% trans %}Enregistrer{% endtrans %}</button>
+    {{ form_end(form) }}
+</div>
+
+{% endblock %}

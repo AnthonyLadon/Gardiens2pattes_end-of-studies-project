@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{% trans %}Detail reservation{% endtrans %}
+{% endblock %}
+
+{% block titreh1 %}
+	{% trans %}Reservation de{% endtrans %}
+	{{reservation.maitre.utilisateur.pseudo }}
+{% endblock %}
+
+{% block body %}
+
+	{% if app.user == prestataire.utilisateur %}
+		<p class="reservation-status">
+			{% if reservation.validationPrestataire == false and date(reservation.dateFin)> date() %}
+				{% trans %}Reservation en attente d'acceptation{% endtrans %}
+			{% elseif reservation.validationPrestataire == true %}
+				{% trans %}Reservation confirmée{% endtrans %}
+			{% endif %}
+		</p>
+
+		<div class="container">
+			<div class="reservation-recap">
+				<a class="btn" href="{{ path('messages_conversation', {'id': reservation.maitre.utilisateur.id}) }}">
+					<i class="fa-regular fa-comment"></i>&nbsp;
+					{% trans %}
+					Discuter avec{% endtrans %}
+					{{reservation.maitre.utilisateur.pseudo}}</a>
+
+				<p>
+					<a class='btn' href="{{path('page_maitre', {id: reservation.maitre.id}) }}">Voir le profil de
+						{{reservation.maitre.utilisateur.pseudo}}</a>
+				</p>
+
+				<p>{% trans %}Date début:{% endtrans %}
+					{{reservation.dateDebut|date('d/m/Y')}}</p>
+				<p>{% trans %}Date de fin:{% endtrans %}
+					{{reservation.dateFin|date('d/m/Y')}}</p>
+
+				<p>{% trans %}Prix total:{% endtrans %}
+					{{reservation.prixTotal}}</p>
+
+				<p>{% trans %}Details:{% endtrans %}
+					{{reservation.details}}</p>
+				<p>{% trans %}Nombre de passages:{% endtrans %}
+					{{reservation.nbPassages }}</p>
+
+				{% if reservation.validationPrestataire == false %}
+					<a class="btn" href="{{path('reservations_gardien_accepter', {idReservation : reservation.id}) }}">{% trans %}Accepter la reservation{% endtrans %}</a>
+				{% elseif reservation.validationPrestataire == true %}
+					<a class="btn" href="{{path('reservations_gardien_accepter', {idReservation : reservation.id}) }}">{% trans %}Annuler l'acceptation de la reservation{% endtrans %}</a>
+				{% endif %}
+			</div>
+
+		</div>
+	{% endif %}
+
+{% endblock %}

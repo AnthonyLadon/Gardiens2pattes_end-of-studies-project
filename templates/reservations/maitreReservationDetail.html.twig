@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{% trans %}Details reservation{% endtrans %}
+{% endblock %}
+
+{% block titreh1 %}
+	{% trans %}Réservation avec{% endtrans %}
+	{{reservation.gardien.utilisateur.pseudo}}
+{% endblock %}
+
+{% block body %}
+
+	{% if app.user == maitre.utilisateur %}
+		<p class="reservation-status">
+			{% if reservation.validationPrestataire == false and date(reservation.dateFin)> date() %}
+				{% trans %}Reservation en attente d'acceptation par{% endtrans %}
+				{{reservation.gardien.utilisateur.pseudo}}
+			{% endif %}
+		</p>
+
+		<div class='row center'>
+			<a class="btn" href="{{ path('messages_conversation', {'id': reservation.gardien.utilisateur.id}) }}">
+				<i class="fa-regular fa-comment"></i>&nbsp;
+				{% trans %}Discuter avec{% endtrans %}
+				{{reservation.gardien.utilisateur.pseudo}}</a>
+		</div>
+
+		<div class="container">
+
+			<div class="reservation-recap">
+
+				<h2>{% trans %}Récapitulatif de la reservation:{% endtrans %}</h2>
+				<p>{% trans %}Gardiennage de
+					{% endtrans %}{{reservation.animal.nom }}</p>
+				<p>{% trans %}Du{% endtrans %}
+					{{reservation.dateDebut|date('d/m/Y')}}
+					{% trans %}au{% endtrans %}
+					{{reservation.dateFin|date('d/m/Y')}}</p>
+
+				<p>{% trans %}Details:{% endtrans %}
+					{{reservation.details}}</p>
+
+				{% if reservation.nbPassages > 0 %}
+					<p>{% trans %}Nombre de passage par jour:{% endtrans %}
+						{{reservation.nbPassages }}
+					</p>
+				{% elseif reservation.hebergement == true %}
+					<p>{% trans %}Hebergement au domicile du gardien{% endtrans %}</p>
+				{% endif %}
+
+				<p>{% trans %}Prix de la prestation:{% endtrans %}
+					{{reservation.prixTotal}}€</p>
+			</div>
+			<div class="row center">
+				<a class="btn-flat brown-text" href="{{ path('reservations_maitre', {id: app.user.maitre.id}) }}">{% trans %}retour reservations{% endtrans %}</a>
+			</div>
+		</div>
+	{% endif %}
+
+{% endblock %}

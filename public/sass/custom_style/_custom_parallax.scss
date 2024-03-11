@@ -1,0 +1,24 @@
+
+// gestion de l'effet parralax 
+
+.parallax-container1 {
+    text-align: center;
+    width: 100%;
+    height: 45rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: url('../img/dog_nature.avif');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+    h4{
+      color: white;
+      background-color: #7c44546e;
+      border-radius: 20px;
+    }
+  }
+  
+

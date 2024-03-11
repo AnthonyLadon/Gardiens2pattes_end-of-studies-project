@@ -1,0 +1,98 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Page maitre{% endblock %}
+
+
+{% block body %}
+
+    <div class="container">
+        <h2 class="center third-color">{{maitre.utilisateur.pseudo|capitalize }}</h2>
+        <p class="center grey-text">Inscrit(e) depuis le
+            {{maitre.utilisateur.dateInscription|date('d/m/Y')}}</p>
+
+        <div class="row center">
+            {% if maitre.images[0] is defined and maitre.images[0].image != '' %}
+                <img class="responsive-img-custom z-depth-3" src="{{ asset('img/uploads/') ~ maitre.images[0].image }}" alt="photo de profil du gardien">
+            {% else %}
+                <img class="responsive-img-custom z-depth-3" src="{{ asset('img/avatars/blank_profile.webp') }}" alt="photo de profil vide">
+            {% endif %}
+        </div>
+
+        <div class="row third-color center">
+            <p>
+                {% if maitre.utilisateur.adresse.rue is defined %}
+                    {{maitre.utilisateur.adresse.rue}}
+                {% endif %}
+                {% if maitre.utilisateur.adresse.numero is defined %}
+                    {{maitre.utilisateur.adresse.numero}}
+                {% endif %}
+            </p>
+            <p>
+                {% if maitre.utilisateur.adresse.commune is defined %}
+                    {{maitre.utilisateur.adresse.commune|capitalize }}
+                {% endif %}
+                {% if maitre.utilisateur.adresse.codePostal is defined %}
+                    {{maitre.utilisateur.adresse.codePostal}}
+                    -
+                {% endif %}
+                {% if maitre.utilisateur.adresse.localite is defined %}
+                    {{maitre.utilisateur.adresse.localite|capitalize }}
+                {% endif %}
+            </p>
+        </div>
+
+        <div class="profil-module">
+            <p class="third-color">{{maitre.bio }}</p>
+        </div>
+
+        <div class="row">
+            <h3 class="third-color center">{% trans %}Mes animaux{% endtrans %}</h3>
+            {% for pet in maitre.animal %}
+                <div class="carte-annimal">
+                    {# Verifier si animal a une image sinon affichage d'une image par defaut #}
+                    <div class='carte-annimal-img'>
+                        {% if pet.images is not empty %}
+                            <img src="{{ asset('img/uploads/') ~ pet.images.0.image }}" alt="photo de l'animal">
+                        {% else %}
+                            <img src="{{ asset('img/avatars/blank_profile_animal.jpg') }}" alt="photo de profil animal vide">
+                        {% endif %}
+                    </div>
+
+                    <h3>{{pet.nom|capitalize }}</h3>
+                    <p><span>Description: </span>{{pet.description }}</p>
+                    <p><span>{% trans %}age:{% endtrans %}</span>
+                        {{pet.age }}
+                        {% trans %}ans{% endtrans %}</span>
+                    <p><span>{% trans %}catégorie:{% endtrans %}</span>
+                        {{pet.categorieAnimal.nom|capitalize  }}</p>
+                    <p><span>Poids: </span>{{pet.poids}}Kg</p>
+                    <p><span>Antécedents médicaux: </span>{{pet.antecedentsMedicaux}}</p>
+                    <p><span>Sociablitlité: </span>{{pet.sociabilite}}</p>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div>
+
+            {% if maitre.imgGallerieMaitre is not empty and maitre.imgGallerieMaitre|length < 2 %}
+                <div class="single-gallery-img">
+                    {% for img in maitre.imgGallerieMaitre %}
+                        <img class="prestaire_img" src="{{ asset('img/uploads/' ~ img.image) }}" alt="photo carrousel"/>
+                    {% endfor %}
+                {% elseif maitre.imgGallerieMaitre is not empty %}
+                    <div class="gallery">
+                        {% for img in maitre.imgGallerieMaitre %}
+                            <img class="prestaire_img" src="{{ asset('img/uploads/' ~ img.image) }}" alt="photo carrousel"/>
+                        {% endfor %}
+                    {% else %}
+                        <div class="gallery">
+                            <p class="third-color center">😱 {% trans %}Je n'ai pas encore de photo dans ma gallerie..{% endtrans %}/p>
+                        {% endif %}
+                    </div>
+                </div>
+
+            </div>
+    </div>
+
+
+{% endblock %}

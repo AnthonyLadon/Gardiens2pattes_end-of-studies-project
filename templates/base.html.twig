@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}Gardiens à 2 pattes
+			{% endblock %}
+		</title>
+		{% block stylesheets %}
+			<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+			<link rel="preconnect" href="https://fonts.googleapis.com">
+			<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+			<link href="https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap" rel="stylesheet">
+			<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+			<link rel="icon" href="img/favicons/favicon.ico">
+			<link
+			type="text/css" rel="stylesheet" href="{{asset ('css/materialize.css')}}">
+			{# Style pour leaflet maps #}
+			<link
+			rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin=""/>
+			<!--optimized for mobile-->
+			<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+		{% endblock %}
+		{% block javascripts %}
+			{# Ajout de l'attribut' "defer" afin de différer l'exécution des script à la fin du chargement du document #}
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js" defer></script>
+			<script type="text/javascript" src="{{asset ('js/bin/materialize.min.js')}}" defer></script>
+			<script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.6/index.global.min.js' defer></script>
+			<script type="text/javascript" src="{{asset ('js/main/main.js')}}" defer></script>
+		{% endblock %}
+	</head>
+
+	<body>
+		<header>
+			{#* Embeded controller #}
+			{# Récupération du nombre de messages non lus ###################################}
+				{% if app.user %}
+			{% set nvMsgNonLus = render(controller('App\\Controller\\MessagesController::messagesNonLus', { 'id': app.user.id })) %}
+			</div>
+			{#* Script pour vérifier périodiquement les nouveaux messages voir 'setInterval()' #}
+				<script>
+function verifierNouveauxMessages() { // requête AJAX pour vérifier les nouveaux messages
+$.ajax({
+url: '{{ path('messages_new', {'id': app.user.id}) }}',
+type: 'GET',
+dataType: 'json',
+success: function (response) { // Réponse reçue avec succès
+if (response > 0) {
+{{ nvMsgNonLus }} == response;
+let count = document.getElementById('countMsg');
+count.innerHTML = '&nbsp;' + response;
+let countNav = document.getElementById('countMsgNav');
+countNav.innerHTML = '&nbsp;' + response + '&nbsp;';
+}
+},
+error: function (xhr, status, error) { // Gérez les erreurs éventuelles
+}
+});
+}
+// Exécutez la fonction de vérification des nouveaux messages toutes les
+setInterval(verifierNouveauxMessages, 15000);
+		</script>
+		{% endif %}
+
+			{% block nav %}
+			{# Barre de navigation ecrans larges ###############################################}
+				<nav class="nav-wrapper primary-color"> <div class="container">
+					<a href="{{path ("home")}}" class="brand-logo hide-on-medium"><img src="{{asset ('img/logos/Main_logo.webp')}}" alt="logo gardiens à deux pattes"></a>
+					<a href="#" class="sidenav-trigger" data-target="mobile-links">
+						<i class="material-icons large">menu</i>
+					</a>
+					<ul class="right hide-on-med-and-down">
+						<li>
+							<a href="{{path ("home")}}">{% trans %}Accueil{% endtrans %}</a>
+						</li>
+						<li>
+							<a href="{{path ("gardiens_list")}}">{% trans %}Les gardiens{% endtrans %}</a>
+						</li>
+						{# Changement de langue du site #}
+						<!-- Dropdown Trigger -->
+						<li>
+							<a class='dropdown-trigger' href='#' data-target='dropdown-language'>FR-EN</a>
+						</li>
+						<!-- Dropdown Structure -->
+						<ul id='dropdown-language' class='dropdown-content'>
+							{% for locale in locales %}
+								{% if locale != app.request.locale %}
+									{% if locale == 'en' %}
+										<li>
+											<a href="{{ path('change_locale', {'locale': locale}) }}"><img class="img-language-navbar" src="{{asset('img/en.png') }}" alt="english">English</a>
+										</li>
+									{% elseif locale == 'fr' %}
+										<li>
+											<a href="{{ path('change_locale', {'locale': locale}) }}"><img class="img-language-navbar" src="{{asset('img/fr.png') }}" alt="français">Français</a>
+										</li>
+									{% endif %}
+								{% endif %}
+							{% endfor %}
+						</ul>
+						{% if not app.user %}
+							<li>
+								<a class="waves-effect waves-light btn-small" href="{{path ('app_login') }}">{% trans %}Connexion{% endtrans %}</a>
+							</li>
+							<li>
+								<a href="{{path ('register_choix') }}">{% trans %}Inscription{% endtrans %}</a>
+							</li>
+						{% endif %}
+						{% if app.user and is_granted('ROLE_CHOOSE_ROLE') %}
+							<li class="icone-profile">
+								<a href="{{path ('choix_role', {id: app.user.id})}}"><img src="{{ asset('img/avatars/blank_profile.webp') }}" alt="photo de profil vide"></a>
+							</li>
+						{% endif %}
+						{% if app.user and is_granted('ROLE_MAITRE') and app.user.isVerified == true and not is_granted('ROLE_GARDIEN') %}
+							{# affichage avatar si le user a une photo de profil (sinon icone blank profile) #}
+							{% if app.user.maitre.images[0].image is defined and app.user.maitre.images[0].image != '' %}
+								<li>
+									<a class="icone-profile" href="{{path ("profil_maitre", {id: app.user.maitre.id})}}"><img class="tooltipped" src="{{ asset('img/uploads/') ~ app.user.maitre.images[0].image }}" alt="photo de profil du gardien" data-position="bottom" data-tooltip="Mon profil"></a>
+								</li>
+								{# Affichage du nombre de messages non lus #}
+								<li>
+									<a class="badge-info" href="{{path('messages',{id:app.user.id}) }}">
+										<i id="countMsg" class="fa-solid fa-envelope">&nbsp;{{nvMsgNonLus}}</i>
+									</a>
+								</li>
+							{% else %}
+								<li>
+									<a class="icone-profile" href="{{path ("profil_maitre", {id: app.user.maitre.id})}}"><img class="tooltipped" src="{{ asset('img/avatars/blank_profile.webp') }}" alt="photo de profil vide" data-position="bottom" data-tooltip="Mon profil"></a>
+								</li>
+								<li>
+									<a class="badge-info" href="{{path('messages',{id:app.user.id}) }}">
+										<i id="countMsg" class="fa-solid fa-envelope">&nbsp;{{nvMsgNonLus}}</i>
+									</a>
+								</li>
+							{% endif %}
+						{% endif %}
+						{% if app.user and is_granted('ROLE_GARDIEN') and not is_granted('ROLE_MAITRE') %}
+							{# affichage avatar si le user a une photo de profil (sinon icone blank profile) #}
+							{% if app.user.prestataire.images[0].image is defined and app.user.prestataire.images[0].image != '' %}
+								{# Affichage du nombre de messages non lus #}
+								<li>
+									<a class="badge-info" href="{{path('messages',{id:app.user.id}) }}">
+										<i id="countMsg" class="fa-solid fa-envelope">&nbsp;{{nvMsgNonLus}}</i>
+									</a>
+								</li>
+								<li>
+									<a class="icone-profile" href="{{path ("profil_gardien", {id: app.user.prestataire.id})}}"><img class="tooltipped" src="{{ asset('img/uploads/') ~ app.user.prestataire.images[0].image }}" alt="photo de profil du gardien" data-position="bottom" data-tooltip="Mon profil"></a>
+								</li>
+							{% else %}
+								{# Affichage du nombre de messages non lus et modification couleur de l'enveloppe si messages non lus #}
+								<li>
+									<a class="badge-info" href="{{path('messages',{id:app.user.id}) }}">
+										<i id="countMsg" class="fa-solid fa-envelope">&nbsp;{{nvMsgNonLus}}</i>
+									</a>
+								</li>
+								<li>
+									<a class="icone-profile" href="{{path ("profil_gardien", {id: app.user.prestataire.id})}}"><img class="tooltipped" src="{{ asset('img/avatars/blank_profile.webp') }}" alt="photo de profil vide" data-position="bottom" data-tooltip="Mon profil"></a>
+								</li>
+							{% endif %}
+						{% endif %}
+						{# accés au lien seulement si le user est authentifié et est admin #}
+						{% if is_granted('ROLE_ADMIN') %}
+							<li>
+								<a href="{{path ("admin")}}">
+									<i class="fa-solid fa-screwdriver-wrench"></i>&nbsp;Admin</a>
+							</li>
+						{% endif %}
+					</ul>
+				</div>
+			</nav>
+
+			{# Barre de navigation tablette & mobile ##############################################@#}
+			<ul class="sidenav" id="mobile-links">
+				{% if app.user and is_granted('ROLE_CHOOSE_ROLE') %}
+					<li class="icone-profile">
+						<a href="{{path ('choix_role', {id: app.user.id})}}"><img src="{{ asset('img/avatars/blank_profile.webp') }}" alt="photo de profil vide"></a>
+					</li>
+				{% endif %}
+				{% if app.user and is_granted('ROLE_MAITRE') and app.user.isVerified == true and not is_granted('ROLE_GARDIEN') %}
+					{# affichage avatar si le user a une photo de profil (sinon icone blank profile) #}
+					{% if app.user.maitre.images[0].image is defined and app.user.maitre.images[0].image != '' %}
+						<li class="icone-profile">
+							<a href="{{path ("profil_maitre", {id: app.user.maitre.id})}}"><img src="{{ asset('img/uploads/') ~ app.user.maitre.images[0].image }}" alt="photo de profil du gardien"></a>
+						</li>
+						{# Affichage du nombre de messages non lus et modification couleur de l'enveloppe si messages non lus #}
+						{% if nvMsgNonLus > 0 %}
+							<li>
+								<a class="badge-info" href="{{path('messages',{id:app.user.id}) }}">
+									<i id="countMsgNav" class="fa-solid fa-envelope small">&nbsp;{{nvMsgNonLus}}</i>
+								</a>
+							</li>
+						{% else %}
+							<li>
+								<a href="{{path('messages',{id:app.user.id}) }}">
+									<i id="countMsgNav" class="fa-solid fa-envelope small"></i>Boite de réception</a>
+							</li>
+						{% endif %}
+					{% else %}
+						<li class="icone-profile">
+							<a href="{{path ("profil_maitre", {id: app.user.maitre.id})}}"><img src="{{ asset('img/avatars/blank_profile.webp') }}" alt="photo de profil vide"></a>
+						</li>
+						{# Affichage du nombre de messages non lus et modification couleur de l'enveloppe si messages non lus #}
+						{% if nvMsgNonLus > 0 %}
+							<li>
+								<a class="badge-info" href="{{path('messages',{id:app.user.id}) }}">
+									<i id="countMsgNav" class="fa-solid fa-envelope small">&nbsp;{{nvMsgNonLus}}</i>
+								</a>
+							</li>
+						{% else %}
+							<li>
+								<a href="{{path('messages',{id:app.user.id}) }}">
+									<i id="countMsgNav" class="fa-solid fa-envelope small"></i>Boite de réception</a>
+							</li>
+						{% endif %}
+					{% endif %}
+				{% endif %}
+				{% if app.user and is_granted('ROLE_GARDIEN') and not is_granted('ROLE_MAITRE') %}
+					{# affichage avatar si le user a une photo de profil (sinon icone blank profile) #}
+					{% if app.user.prestataire.images[0].image is defined and app.user.prestataire.images[0].image != '' %}
+						<li class="icone-profile">
+							<a href="{{path ("profil_gardien", {id: app.user.prestataire.id})}}"><img src="{{ asset('img/uploads/') ~ app.user.prestataire.images[0].image }}" alt="photo de profil du gardien"></a>
+						</li>
+						{# Affichage du nombre de messages non lus et modification couleur de l'enveloppe si messages non lus #}
+						{% if nvMsgNonLus > 0 %}
+							<li>
+								<a class="badge-info" href="{{path('messages',{id:app.user.id}) }}">
+									<i id="countMsgNav" class="fa-solid fa-envelope small">&nbsp;{{nvMsgNonLus}}</i>
+								</a>
+							</li>
+						{% else %}
+							<li>
+								<a href="{{path('messages',{id:app.user.id}) }}">
+									<i id="countMsgNav" class="fa-regular fa-envelope small"></i>Boite de réception</a>
+							</li>
+						{% endif %}
+					{% else %}
+						<li class="icone-profile">
+							<a href="{{path ("profil_gardien", {id: app.user.prestataire.id})}}"><img src="{{ asset('img/avatars/blank_profile.webp') }}" alt="photo de profil vide"></a>
+						</li>
+						{# Affichage du nombre de messages non lus et modification couleur de l'enveloppe si messages non lus #}
+						{% if nvMsgNonLus > 0 %}
+							<li>
+								<a class="badge-info" href="{{path('messages',{id:app.user.id}) }}">
+									<i id="countMsgNav" class="fa-solid fa-envelope small">&nbsp;{{nvMsgNonLus}}</i>
+								</a>
+							</li>
+						{% else %}
+							<li>
+								<a href="{{path('messages',{id:app.user.id}) }}">
+									<i id="countMsgNav" class="fa-regular fa-envelope small"></i>Boite de réception</a>
+							</li>
+						{% endif %}
+					{% endif %}
+				{% endif %}
+				{# accés au lien seulement si le user est authentifié et est admin #}
+				{% if is_granted('ROLE_ADMIN') %}
+					<li>
+						<a href="{{path ("admin")}}">
+							<i class="fa-solid fa-screwdriver-wrench small"></i>&nbsp;Admin</a>
+					</li>
+				{% endif %}
+				{% if app.user %}
+					<li>
+						<a href="{{path ("home")}}">
+							<i class="fa-solid fa-paw small"></i>
+							{% trans %}Accueil{% endtrans %}</a>
+					</li>
+				{% else %}
+					<li>
+						<a href="{{path ("home")}}">
+							<i class="fa-solid fa-paw small"></i>
+							{% trans %}Accueil{% endtrans %}</a>
+					</li>
+					<li>
+						<a href="{{path('app_login') }}">
+							<i class="fa-solid fa-right-to-bracket small"></i>
+							{% trans %}Connexion{% endtrans %}</a>
+					</li>
+				{% endif %}
+				<li>
+					<a href="{{path ("gardiens_list")}}">
+						<i class="fa-solid fa-handshake-simple small"></i>
+						{% trans %}Les gardiens{% endtrans %}</a>
+				</li>
+				{# Changement de langue du site #}
+				{% for locale in locales %}
+					{% if locale != app.request.locale %}
+						{% if locale == 'en' %}
+							<li>
+								<a href="{{ path('change_locale', {'locale': locale}) }}">
+									<i class="fa-solid fa-earth-europe small"></i>&nbsp;English</a>
+							</li>
+						{% elseif locale == 'fr' %}
+							<li>
+								<a href="{{ path('change_locale', {'locale': locale}) }}">
+									<i class="fa-solid fa-earth-europe small"></i>&nbsp;Français</a>
+							</li>
+						{% endif %}
+					{% endif %}
+				{% endfor %}
+			</ul>
+		{% endblock %}
+
+		<div id="cookie-consent-banner">
+			<p>En utilisant ce site, vous acceptez l'utilisation de cookies.
+				<a href="{{ path('app_cookies') }}">En savoir plus</a>
+			</p>
+			<div class="cookie-consent-buttons">
+				<button id="cookie-consent-accept" class='btn green'>Accepter</button>
+				<button id="cookie-consent-reject" class='btn red'>Refuser</button>
+			</div>
+		</div>
+
+		<div class="container">
+			<h1 class="main-title"> {% block titreh1 %}{% endblock %}
+				</h1>
+			</div>
+
+			{# affichage des bandeaux messages succes ou erreur #}
+			{% for message in app.flashes('success') %}
+				<div class="flash-success-message">
+					{{message}}
+					<span class="closebtnflash" onclick="this.parentElement.style.display='none';">&times;</span>
+				</div>
+			{% endfor %}
+
+
+			{% for message in app.flashes('notice') %}
+				<div class="flash-notice-message">
+					{{message}}
+					<span class="closebtnflash" onclick="this.parentElement.style.display='none';">&times;</span>
+				</div>
+			{% endfor %}
+			{% for message in app.flashes('error') %}
+				<div class="flash-error-message">
+					{{message}}
+					<span class="closebtnflash" onclick="this.parentElement.style.display='none';">&times;</span>
+				</div>
+			{% endfor %}
+		</body>
+	</html>
+</header>
+
+<main>
+	{% block body %}{% endblock %}
+</main></body><div class="divider brown lighten-4 footer-space-up"></div><footer class="page-footer primary-color">
+
+
+<div class="row footer-content">
+	<div class="col l6 s12 center">
+		<ul>
+			<li><a class='btn'href="{{path('contact') }}"><i class="fa-solid fa-headset"></i>&nbsp;{% trans %}Contact / Assistance{% endtrans %}</a></li>
+		</ul>
+	</div>
+	<div class="col l4 offset-l2 s12 center">
+		<ul class="footer-social"></ul>
+	</div>
+</div>
+<div class="footer-copyright">
+	<div class="container">
+		<a class="footer-link left" href="https://anthonyladon.com">
+			© 2024 A.Ladon</a>
+		<a class='footer-link right' href="{{path('rgpd') }}">{% trans %}Politique de confidentialité{% endtrans %}</a>
+	</div>
+</div></footer></html>

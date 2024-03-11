@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="fr" target-language="en" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="giREF.l" resname="email">
+        <source>email</source>
+        <target>email</target>
+      </trans-unit>
+      <trans-unit id="KcFzACF" resname="prenom">
+        <source>prenom</source>
+        <target>firstname</target>
+      </trans-unit>
+      <trans-unit id="L1iK.hS" resname="nom">
+        <source>nom</source>
+        <target>lastname</target>
+      </trans-unit>
+      <trans-unit id="4LcUv5A" resname="pseudo">
+        <source>pseudo</source>
+        <target>alias</target>
+      </trans-unit>
+      <trans-unit id="E9rXYmG" resname="TelNum">
+        <source>TelNum</source>
+        <target>phone number</target>
+      </trans-unit>
+      <trans-unit id="GwRgdiw" resname="rue">
+        <source>rue</source>
+        <target>street</target>
+      </trans-unit>
+      <trans-unit id="mT5KwQo" resname="numero">
+        <source>numero</source>
+        <target>number</target>
+      </trans-unit>
+      <trans-unit id="fvQ4iOZ" resname="CodePostal">
+        <source>CodePostal</source>
+        <target>zipcode</target>
+      </trans-unit>
+      <trans-unit id="IdmZmMF" resname="commune">
+        <source>commune</source>
+        <target>city</target>
+      </trans-unit>
+      <trans-unit id="BTIBgmN" resname="bio">
+        <source>bio</source>
+        <target>about me</target>
+      </trans-unit>
+      <trans-unit id="0niVptT" resname="agreeTerms">
+        <source>J'accepte les conditions</source>
+        <target>agreeTerms</target>
+      </trans-unit>
+      <trans-unit id="fb5NU9e" resname="J'accepte les conditions">
+        <source>J'accepte les conditions</source>
+        <target>I accept the conditions</target>
+      </trans-unit>
+      <trans-unit id="mARyQy_" resname="Date de début">
+        <source>Date de début</source>
+        <target>start date</target>
+      </trans-unit>
+      <trans-unit id="JI9FaCH" resname="date fin">
+        <source>date fin</source>
+        <target>end date</target>
+      </trans-unit>
+      <trans-unit id="z13Ex1n" resname="nouveau mot de passe">
+        <source>nouveau mot de passe</source>
+        <target>new password</target>
+      </trans-unit>
+      <trans-unit id="oV1rEzv" resname="Entrez un nouveau mot de passe">
+        <source>Entrez un nouveau mot de passe</source>
+        <target>Enter a new password</target>
+      </trans-unit>
+      <trans-unit id="o9ZcpWl" resname="Nouveau mot de passe">
+        <source>Nouveau mot de passe</source>
+        <target>New password</target>
+      </trans-unit>
+      <trans-unit id="7lFNEiJ" resname="Repetez le mot de passe">
+        <source>Repetez le mot de passe</source>
+        <target>Repeat password</target>
+      </trans-unit>
+      <trans-unit id="eZjMREl" resname="Les deux mots de passe doivent correspondre">
+        <source>Les deux mots de passe doivent correspondre</source>
+        <target>The two passwords must match</target>
+      </trans-unit>
+      <trans-unit id="vFagtYS" resname="localite">
+        <source>localite</source>
+        <target>locality</target>
+      </trans-unit>
+      <trans-unit id="GqCK7FX" resname="codePostal">
+        <source>codePostal</source>
+        <target>zipcode</target>
+      </trans-unit>
+      <trans-unit id="k069AJT" resname="Mon IBAN">
+        <source>Mon IBAN</source>
+        <target>My IBAN</target>
+      </trans-unit>
+      <trans-unit id="b7JL9HE" resname="Je propose mes services de garde à domicile">
+        <source>Je propose mes services de garde à domicile</source>
+        <target>I propose my services of guard at residence</target>
+      </trans-unit>
+      <trans-unit id="dzRVB2f" resname="Je possède un véhicule">
+        <source>Je possède un véhicule</source>
+        <target>I own a vehicle</target>
+      </trans-unit>
+      <trans-unit id="1VqpmNv" resname="Je possède un jardin">
+        <source>Je possède un jardin</source>
+        <target>I own a garden</target>
+      </trans-unit>
+      <trans-unit id="RE4bvZw" resname="Tarif hebergement par jour (€)">
+        <source>Tarif hebergement par jour (€)</source>
+        <target>Accommodation rate per day (€)</target>
+      </trans-unit>
+      <trans-unit id="NmVeMqS" resname="Je propose mes services de soins vétérinaires">
+        <source>Je propose mes services de soins vétérinaires</source>
+        <target>I offer my veterinary care services</target>
+      </trans-unit>
+      <trans-unit id="xWyE1O8" resname="Tarif par déplacement (€)">
+        <source>Tarif par déplacement (€)</source>
+        <target>Rate per trip (€)</target>
+      </trans-unit>
+      <trans-unit id="FkEybO3" resname="Tarif promenade par jour (€)">
+        <source>Tarif promenade par jour (€)</source>
+        <target>Price per day (€)</target>
+      </trans-unit>
+      <trans-unit id="iPVM55_" resname="Ma présentation">
+        <source>Ma présentation</source>
+        <target>My presentation</target>
+      </trans-unit>
+      <trans-unit id="vZPKddp" resname="Zone de gardiennage à partir de mon domicile (en km)">
+        <source>Zone de gardiennage à partir de mon domicile (en km)</source>
+        <target>Guarding zone from my home (in km)</target>
+      </trans-unit>
+      <trans-unit id="z6l7qMJ" resname="Mes catégories d'animal prises en charge">
+        <source>Mes catégories d'animal prises en charge</source>
+        <target>My animal categories</target>
+      </trans-unit>
+      <trans-unit id="dUkL17k" resname="submit">
+        <source>submit</source>
+        <target>submit</target>
+      </trans-unit>
+      <trans-unit id="WwE_PQH" resname="Notez le prestataire">
+        <source>Notez le prestataire</source>
+        <target>Make a note of the petsitter</target>
+      </trans-unit>
+      <trans-unit id="OG_N1os" resname="titre">
+        <source>titre</source>
+        <target>title</target>
+      </trans-unit>
+      <trans-unit id="0o_ykG2" resname="commentaire">
+        <source>commentaire</source>
+        <target>comment</target>
+      </trans-unit>
+      <trans-unit id="8os_mTI" resname="ReponseGardien">
+        <source>ReponseGardien</source>
+        <target>petsitter response</target>
+      </trans-unit>
+      <trans-unit id="1U47iNi" resname="Iban">
+        <source>Iban</source>
+        <target>Iban</target>
+      </trans-unit>
+      <trans-unit id="CoLUeOc" resname="ma présentation">
+        <source>ma présentation</source>
+        <target>My presentation</target>
+      </trans-unit>
+      <trans-unit id="ssEkU20" resname="Nom">
+        <source>Nom</source>
+        <target>Name</target>
+      </trans-unit>
+      <trans-unit id="yQRveje" resname="description">
+        <source>description</source>
+        <target>description</target>
+      </trans-unit>
+      <trans-unit id="PoLTDsc" resname="categorie animal">
+        <source>categorie animal</source>
+        <target>Animal catergory</target>
+      </trans-unit>
+      <trans-unit id="zDFVTPN" resname="poids">
+        <source>poids</source>
+        <target>weight</target>
+      </trans-unit>
+      <trans-unit id="FBvhVfq" resname="antedecents medicaux">
+        <source>antedecents medicaux</source>
+        <target>medical antedecents</target>
+      </trans-unit>
+      <trans-unit id="Pv2dWf2" resname="sociabilite">
+        <source>sociabilite</source>
+        <target>sociability</target>
+      </trans-unit>
+      <trans-unit id="Hw_gtYw" resname="dateDebut">
+        <source>dateDebut</source>
+        <target>start date</target>
+      </trans-unit>
+      <trans-unit id="yZT6ihg" resname="dateFin">
+        <source>dateFin</source>
+        <target>end date</target>
+      </trans-unit>
+      <trans-unit id="Qf.Yt2r" resname="details">
+        <source>details</source>
+        <target>details</target>
+      </trans-unit>
+      <trans-unit id="E_oxuQo" resname="nbPassages">
+        <source>nbPassages</source>
+        <target>number of Passages</target>
+      </trans-unit>
+      <trans-unit id="loBWQyA" resname="hebergement">
+        <source>hebergement</source>
+        <target>hosting</target>
+      </trans-unit>
+      <trans-unit id="cB2Yn5Y" resname="nbPromenades">
+        <source>nbPromenades</source>
+        <target>number of walks</target>
+      </trans-unit>
+      <trans-unit id="q5GoLRT" resname="animal">
+        <source>animal</source>
+        <target>animal</target>
+      </trans-unit>
+      <trans-unit id="eOeSABC" resname="Titre">
+        <source>Titre</source>
+        <target>Title</target>
+      </trans-unit>
+      <trans-unit id="MBbviOM" resname="contenu">
+        <source>contenu</source>
+        <target>content</target>
+      </trans-unit>
+      <trans-unit id="QERVmkw" resname="Votre message">
+        <source>Votre message</source>
+        <target>Your message</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

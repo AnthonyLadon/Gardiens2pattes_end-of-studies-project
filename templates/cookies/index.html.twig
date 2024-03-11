@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les cookies{% endblock %}
+
+{% block titreh1 %}
+ Les cookies
+{% endblock %}
+
+{% block body %}
+
+<div class="container third-color">
+
+  <h2>Qu'est-ce que les cookies?</h2>
+  <p>Les cookies sont de petits fichiers texte qui sont stockés sur votre ordinateur ou votre appareil lorsque vous visitez notre site Web. Ils sont largement utilisés pour permettre au site de fonctionner de manière optimale, pour améliorer votre expérience de navigation et pour recueillir des informations sur l'utilisation du site.</p>
+
+  <h2>Types de cookies utilisés</h2>
+  <p>Sur notre site, nous utilisons les types de cookies suivants :</p>
+  <ul>
+    <li>Cookies techniques : Ces cookies sont essentiels au fonctionnement du site et nous permettent de fournir les fonctionnalités de base.</li>
+    <li>Cookies de personnalisation : Ces cookies nous aident à personnaliser votre expérience sur le site en mémorisant vos préférences et vos choix.</li>
+    <li>Cookies de suivi : Ces cookies sont utilisés pour suivre votre navigation sur le site et collecter des informations statistiques sur l'utilisation du site afin d'améliorer nos services.</li>
+  </ul>
+
+  <h2>Votre consentement</h2>
+  <p>Nous vous demandons votre consentement pour l'utilisation des cookies sur notre site. En donnant votre consentement, vous nous permettez de collecter et d'utiliser les informations fournies par les cookies conformément à notre politique de confidentialité.</p>
+
+  <h2>Gestion des cookies</h2>
+  <p>Vous pouvez gérer vos préférences en matière de cookies en modifiant les paramètres de votre navigateur ou en utilisant des outils de gestion des cookies. Veuillez noter que le blocage ou la suppression des cookies peut affecter certaines fonctionnalités de notre site.</p>
+
+  <h2>Politique de confidentialité</h2>
+  <p>Pour plus d'informations sur la collecte, l'utilisation et la protection de vos données personnelles, veuillez consulter notre <a href="{{path('rgpd') }}">politique de confidentialité</a>.</p>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% trans %}Envoyer un message{% endtrans %}
+{% endblock %}
+
+{% block titreh1 %}
+	{% trans %}Message à{% endtrans %}
+	{{recepient.pseudo}}
+{% endblock %}
+
+{% block body %}
+
+{% if app.user == sender %}
+	<div class="container">
+		{{ form_start(form) }}
+		{{ form_widget(form.message, {attr: {class: 'materialize-textarea secondary-color', placeholder: 'Nouveau message'}}) }}
+		{{ form_end(form) }}
+	</div>
+{% endif %}
+
+{% endblock %}

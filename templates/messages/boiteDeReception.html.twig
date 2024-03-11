@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% trans %}Messagerie{% endtrans %}
+{% endblock %}
+
+{% block titreh1 %}
+	{% trans %}Boite de réception{% endtrans %}
+{% endblock %}
+
+{% block body %}
+{% if app.user == utilisateur %}
+	<section class="container">
+		<div class="row">
+			{% if newMessages %}
+
+				<div class="collection">
+					{% for int in interlocuteurs %}
+						{% for nmsg in newMessages %}
+							{% if int.id != utilisateur.id and int.id in nmsg %}
+								<a class="collection-item" href="{{ path('messages_conversation', {id: int.id}) }}">{{ int.pseudo }}<span class="red-text"> - Nouveau message !</span></a>
+							{% endif %}
+						{% endfor %}
+					{% endfor %}
+				</div>
+			{% else %}
+				<p class="teal lighten-4 brown-text center">{% trans %}Vous n'avez pas de nouveau message{% endtrans %}</p>
+			{% endif %}
+		</div>	
+
+				<div class="collection with-header">
+				<li class="collection-header white-text brown lighten-1 center">{% trans %}Conversations en cours{% endtrans %}</li>
+					{% for int in interlocuteurs %}
+						{% if int.id != utilisateur.id %}
+							<a class="collection-item brown lighten-4" href="{{ path('messages_conversation', {id: int.id}) }}">{{ int.pseudo }}</a>
+						{% endif %}
+					{% endfor %}
+				</div>
+		</div>
+
+		{# Bouton retour selon le profil #}
+		{% if utilisateur.prestataire %}
+			<a class="btn-flat brown-text" href="{{ path('profil_gardien', {id:utilisateur.prestataire.id}) }}">{% trans %}Retour profil{% endtrans %}</a>
+		{% elseif utilisateur.maitre %}
+			<a class="btn-flat brown-text" href="{{ path('profil_maitre', {id:utilisateur.maitre.id}) }}">{% trans %}Retour profil{% endtrans %}</a>
+		{% endif %}
+
+	</section>
+{% endif %}
+
+{% endblock %}

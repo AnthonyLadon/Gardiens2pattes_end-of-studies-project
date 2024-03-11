@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% trans %}Choix rôle{% endtrans %}{% endblock %}
+
+{% block titreh1 %}
+    {% trans %}Choisissez votre rôle{% endtrans %}
+{% endblock %}
+
+{% block body %}
+
+    <div class="container row">
+        <div class="col s6">
+            <a class="registration-choice-maitre" href="{{path ('ajout_role_maitre', {id: app.user.id}) }}">
+                <div>{% trans %}Maître{% endtrans %}</div>
+            </a>
+        </div>
+        <div class="col s6">
+            <a class="registration-choice-gardien" href="{{path ('ajout_role_gardien', {id: app.user.id}) }}">
+            <div>{% trans %}Gardien{% endtrans %}</div>
+            </a>
+        </div>
+    </div>
+
+{% endblock %}

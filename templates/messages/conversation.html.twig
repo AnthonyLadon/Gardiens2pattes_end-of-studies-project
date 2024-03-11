@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Conversation
+{% endblock %}
+
+{% block titreh1 %}
+	{% trans %}Conversation avec{% endtrans %}
+	{{utilisateur.pseudo }}
+{% endblock %}
+
+{% block body %}
+
+	<div class="container">
+
+		{% if pagination %}
+			<div class="messageConversationZone">
+				{% for message in pagination %}
+					{# messages reçus #}
+					{% if message.sender.id == app.user.id %}
+						<div class="card messageCardSender">
+							<p class="brown-text center text-lighten-3">{% trans %}Moi{% endtrans %}</p>
+							<p class="flow-text">{{ message.message }}</p>
+							{% if message.isRead == true %}
+								<p class="brown-text text-lighten-3">{% trans %}Envoyé le{% endtrans %}
+									{{message.dateCreation|date('d/m/y') }}
+									à
+									{{message.dateCreation|date('H:i')}}</p>
+								<p class="brown-text text-lighten-3">{% trans %}message lu{% endtrans %}
+									<i class="fa-solid fa-check"></i>
+								</p>
+							{% else %}
+								<p class="brown-text text-lighten-3">{% trans %}Envoyé le{% endtrans %}
+									{{message.dateCreation|date('d/m/y') }}
+									à
+									{{message.dateCreation|date('H:i')}}</p>
+								<p class="brown-text text-lighten-3">{% trans %}message non lu{% endtrans %}</p>
+							{% endif %}
+						</div>
+					{% else %}
+						{# messages envoyés #}
+						<div class="card messageCardReceiver">
+							{% if iSmaitre == true %}
+								<a href="{{path('page_maitre', {id : sender.maitre.id}) }}"><p class="brown-text center">Voir profil {{sender.pseudo }}</p></a>
+								{% else %}
+								<p class="brown-text center text-lighten-3">{{sender.pseudo }}</p>
+							{% endif %}
+							<p class="flow-text">{{ message.message }}</p>
+							<p class="brown-text text-lighten-3">{% trans %}Reçu le{% endtrans %}
+								{{message.dateCreation|date('d/m/y') }}
+								à
+								{{message.dateCreation|date('H:i')}}</p>
+						</div>
+					{% endif %}
+				{% endfor %}
+				<div class="row">
+					<a class="btn" href="{{path('messages_send', {id: utilisateur.id}) }}">{% trans %}Nouveau message{% endtrans %}</a>
+				</div>
+			</div>
+		{% else %}
+			<h1>{% trans %}Vous n'avez pas encore échangé de messages{% endtrans %}</h1>
+		{% endif %}
+		<a href="{{path('messages', {id: app.user.id}) }}">
+			<i class="fa-solid fa-arrow-left-long small brown-text"></i>
+		</a>
+
+		{# display navigation #}
+		<div class="main-pagination">
+			{{ knp_pagination_render(pagination) }}
+		</div>
+	</div>
+
+{% endblock %}

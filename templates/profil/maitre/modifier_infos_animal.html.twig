@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% trans %}Informations animal{% endtrans %}{% endblock %}
+
+{% block body %}
+
+<div class="container row">
+
+    <div class="row">
+        <h2 class="center third-color">{% trans %}Modification des informations de votre animal{% endtrans %}</h2>
+    </div>
+
+    {{ form_start(form) }}
+    <div class="input-field">
+        {{form_label(form.nom) }}
+        {{form_widget(form.nom, {'attr': {'class': 'secondary-color validate '}}) }}
+    </div>
+    <div class="input-field">
+        {{form_label(form.age) }}
+        {{form_widget(form.age, {'attr': {'class': 'secondary-color validate '}}) }}
+    </div>
+    <div class="input-field">
+        {{form_label(form.description) }}
+        {{form_widget(form.description, {'attr': {'class': 'secondary-color validate '}}) }}
+    </div>
+    <div class="choice-field">
+        {{form_label(form.categorieAnimal) }}
+        {{form_widget(form.categorieAnimal, {'attr': {'class': 'secondary-color validate '}}) }}
+    </div>
+    <div class="input-field">
+        {{form_label(form.poids) }}
+        {{form_widget(form.poids, {'attr': {'class': 'secondary-color validate '}}) }}
+    </div>
+    <div class="input-field">
+        {{form_label(form.antecedentsMedicaux) }}
+        {{form_widget(form.antecedentsMedicaux, {'attr': {'class': 'secondary-color validate '}}) }}
+    </div>
+    <div class="input-field">
+        {{form_label(form.sociabilite) }}
+        {{form_widget(form.sociabilite, {'attr': {'class': 'secondary-color validate '}}) }}
+    </div>
+
+    <button type="submit" class="btn waves-effect waves-light">{% trans %}Enregistrer{% endtrans %}</button>
+    {{ form_end(form) }}
+
+</div>
+
+    <div class="row center">
+        <a class="btn-flat brown-text" href="{{ path('profil_maitre', {id: app.user.maitre.id}) }}">{% trans %}retour profil{% endtrans %}</a>
+    </div>
+    
+{% endblock %}

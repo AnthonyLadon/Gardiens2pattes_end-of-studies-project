@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% trans %}Inscription choix{% endtrans %}{% endblock %}
+
+{% block titreh1 %}
+    {% trans %}Choix du type d'inscription{% endtrans %}
+{% endblock %}
+
+{% block body %}
+
+<div class="container row">
+    <div class="col s6">
+        <a class="registration-choice-maitre" href="{{path ("register_maitre")}}">
+            <div>{% trans %}Maître{% endtrans %}</div>
+        </a>
+    </div>
+    <div class="col s6">
+        <a class="registration-choice-gardien" href="{{path ("register_gardien")}}">
+        <div>{% trans %}Gardien{% endtrans %}</div>
+        </a>
+    </div>
+</div>
+
+
+{% endblock %}

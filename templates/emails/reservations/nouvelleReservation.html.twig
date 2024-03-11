@@ -1,0 +1,47 @@
+
+<div style="background-color: #f7e9d6; padding:16px;">
+	<h1 style="color: #7b3c04;">{% trans %}Bonjour, {% endtrans %}</h1>
+	<h2 style="color: #7b3c04;">{% trans %}Vous avez reçu une nouvelle demande de reservation de la part de {% endtrans %}
+	{{maitre.utilisateur.pseudo }}</h2>
+
+
+	<p style="color: #7b3c04;">{% trans %}Date début:{% endtrans %}
+		<span style="color: #7b3c04;">{{reservation.dateDebut|date('d/m/Y')}}</span></p>
+	<p style="color: #7b3c04;">Date de fin:
+		<span style="color: #7b3c04;">{{reservation.dateFin|date('d/m/Y')}}</span></p>
+
+	<p style="color: #7b3c04;">{% trans %}Informations de l'animal:{% endtrans %}</p>
+	<ul>
+		<li style="color: #7b3c04;">
+			{% trans %}nom:{% endtrans %}
+			<span style="color: #7b3c04;">{{reservation.animal.nom }}</span>
+		</li>
+		<li style="color: #7b3c04;">
+			{% trans %}age:{% endtrans %}
+			<span style="color: #7b3c04;">{{reservation.animal.age }}</span>
+		</li>
+		<li style="color: #7b3c04;">
+			{% trans %}catégorie:{% endtrans %}
+			<span style="color: #7b3c04;">{{reservation.animal.categorieAnimal.nom }}</span>
+		</li>
+	</ul>
+
+	<h3 style="color: #7b3c04;">{% trans %}Type de gardiennage souhaité:{% endtrans %}</h3>
+	{% if reservation.hebergement == true %}
+		<p style="color: #7b3c04;">{% trans %}Hebergement souhaité{% endtrans %}</p>
+	{% endif %}
+
+	{% if reservation.nbPassages > 0 %}
+		<p style="color: #7b3c04;">{% trans %}Nombre de passages désirés:{% endtrans %}
+			<span style="color: #7b3c04;">{{reservation.nbPassages }}</span></p>
+	{% endif %}
+
+	<p style="color: #7b3c04;">{% trans %}Pour une durée de{% endtrans %} <span style="color: #7b3c04;">{{nbJours }}</span> {% trans %}jours, le prix total est:{% endtrans %} <span style="color: #7b3c04;">{{reservation.prixTotal}}€</span></p>
+
+	<p style="color: #7b3c04;">{% trans %}Details:{% endtrans %}
+		<span style="color: #7b3c04;">{{reservation.details}}€</span></p>
+	<div>
+        <button style="display: flex; margin: auto;"><a style="text-decoration: none; color:#7b3c04;" href="{{url ('reservations_gardien_detail', {'idReservation': reservation.id, id: id})}}" >{% trans %}Voir la demande de reservation{% endtrans %}</a></button>
+    </div>
+	<img src="{{ absolute_url (asset ('img/Gardiens_logo_main.jpg'))}}" class="logo" alt="logo" style="display: block; margin: 5px auto 0 auto; width: 300px; height: 200px;" width="300" height="200">
+</div>

@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Newsletters{% endblock %}
+
+{% block titreh1 %}Admin Newsletters{% endblock %}
+
+{% block body %}
+<div class="container">
+
+    <p class='center'><a class='btn' href="{{path('nouvelle_newsletter') }}">Créer une newsletter</a></p>
+
+    <div class="admin-newsletters">
+        <h2 class=''>Liste des neswletters:</h2>
+        <ul>
+            {% for n in newsletters %}
+            {% if n.isSent %}
+                <li><a href="{{path('detail_newsletter', {id:n.id}) }}">{{n.nom }}</a>
+                <p>Envoyée le {{n.dateEnvoi|date('d/m/Y') }}</p>
+                </li>
+                {% else %}
+                <li><a href="{{path('detail_newsletter', {id:n.id}) }}">{{n.nom }}</a>
+                <p>Pas encore envoyée</p>
+                </li>
+            {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+    
+    <div class='admin-detail-newsletter-back-button'>
+        <a href="{{path('admin') }}">Retour tableau de bord admin</a>
+    </div>
+</div>
+{% endblock %}

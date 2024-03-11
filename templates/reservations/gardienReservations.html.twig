@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% trans %}Reservations{% endtrans %}
+{% endblock %}
+
+{% block titreh1 %}{% trans %}Reservations{% endtrans %}{% endblock %}
+
+{% block body %}
+
+{% if app.user == prestataire.utilisateur %}
+		
+	<div class="container">
+
+		<div class="profil-reservations-list">
+			<h3 class="row">{% trans %}En attente de validation{% endtrans %}</h3>
+			<ul>
+				{% for resa in reservations %}
+					{% if resa.validationPrestataire == false and date(resa.dateFin) > date() %}
+						<li>
+							<p>{% trans %}Demandeur:{% endtrans %}
+								{{resa.maitre.utilisateur.pseudo}}. {% trans %}Du:{% endtrans %}
+								{{resa.dateDebut|date('d-m-Y')}}
+								{% trans %}au:{% endtrans %}
+								{{resa.dateFin|date('d-m-Y')}}
+								<a href="{{path('reservations_gardien_detail', {id:prestataire.id, idReservation:resa.id}) }}">{% trans %}Voir les details{% endtrans %}</a>
+							</p>
+						</li>
+					{% endif %}
+				{% endfor %}
+			</ul>
+		</div>
+
+		<div class="profil-reservations-list">
+			<h3 class="row">{% trans %}Gardiennages à venir{% endtrans %}</h3>
+			<ul>
+				{% for resa in reservations %}
+					{% if resa.validationPrestataire == true and date(resa.dateDebut) > date() %}
+						<li>
+							<p>{% trans %}Demandeur:{% endtrans %}
+								{{resa.maitre.utilisateur.pseudo}}. {% trans %}Du:{% endtrans %}
+								{{resa.dateDebut|date('d-m-Y')}}
+								{% trans %}au:{% endtrans %}
+								{{resa.dateFin|date('d-m-Y')}}
+								<a href="{{path('reservations_gardien_detail', {id:prestataire.id, idReservation:resa.id}) }}">{% trans %}Voir les details{% endtrans %}</a>
+							</p>
+						</li>
+					{% endif %}
+				{% endfor %}
+			</ul>
+		</div>
+
+		<div class="profil-reservations-list">
+			<h3>{% trans %}Gardiennages effectués{% endtrans %}</h3>
+			<ul>
+				{% for resa in reservations %}
+					{% if date(resa.dateFin)< date() %}
+						<li>
+							<p>{% trans %}Demandeur:{% endtrans %}
+								{{resa.maitre.utilisateur.pseudo}}. {% trans %}Du:{% endtrans %}
+								{{resa.dateDebut|date('d-m-Y')}}
+								{% trans %}au:{% endtrans %}
+								{{resa.dateFin|date('d-m-Y')}}
+								<a href="{{path('reservations_gardien_detail', {id:prestataire.id, idReservation:resa.id}) }}">{% trans %}Voir les details{% endtrans %}</a>
+							</p>
+						</li>
+					{% endif %}
+				{% endfor %}
+			</ul>
+		</div>
+
+	</div>
+
+{% endif %}
+
+{% endblock %}

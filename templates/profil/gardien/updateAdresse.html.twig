@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% trans %}Adresse gardien{% endtrans %}{% endblock %}
+
+{% block titreh1 %}
+    {% trans %}Modification adresse{% endtrans %}
+{% endblock %}
+
+{% block body %}
+{# Affichage si l'utilisateur connecté est bien le propriétaire du profil #}
+{% if app.user == user %}
+    <div class="container">
+
+            <div class="col s12 m6 l6">
+            {{ form_start(form) }}
+            <div class="input-field">
+                {{ form_label(form.rue)}}
+                {{ form_widget(form.rue, {'attr': {'class': 'secondary-color validate'}})}}
+            </div>
+            <div class="input-field">
+                {{ form_label(form.numero) }}
+                {{ form_widget(form.numero, {'attr': {'class': 'secondary-color validate'}}) }}
+            </div>
+            <div class="choice-field">
+                {{ form_label(form.commune) }}
+                {{ form_widget(form.commune, {'attr': {'class': 'secondary-color validate'}}) }}
+            </div>
+            <div class="choice-field">
+                {{ form_label(form.codePostal) }}
+                {{ form_widget(form.codePostal, {'attr': {'class': 'secondary-color validate'}}) }}
+            </div>
+
+            <button type="submit" class="btn waves-effect waves-light">Enregistrer</button>
+            {{ form_end(form) }}
+        </div>
+
+    </div>
+{% else %}
+<p class="center red">{% trans %}Désolé, vous n'avez pas les droits pour visiter cette page de profil{% endtrans %}</p>
+{% endif %}
+    <div class="row center">
+        <a class="btn-flat brown-text" href="{{path('profil_gardien',{id: app.user.prestataire.id})}}">{% trans %}retour profil{% endtrans %}</a>
+    </div>
+{% endblock %}

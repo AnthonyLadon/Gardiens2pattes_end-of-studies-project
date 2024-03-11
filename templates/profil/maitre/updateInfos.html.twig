@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% trans %}Gestions infos gardien{% endtrans %}{% endblock %}
+
+{% block body %}
+
+{% if app.user == maitre.utilisateur %}
+    <div class="container">
+
+        <div class="row">
+            <h2 class="center third-color">{% trans %}Modification de ma présentation{% endtrans %}</h2>
+        </div>
+
+        <div class="col s12 m6 l6">
+            {{ form_start(form) }}
+            <div class="input-field">
+                {{ form_widget(form.bio, {'attr': {'class': 'materialize-textarea secondary-color validate'}})}}
+            </div>
+    
+            <button type="submit" class="btn">{% trans %}Enregistrer{% endtrans %}</button>
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endif %}
+
+    <div class="row center">
+        <a class="btn-flat brown-text" href="{{ path('profil_maitre', {id: app.user.maitre.id}) }}">{% trans %}retour profil{% endtrans %}</a>
+    </div>
+    
+
+{% endblock %}

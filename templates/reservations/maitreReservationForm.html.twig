@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{% trans %}Reservation{% endtrans %}
+{% endblock %}
+
+{% block titreh1 %}
+	{% trans %}Reserver une prestatation{% endtrans %}
+{% endblock %}
+
+{% block body %}
+
+{% if app.user == maitre.utilisateur %}
+	<div class="container">
+		<div class="col s12 m6 l6"></div>
+		<div class="col s12 m6 l6">
+			{{ form_start(form) }}
+			<div class="row">
+				<div class="date-field col s6 m6 l6">
+					{{ form_label(form.dateDebut)}}
+					{{ form_widget(form.dateDebut, {'attr': {'class': 'secondary-color validate '}}) }}
+					<span class="helper-text" data-error="Ce champ est requis" data-success=""></span>
+				</div>
+				<div class="date-field col s6 m6 l6">
+					{{ form_label(form.dateFin)}}
+					{{ form_widget(form.dateFin, {'attr': {'class': 'secondary-color validate '}}) }}
+					<span class="helper-text" data-error="Ce champ est requis" data-success=""></span>
+				</div>
+				<div class="number-field col s6 m6 l6">
+					{{ form_label(form.nbPassages) }}
+					{{ form_widget(form.nbPassages, {'attr': {'class': 'secondary-color validate'}}) }}
+					<span class="helper-text" data-error="Ce champ est requis" data-success=""></span>
+				</div>
+				<div class="input-field col s6 m6 l6">
+					<label>
+						{{form_widget(form.hebergement)}}
+						<span>{{form_label(form.hebergement)}}</span>
+					</label>
+				</div>
+			</div>
+			<div class="row">
+				<div class="choice-field col s6 m6 l6">
+					{{ form_label(form.nbPromenades) }}
+					{{ form_widget(form.nbPromenades, {'attr': {'class': 'secondary-color validate'}}) }}
+				</div>
+				<div class="choice-field col s6 m6 l6">
+					{{ form_label(form.animal) }}
+					{{ form_widget(form.animal, {'attr': {'class': 'secondary-color validate'}}) }}
+					<span class="helper-text" data-error="Ce champ est requis" data-success=""></span>
+				</div>
+			</div>
+			<div class="input-field">
+				{{ form_label(form.details)}}
+				{{ form_widget(form.details, {'attr': {'class': 'materialize-textarea secondary-color'}})}}
+			</div>
+			<div>
+				<label>
+					{{ form_widget(form.submit) }}
+					<span>{{ form_label(form.submit) }}</span>
+				</label>
+			</div>
+			{{ form_end(form) }}
+		</div>
+	</div>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,89 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% trans %}Gestions infos gardien{% endtrans %}{% endblock %}
+
+{% block titreh1 %}
+    {% if app.user == prestataire.utilisateur %}
+        {{prestataire.utilisateur.pseudo }}
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+{# Affichage si le gardien connecté est bien le propriétaire du profil #}
+{% if app.user == prestataire.utilisateur %}
+    <div class="container">
+        <div class="col s12 m6 l6">
+            {{ form_start(form) }}
+            <div class="input-field">
+                {{ form_label(form.bio)}}
+                {{ form_widget(form.bio, {'attr': {'class': 'materialize-textarea secondary-color validate'}})}}
+            </div>
+            <div class="input-field">
+                {{ form_label(form.tarif) }}
+                {{ form_widget(form.tarif, {'attr': {'class': 'secondary-color validate'}}) }}
+            </div>
+            <div class="input-field">
+                {{ form_label(form.tarif_deplacement) }}
+                {{ form_widget(form.tarif_deplacement, {'attr': {'class': 'secondary-color validate'}}) }}
+            </div>
+            <div class="input-field">
+                {{ form_label(form.tarif_promenade) }}
+                {{ form_widget(form.tarif_promenade, {'attr': {'class': 'secondary-color validate'}}) }}
+            </div>
+            <div>
+                {{ form_label(form.zoneGardiennage) }}
+                {{ form_widget(form.zoneGardiennage, {'attr': {'class': 'secondary-color'}}) }}
+            </div>
+            <div class="input-field">
+                {{ form_label(form.Iban) }}
+                {{ form_widget(form.Iban, {'attr': {'class': 'secondary-color validate'}}) }}
+            </div>
+            <div class="row">
+                <div class="choice-field col s6 m6 l6">
+                    <label>
+                        {{ form_widget(form.gardeDomicile) }}
+                        <span>{{ form_label(form.gardeDomicile) }}</span>
+                    </label>
+                </div>
+                <div class="choice-field col s6 m6 l6">
+                    <label>
+                        {{ form_widget(form.vehicule) }}
+                        <span>{{ form_label(form.vehicule) }}</span>
+                    </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="choice-field col s6 m6 l6">
+                    <label>
+                        {{ form_widget(form.jardin) }}
+                        <span>{{ form_label(form.jardin) }}</span>
+                    </label>
+                </div>
+                <div class="choice-field col s6 m6 l6">
+                    <label>
+                        {{ form_widget(form.soins_veto) }}
+                        <span>{{ form_label(form.soins_veto) }}</span>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="choice-field">
+                {{ form_label(form.specialisations) }}
+                {{ form_widget(form.specialisations) }}        
+            </div>
+
+            
+            <button type="submit" class="btn waves-effect waves-light">{% trans %}Enregistrer{% endtrans %}</button>
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% else %}
+<p class="center red">{% trans %}Désolé, vous n'avez pas les droits pour visiter cette page de profil{% endtrans %}</p>
+{% endif %}
+
+    <div class="row center">
+        <a class="btn-flat brown-text" href="{{path('profil_gardien',{id: app.user.prestataire.id})}}">{% trans %}retour profil{% endtrans %}</a>
+    </div>
+{% endblock %}
+
+

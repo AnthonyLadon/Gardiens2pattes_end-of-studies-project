@@ -1,0 +1,34 @@
+<div style="background-color: #f7e9d6; padding:16px;">
+
+	<h1 style="color: #7b3c04;">{% trans %}Bonjour,{% endtrans %}</h1>
+
+	<h2 style="color: #7b3c04;">{% trans %}Nous vous confirmons le gardiennage de
+		{% endtrans %}{{reservation.animal.nom }}
+		du:
+		{{reservation.dateDebut|date('d/m/Y')}}
+		au:
+		{{reservation.dateFin|date('d/m/Y')}}
+		{% trans %}avec{% endtrans %}
+		{{reservation.gardien.utilisateur.pseudo}}</h2>
+
+
+	{% if reservation.hebergement == true %}
+		<p style="color: #7b3c04;">{% trans %}Votre animal sera hebergé chez
+			{% endtrans %}{{reservation.gardien.utilisateur.pseudo}}</p>
+	{% endif %}
+
+	{% if reservation.nbPassages > 0 %}
+		<p style="color: #7b3c04;">{{reservation.gardien.utilisateur.pseudo}}
+			{% trans %}effectuera
+			{% endtrans %}{{reservation.nbPassages}}
+			{% trans %}passage(s) par jour{% endtrans %}</p>
+	{% endif %}
+
+
+	<p style="color: #7b3c04;">{% trans %}Vous pouvez contacter le gardien à tout moment depuis la messagerie du site ou par{% endtrans %}
+		<a style="text-decoration: none; color:brown;" href="{{reservation.gardien.utilisateur.email}}" style="color: teal;">email</a>
+	</p>
+
+	<img src="{{ absolute_url (asset ('img/Gardiens_logo_main.jpg'))}}" class="logo" alt="logo" style="display: block; margin: 5px auto 0 auto; width: 300px; height: 200px;" width="300" height="200">
+
+</div>

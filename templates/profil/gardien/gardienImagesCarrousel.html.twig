@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% trans %}Gestion des photos{% endtrans %}
+{% endblock %}
+
+{% block titreh1 %}
+	{% trans %}Gestion des photos{% endtrans %}
+{% endblock %}
+
+
+{% block body %}
+
+	<div
+		class="container">
+
+		{# Affichage si le gardien connecté est bien le propriétaire du profil #}
+		{% if app.user == prestataire.utilisateur %}
+
+			{# Regles pour les images (maximum d'images dans le carrousel) : #}	
+			{% if prestataire.imgGallerie|length <= 6 %}
+				{{ form_start(form) }}
+				<div class="file-field input-field">
+					<div class="btn waves-effect waves-light teal">
+						<span>{% trans %}Choisir une image{% endtrans %}</span>
+						{{form_widget(form.imageFile,{attr: {'type': 'file'}})}}
+					</div>
+					<div class="file-path-wrapper">
+						<input class="file-path validate" type="text">
+					</div>
+				</div>
+				<div class="row center">
+					{{ form_widget(form.enregistrer,{'attr': {'class': 'register-form-submit btn'}}) }}
+				</div>
+				{{ form_end(form) }}
+				{% else %}
+				<p class="center red">{% trans %}Vous avez atteint le nombre maximum d'images autorisées{% endtrans %}</p>
+			{% endif %}
+
+			<div class="row section">
+				{% for img in prestataire.imgGallerie %}
+					<div class="col s3">
+						<a class="third-color" href="{{path('supprImageGardien',{id: prestataire.id,id_img: img.id})}}">Supprimer</a>
+						<img class="responsive-img" src="{{ asset('img/uploads/' ~ img.image) }}" alt="photo carrousel"/>
+					</div>
+				{% endfor %}
+			</div>
+		{% else %}
+			<p class="center red">{% trans %}Désolé, vous n'avez pas les droits pour visiter cette page de profil{% endtrans %}</p>
+		{% endif %}
+
+		<div class="row center">
+			<a class="btn-flat brown-text" href="{{path('profil_gardien',{id: app.user.prestataire.id})}}">{% trans %}retour profil{% endtrans %}</a>
+		</div>
+	</div>
+
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block titreh1 %}
+    {% trans %} Modifier mon pseudo {% endtrans %}
+{% endblock %}
+
+{% block body %}
+
+{% if app.user == prestataire.utilisateur %}
+    <div class="container">
+        {{ form_start(form) }}
+
+        <div class="input-field">
+            {{ form_label(form.pseudo)}}
+            {{ form_widget(form.pseudo, {'attr': {'class': 'secondary-color validate'}})}}
+        </div>
+
+        {{ form_end(form) }}
+    </div>
+{% endif %}
+
+{% endblock %}

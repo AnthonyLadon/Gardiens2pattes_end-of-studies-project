@@ -1,0 +1,15 @@
+
+
+<div style="background-color: #f7e9d6; padding:16px">
+
+    <h1 style="font-size: 20px">Type de demande: {{objet}}</h1> 
+    <p>{{message }}</p>
+    <br>
+    {% if user != null %}
+        <p>Envoyé par {{user.prenom}} {{user.nom}} ({{user.pseudo}})</p>
+        <a href="mailto:{{user.email}}">{{user.email}}</a>
+        {% else %}
+        <p>Envoyé par <a href="mailto:{{nonRegistratedUserMail}}">{{nonRegistratedUserMail}}</a></p>
+    {% endif %}
+    <img src="{{ absolute_url (asset ('img/Gardiens_logo_main.jpg')) }}" class="logo" alt="logo" style="display: block; margin: 5px auto 0 auto; width: 300px; height: 200px;" width="300" height="200">
+</div>

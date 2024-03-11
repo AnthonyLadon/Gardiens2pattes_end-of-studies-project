@@ -1,0 +1,8 @@
+<h1>{% trans %}Bonjour!{% endtrans %}</h1>
+
+<p>{% trans %}Pour réinitialiser votre mot de passe veuillez cliquer sur le lien suivant{% endtrans %}</p>
+
+<a href="{{ url('app_reset_password', {token: resetToken.token}) }}">{{ url('app_reset_password', {token: resetToken.token}) }}</a>
+
+<p>{% trans %}Ce lien expirera dans{% endtrans %} {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.</p>
+

@@ -1,0 +1,681 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{% trans %}Detail gardien{% endtrans %}
+{% endblock %}
+
+{% block javascripts %}
+    {# recharge les scripts de la page parente (base.html.twig) #}
+	{{ parent() }}
+	{# Toujours mettre ce script aprés le CSS de Leaflet #}
+	<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="crossorigin=""></script>
+{% endblock %}
+
+
+{% block titreh1 %}
+	{% if prestataire.utilisateur.pseudo %}
+		{{prestataire.utilisateur.pseudo|capitalize }}
+	{% else %}
+		{{prestataire.utilisateur.prenom}}
+		{{prestataire.utilisateur.nom|slice(0, 1)}}.
+	{% endif %}
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<div
+			class="center">
+
+			{# Affichage icone favoris si connecté -> ROLE_MAITRE #}
+			{% if is_granted("ROLE_MAITRE") and app.user.isVerified == true %}
+				{% if prestataire.id in favoris %}
+					<a class="fav-icon tooltipped" href="{{path ('add_remove_favoris_maitre', {id : prestataire.id}) }}" data-position="right" data-tooltip="Supprimer des favoris">
+						<i class="fa-solid fa-bookmark secondary-color small"></i>
+					</a>
+				{% else %}
+					<a class="fav-icon tooltipped" href="{{path ('add_remove_favoris_maitre', {id : prestataire.id}) }}" data-position="right" data-tooltip="Ajouter aux favoris">
+						<i class="fa-regular fa-bookmark secondary-color small"></i>
+					</a>
+				{% endif %}
+			{% endif %}
+
+			{% if prestataire.images[0] is defined and prestataire.images[0].image != '' %}
+				<img class="responsive-img-custom z-depth-3" src="{{ asset('img/uploads/') ~ prestataire.images[0].image }}" alt="photo de profil du gardien">
+			{% else %}
+				<img class="responsive-img-custom z-depth-3" src="{{ asset('img/avatars/blank_profile.webp') }}" alt="photo de profil vide">
+			{% endif %}
+
+			<p class="center grey-text">{% trans %}Inscrit(e) depuis le{% endtrans %}
+			{{prestataire.utilisateur.dateInscription|date('d/m/Y')}}</p>
+
+			{# Affichage du nombre de gardiennages deja effectués #}
+			{% if nbReservationsTerminees == 1 %}
+					<p class="center grey-text">{{nbReservationsTerminees}} {% trans %} gardiennage effectué{% endtrans %}</p>
+				{% elseif nbReservationsTerminees > 1 %}
+					<p class="center grey-text">{{nbReservationsTerminees}} {% trans %} gardiennages effectués{% endtrans %}</p>
+			{% endif %}
+
+			{# Affichage note moyenne #}
+			{% if noteMoyenne != null %}
+					<p>
+				{% if noteMoyenne < 1.5 %}
+					<i class="fa-solid fa-star red-text text-lighten-3"></i>
+					<i class="fa-regular fa-star red-text text-lighten-3"></i>
+					<i class="fa-regular fa-star red-text text-lighten-3"></i>
+					<i class="fa-regular fa-star red-text text-lighten-3"></i>
+					<i class="fa-regular fa-star red-text text-lighten-3"></i>
+				{% elseif noteMoyenne < 2.5 %}
+					<i class="fa-solid fa-star red-text text-lighten-3"></i>
+					<i class="fa-solid fa-star red-text text-lighten-3"></i>
+					<i class="fa-regular fa-star red-text text-lighten-3"></i>
+					<i class="fa-regular fa-star red-text text-lighten-3"></i>
+					<i class="fa-regular fa-star red-text text-lighten-3"></i>
+				{% elseif noteMoyenne < 3.5 %}
+					<i class="fa-solid fa-star red-text text-lighten-3"></i>
+					<i class="fa-solid fa-star red-text text-lighten-3"></i>
+					<i class="fa-solid fa-star red-text text-lighten-3"></i>
+					<i class="fa-regular fa-star red-text text-lighten-3"></i>
+					<i class="fa-regular fa-star red-text text-lighten-3"></i>
+				{% elseif noteMoyenne < 4.5 %}
+					<i class="fa-solid fa-star red-text text-lighten-3"></i>
+					<i class="fa-solid fa-star red-text text-lighten-3"></i>
+					<i class="fa-solid fa-star red-text text-lighten-3"></i>
+					<i class="fa-solid fa-star red-text text-lighten-3"></i>
+					<i class="fa-regular fa-star red-text text-lighten-3"></i>
+				{% elseif noteMoyenne >= 4.5 %}
+					<i class="fa-solid fa-star red-text text-lighten-3"></i>
+					<i class="fa-solid fa-star red-text text-lighten-3"></i>
+					<i class="fa-solid fa-star red-text text-lighten-3"></i>
+					<i class="fa-solid fa-star red-text text-lighten-3"></i>
+					<i class="fa-solid fa-star red-text text-lighten-3"></i>
+				{% endif %}
+				</p>
+				<p class="grey-text">{% trans %}Nombre d'avis:{% endtrans %}
+					{{nbNotes}}</p>
+			{% else %}
+				<p class="red-text text-lighten-3">
+					{% if prestataire.utilisateur.pseudo %}
+						{{prestataire.utilisateur.pseudo|capitalize }}
+					{% else %}
+						{{prestataire.utilisateur.prenom}}
+						{{prestataire.utilisateur.nom|slice(0, 1)}}.
+					{% endif %}
+					{% trans %}n'a pas encore reçu d'avis{% endtrans %}
+				</p>
+			{% endif %}
+
+		</div>
+
+		<div>
+			{# Envoi message #}
+			<div class="center">
+				{% if app.user and is_granted("ROLE_MAITRE") and app.user.isVerified == true %}
+					<a class="btn waves-effect waves-light" href="{{path ('messages_conversation', {id : prestataire.utilisateur.id}) }}">{% trans %}Envoyer un message{% endtrans %}</a>
+				{% endif %}
+			</div>
+
+			{# Carrousel photos prestataire #}
+			{% if prestataire.imgGallerie is not empty and prestataire.imgGallerie|length < 2 %}
+				<div class="single-gallery-img">
+					{% for img in prestataire.imgGallerie %}
+						<img class="prestaire_img" src="{{ asset('img/uploads/' ~ img.image) }}" alt="photo carrousel"/>
+					{% endfor %}
+				{% elseif prestataire.imgGallerie is not empty %}
+					<div class="gallery">
+						{% for img in prestataire.imgGallerie %}
+							<img class="prestaire_img" src="{{ asset('img/uploads/' ~ img.image) }}" alt="photo carrousel"/>
+						{% endfor %}
+			{% endif %}
+				</div>
+
+			{# Affichage tarifs #}
+			<div class="gardien-detail-informations">
+			<h2>{% trans %}Mes informations{% endtrans %}</h2>
+			<h3>{% trans %}Tarifs:{% endtrans %}</h3>
+					{% if prestataire.tarif %}
+						<p>{% trans %}Hebergement de l'animal:{% endtrans %}
+							<span>{{prestataire.tarif}}€ par jour</span></p>
+					{% else %}
+						<p>{% trans %}Je n'ai pas encore communiqué de tarif pour l'herbergement d'animal{% endtrans %}</p>
+					{% endif %}
+					{% if prestataire.tarifDeplacement %}
+						<p>{% trans %}Visite à domicile:{% endtrans %}
+							<span>{{prestataire.tarifDeplacement}}{% trans %}€ par passage{% endtrans %}</span></p>
+					{% else %}
+						<p>{% trans %}je n'ai pas encore communiqué de tarif pour les visites à domicile{% endtrans %}</p>
+					{% endif %}
+					{% if prestataire.tarifPromenade or prestataire.tarifPromenade != 0 %}
+						<p>{% trans %}Promenade (minimum 20min): {% endtrans %} 
+						<span>{{prestataire.tarifPromenade}} {% trans %}€ par promenade{% endtrans %}</span></p>
+						{% else %}
+						<p>{% trans %}je n'ai pas encore communiqué de tarif pour les promenades{% endtrans %}</p>
+					{% endif %}
+
+					<h3>{% trans %}Animaux pris en charge:{% endtrans %}</h3>
+
+
+				<ul>
+					{% if prestataire.specialisations is not empty %}
+						{% for specialisation in prestataire.specialisations %}
+							<li class="collection-item">
+								{% if specialisation.nom == "Chats" %}
+									<i class="fa-solid fa-cat small"></i>
+								{% elseif specialisation.nom == "Chiens" %}
+									<i class="fa-solid fa-dog small"></i>
+								{% elseif specialisation.nom == "Reptiles" %}
+									<i class="fa-solid fa-worm small"></i>
+								{% elseif specialisation.nom == "Insectes" %}
+									<i class="fa-solid fa-locust small"></i>
+								{% elseif specialisation.nom == "Poissons" %}
+									<i class="fa-solid fa-fish-fins small"></i>
+								{% elseif specialisation.nom == "Amphibiens" %}
+									<i class="fa-solid fa-frog small"></i>
+								{% elseif specialisation.nom == "Ruminants" %}
+									<i class="fa-solid fa-horse small"></i>
+								{% elseif specialisation.nom == "Rongeurs" %}
+									<i class="fa-solid fa-carrot small"></i>
+								{% elseif specialisation.nom == "Oiseaux" %}
+									<i class="fa-solid fa-kiwi-bird small"></i>
+								{% elseif specialisation.nom == "Arachnides" %}
+									<i class="fa-solid fa-spider small"></i>
+								{% else %}
+									<i class="fa-solid fa-paw small"></i>
+								{% endif %}
+								&nbsp;&nbsp;{{specialisation.nom|capitalize }}
+							</li>
+					{% endfor %}
+					{% else %}
+						<li>{% trans %}Oops je n'ai pas encore renseigné de catégorie d'animal{% endtrans %}</li>
+					{% endif %}
+					</ul>
+					<h3>{% trans %}Autres:{% endtrans %}</h3>
+					<ul>
+				{% if prestataire.soinsVeto %}
+					<li class="collection-item">
+						<i class="fa-solid fa-syringe small"></i>&nbsp;&nbsp;{% trans %}J'ai des compétences véterinaires{% endtrans %}</li>
+				{% endif %}
+				{% if prestataire.gardeDomicile %}
+					<p class="collection-item">
+						<i class="fa-solid fa-house small"></i>&nbsp;&nbsp;{% trans %}Je peux garder l'animal à mon domicile{% endtrans %}</p>
+				{% endif %}
+				{% if prestataire.jardin %}
+					<li class="collection-item">
+						<i class="fa-solid fa-leaf small"></i>&nbsp;&nbsp;{% trans %}Je possède un jardin{% endtrans %}</li>
+				{% endif %}
+				{% if prestataire.vehicule %}
+					<li class="collection-item">
+						<i class="fa-solid fa-car small"></i>&nbsp;&nbsp;{% trans %}Je suis véhiculé{% endtrans %}</li>
+				{% endif %}
+				</ul>
+				<h3>{% trans %}Mon adresse:{% endtrans %}</h3>
+				<div>
+					<p>
+						{% if prestataire.utilisateur.adresse.rue is defined %}
+							{{prestataire.utilisateur.adresse.rue}}
+						{% endif %}
+						{% if prestataire.utilisateur.adresse.numero is defined %}
+							{{prestataire.utilisateur.adresse.numero}},
+						{% endif %}
+						{% if prestataire.utilisateur.adresse.commune is defined %}
+							{{prestataire.utilisateur.adresse.commune|capitalize }}
+						{% endif %}
+						{% if prestataire.utilisateur.adresse.codePostal is defined %}
+							{{prestataire.utilisateur.adresse.codePostal}}
+						{% endif %}
+					</p>
+				</div>
+				<h3>{% trans %}Qui suis-je:{% endtrans %}</h3>
+				<div>
+					<p>{{prestataire.bio }}</p>
+				</div>
+		</div>
+
+{#***************************************** Début gestion affichage carte Leaflet #}
+				<div id="map"></div>
+
+
+				{# On vérifie si l'utilisateur est connecté et a une adresse #}
+				{% if app.user.adresse.latitude is defined and app.user.adresse.longitude is defined %}
+					{% set maitreLat = app.user.adresse.latitude %}
+					{% set maitreLng = app.user.adresse.longitude %}
+					{% else %}
+					{% set maitreLat = 0 %}
+					{% set maitreLng = 0 %}
+				{% endif %}
+
+
+				{#* Script pour la carte Leaflet #}
+				<script>
+					// valeur 0 si pas de maitre connecté (pas d'affichage sur la carte)
+					let maitreLat = {{maitreLat}};
+					let maitreLng = {{maitreLng}};
+					
+					{# Vérification si lat et lng sont définis #}
+					{% if  prestataire.utilisateur.adresse.latitude is defined %}
+						var lat = {{ prestataire.utilisateur.adresse.latitude }};
+						{% else %}
+						var lat = null;
+					{% endif %}
+					{% if  prestataire.utilisateur.adresse.longitude is defined %}
+						var lng = {{ prestataire.utilisateur.adresse.longitude }};
+						{% else %}
+						var lng = null;
+					{% endif %}
+
+
+					// On passe les valeurs lat et longitude à la carte et au marqeur
+					var map = L.map("map").setView([lat, lng], 10);
+
+					L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+						maxZoom: 19,
+						attribution:'&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+					}).addTo(map);
+
+					// Désactiver le zoom via le scroll de la souris
+					map.scrollWheelZoom.disable();
+
+
+					// icone du gardien
+					var gardienIcon = L.icon({
+						{% if prestataire.images[0].image is defined %}
+							iconUrl: '{{ asset('img/uploads/') ~ prestataire.images[0].image }}',
+						{% else %}
+							iconUrl: '{{ asset('img/avatars/') ~ 'blank_profile.webp' }}', // si pas d'image prestataire
+						{% endif %}
+					iconSize: [52, 52],
+					className: 'mapUserIcon', // Taille de l'icône en pixels
+					});
+
+					// Marqueur de l'adresse du Gardien
+					var gardienMarker = L.marker([lat, lng], {
+						className: 'mapUserIcon',
+						icon: gardienIcon,
+					}).addTo(map);
+
+					gardienMarker.bindTooltip("{{ prestataire.utilisateur.pseudo|capitalize }}",{
+						className: 'GardienTooltip',
+						direction: 'right',
+					});
+
+
+					if(maitreLat != 0 && maitreLng != 0){
+						// icone du maitre
+						var maitreIcon = L.icon({
+						iconUrl: '{{asset('img/home-point-logo.webp') }}',
+						iconSize: [52, 52], // Taille de l'icône en pixels
+						shadowSize: [50, 64], // Taille de l'ombre de l'icône en pixels
+						});
+
+						// Marqueur de l'adresse du Maitre
+						var maitreMarker = L.marker([maitreLat , maitreLng], {
+							icon: maitreIcon,
+						}).addTo(map);
+
+						maitreMarker.bindTooltip("Mon domicile",{
+						className: 'MaitreTooltip',
+						direction: 'right'
+						}).openTooltip();
+					}
+
+
+					{% if prestataire.zoneGardiennage != null %}
+						let zoneGardiennage = {{prestataire.zoneGardiennage}};
+						{% else %}
+						let zoneGardiennage = null;
+					{% endif %}
+
+					// Cercle de la zone de gardiennage
+					if(zoneGardiennage != null){
+						var circle = L.circle([lat, lng], {
+							radius: (zoneGardiennage * 1000), // Rayon en mètres
+							color: '#7b3c0490', // Couleur bordure du cercle
+							fillColor: '#7b3c04', // Couleur remplissage du cercle
+							fillOpacity: 0.15 // Opacité remplissage du cercle
+						}).addTo(map);
+
+						circle.bindPopup("Ma zone de gardiennage", {
+							direction: 'topright', // Afficher le tooltip à droite
+						// timeout
+						}).on('click', function(e) {
+							setTimeout(function() {
+								circle.closePopup();
+							}, 1000);
+						});
+
+						// hors de la zone de gardiennage -> tooltip
+						map.on('click', function(e) {
+							if (map.distance(e.latlng, [lat, lng]) > (zoneGardiennage*1000)) {
+								L.popup()
+									.setLatLng(e.latlng)
+									.setContent("Hors de ma zone de gardiennage")
+									.openOn(map);
+							}
+						}).on('click', function(e) {
+							setTimeout(function() {
+								circle.closePopup();
+							}, 2500);
+						});
+					}
+				</script>
+
+				{#* style des markers la map #}
+				<style>
+				    #map{
+						width: 100%;
+					}
+					.MaitreTooltip{
+						background-color: rgba(5, 93, 209, 0.81);
+						color: white;
+						font-size: 14px;
+						font-weight: bold;
+						border-radius: 15px;
+						border: 2px solid rgba(5, 93, 209, 0.81);
+						padding: 5px;
+						position: relative;
+						left: 30px
+					}
+					.Gardientooltip{
+						background-color: #f5f5f5;
+						font-size: 12px;
+						font-weight: bold;
+						border-radius: 5px;
+						padding: 5px;
+						position: relative;
+						left: 20px
+					}
+					.userIcon{
+						border-radius: 50%;
+						border: 1px solid rgba(5, 93, 209, 0.81);
+					}
+				</style>
+
+{#***************************************** Fin gestion affichage carte Leaflet #}
+
+
+{#***************************************** Début affichage calendrier #}
+	{# script JS initialisation calendrier FullCalendar #}
+	<script>
+		// initialisation du calendrier & paramétrage
+		document.addEventListener('DOMContentLoaded', function () {
+
+		var calendarEl = document.getElementById('calendar');
+		var calendar = new FullCalendar.Calendar(calendarEl, {
+
+				initialView: 'dayGridMonth',
+				locale: 'fr',
+				firstDay: 1,
+				timeZone: "Europe/Brussels",
+
+
+				headerToolbar: {
+					left: 'today',
+					center: 'title',
+					right: 'prev,next'
+				},
+				// boutons de navigation
+				buttonText: {
+					month: 'mois',
+					agendaDay: 'Jour',
+					agendaWeek: 'semaine',
+					today: 'Aujourd\'hui'
+				},
+				// récupération des indispos & reservations (format json) et affichage dans le calendrier
+				eventSources: [{{ indispos|raw }}, {{ reservations|raw }}]
+			});
+			calendar.render();
+		});
+	</script>
+	<div class="gardien-detail-calendar">
+		{# Affichage du calendrier FullCalendar + lien demande de reservation #}
+			<div class="section">
+				<div id='calendar'></div>
+			</div>
+				{# si le prestataire a renseigné au moins un tarif, on affiche le bouton de reservation #}
+				{% if prestataire.tarif != 0 or prestataire.tarifDeplacement != 0 or prestataire.tarifPromenade != 0 %}
+					{% if is_granted("ROLE_MAITRE") and app.user.isVerified == true %}
+						<p class='center'><a class="btn" href="{{path('reservation', {id: prestataire.id}) }}">{% trans %}Reserver une période de gardiennage{% endtrans %}</a></p>
+					{% else %}
+						<p class='center'><a class="btn" href="{{path('app_login') }}">Reserver une période de gardiennage</a></p>
+					{% endif %}
+				{% else %}
+					<p class="brown-text center">{% trans %}Les réservations ne sont pas encore disponibles{% endtrans %}</p>
+				{% endif %}
+	</div>
+{#***************************************** Fin affichage calendrier #}
+	
+	<div>
+		<h2 class="gardien-detail-commentaire-title">{% trans %}Commentaires{% endtrans %}</h2>
+		{% if app.user and is_granted('ROLE_MAITRE') and app.user.isVerified == true %}
+			{% if commentaireMaitre %}
+				<p class="center teal-text">{% trans %}Votre commentaire:{% endtrans %}</p>
+			{% else %}
+				<div class="center section">
+					<a class="btn brown lighten-2" 
+					href="{{ path ('ajouter_commentaire', {id:prestataire.id, id_maitre: app.user.maitre.id}) }}">
+					{% trans %}Laisser un commentaire{% endtrans %}</a>
+				</div>
+			{% endif %}
+		{% endif %}
+
+		<div class="section">
+			{% if commentaires %}
+				{% for com in commentaires %}
+					{% if app.user and app.user.maitre == com.maitre %}
+						<div class="card teal lighten-5">
+							<div class="card-title center">
+								<h3 class="brown-text text-darken-1 section">{{com.titre }}</h3>
+							</div>
+							<div class="card-content center brown-text text-darken-1">
+								<p>{{com.commentaire }}</p>
+							</div>
+							<div class="center">
+								<a class="btn-flat teal white-text" href="{{path ('modifier_commentaire', {id:com.id}) }}">{% trans %}modifier mon commentaire{% endtrans %}</a>
+							</div>
+							<div class="card-footer">
+								<p class="brown-text text-lighten-2 center section">{% trans %}Par{% endtrans %}
+									{{com.maitre.utilisateur.pseudo }}, {% trans %}le{% endtrans %}
+									{{com.date|date("d/m/Y") }}
+								</p>
+							</div>
+							{# Affichage note liée au commentaire #}
+							{% if notePrecedante != null %}
+								{% if notePrecedante == 1 %}
+									<div class="center section">
+										<i class="fa-solid fa-star red-text text-lighten-3"></i>
+										<i class="fa-regular fa-star red-text text-lighten-3"></i>
+										<i class="fa-regular fa-star red-text text-lighten-3"></i>
+										<i class="fa-regular fa-star red-text text-lighten-3"></i>
+										<i class="fa-regular fa-star red-text text-lighten-3"></i>
+									</div>
+									{% elseif notePrecedante == 2 %}
+										<div class="center section">
+											<i class="fa-solid fa-star red-text text-lighten-3"></i>
+											<i class="fa-solid fa-star red-text text-lighten-3"></i>
+											<i class="fa-regular fa-star red-text text-lighten-3"></i>
+											<i class="fa-regular fa-star red-text text-lighten-3"></i>
+											<i class="fa-regular fa-star red-text text-lighten-3"></i>
+										</div>
+									{% elseif notePrecedante == 3 %}
+										<div class="center section">
+											<i class="fa-solid fa-star red-text text-lighten-3"></i>
+											<i class="fa-solid fa-star red-text text-lighten-3"></i>
+											<i class="fa-solid fa-star red-text text-lighten-3"></i>
+											<i class="fa-regular fa-star red-text text-lighten-3"></i>
+											<i class="fa-regular fa-star red-text text-lighten-3"></i>
+										</div>
+									{% elseif notePrecedante == 4 %}
+										<div class="center section">
+											<i class="fa-solid fa-star red-text text-lighten-3"></i>
+											<i class="fa-solid fa-star red-text text-lighten-3"></i>
+											<i class="fa-solid fa-star red-text text-lighten-3"></i>
+											<i class="fa-solid fa-star red-text text-lighten-3"></i>
+											<i class="fa-regular fa-star red-text text-lighten-3"></i>
+										</div>
+									{% elseif notePrecedante == 5 %}
+										<div class="center section">
+											<i class="fa-solid fa-star red-text text-lighten-3"></i>
+											<i class="fa-solid fa-star red-text text-lighten-3"></i>
+											<i class="fa-solid fa-star red-text text-lighten-3"></i>
+											<i class="fa-solid fa-star red-text text-lighten-3"></i>
+											<i class="fa-solid fa-star red-text text-lighten-3"></i>
+										</div>
+									{% endif %}
+							{% endif %}
+					{% endif %}
+				{% endfor %}
+
+			{# Traitement pour afficher les notes liées aux commentaires ###################}
+				{% set commentairesNotesList = [] %}
+
+				{% for commentaire in commentaires %}
+					{% for note in notes %}
+					{# associations des commentaires et des notes #}
+						{% if note.getMaitre() == commentaire.getMaitre() %}
+							{% set commentairesNotes = {
+								'commentaire': commentaire,
+								'note': note.getNote()
+							} %}
+							{# stockages des associations dans un tableau #}
+							{% set commentairesNotesList = commentairesNotesList|merge([commentairesNotes]) %}
+						{% endif %}
+					{% endfor %}
+				{% endfor %}
+			{########################################################################################}
+
+			{% for com in commentairesNotesList %}
+				{# Affichage des commentaires des autres utilisateurs #}
+				{% if app.user and app.user.maitre != com.commentaire.maitre %}
+						<div class="card brown lighten-5">
+							<div class="card-title center">
+								<h3 class="brown-text text-darken-1 section">{{com.commentaire.titre }}</h3>
+							</div>
+							<div class="card-content center brown-text text-darken-1">
+								<p>{{com.commentaire.commentaire }}</p>
+							</div>
+							<div class="card-footer">
+								<p class="brown-text text-lighten-2 center section">{% trans %}Par{% endtrans %}
+									{{com.commentaire.maitre.utilisateur.pseudo }}, {% trans %}le{% endtrans %}
+									{{com.commentaire.date|date("d/m/Y") }}
+									</p>
+							</div>
+							{# Affichage note liée au commentaire #}
+							{% if com.note != 0 %}
+								{% if com.note == 1 %}
+									<div class="center section">
+										<i class="fa-solid fa-star red-text text-lighten-3"></i>
+										<i class="fa-regular fa-star red-text text-lighten-3"></i>
+										<i class="fa-regular fa-star red-text text-lighten-3"></i>
+										<i class="fa-regular fa-star red-text text-lighten-3"></i>
+										<i class="fa-regular fa-star red-text text-lighten-3"></i>
+									</div>
+								{% elseif com.note == 2 %}
+									<div class="center section">
+										<i class="fa-solid fa-star red-text text-lighten-3"></i>
+										<i class="fa-solid fa-star red-text text-lighten-3"></i>
+										<i class="fa-regular fa-star red-text text-lighten-3"></i>
+										<i class="fa-regular fa-star red-text text-lighten-3"></i>
+										<i class="fa-regular fa-star red-text text-lighten-3"></i>
+									</div>
+								{% elseif com.note == 3 %}
+									<div class="center section">
+										<i class="fa-solid fa-star red-text text-lighten-3"></i>
+										<i class="fa-solid fa-star red-text text-lighten-3"></i>
+										<i class="fa-solid fa-star red-text text-lighten-3"></i>
+										<i class="fa-regular fa-star red-text text-lighten-3"></i>
+										<i class="fa-regular fa-star red-text text-lighten-3"></i>
+									</div>
+								{% elseif com.note == 4 %}
+									<div class="center section">
+										<i class="fa-solid fa-star red-text text-lighten-3"></i>
+										<i class="fa-solid fa-star red-text text-lighten-3"></i>
+										<i class="fa-solid fa-star red-text text-lighten-3"></i>
+										<i class="fa-solid fa-star red-text text-lighten-3"></i>
+										<i class="fa-regular fa-star red-text text-lighten-3"></i>
+									</div>
+								{% elseif com.note == 5 %}
+									<div class="center section">
+										<i class="fa-solid fa-star red-text text-lighten-3"></i>
+										<i class="fa-solid fa-star red-text text-lighten-3"></i>
+										<i class="fa-solid fa-star red-text text-lighten-3"></i>
+										<i class="fa-solid fa-star red-text text-lighten-3"></i>
+										<i class="fa-solid fa-star red-text text-lighten-3"></i>
+									</div>
+								{% endif %}
+							{% endif %}
+						</div>
+					{% elseif  not app.user %}
+						<div class="card brown lighten-5">
+							<div class="card-title center">
+								<h3 class="brown-text text-darken-1 section">{{com.commentaire.titre }}</h3>
+							</div>
+							<div class="card-content center brown-text text-darken-1">
+								<p>{{com.commentaire.commentaire }}</p>
+							</div>
+							<div class="card-footer">
+								<p class="brown-text text-lighten-2 center section">{% trans %}Par{% endtrans %}
+									{{com.commentaire.maitre.utilisateur.pseudo }}, {% trans %}le{% endtrans %}
+									{{com.commentaire.date|date("d/m/Y") }}
+									</p>
+							</div>
+							{# Affichage note liée au commentaire #}
+							{% if com.note != 0 %}
+								{% if com.note == 1 %}
+									<div class="center section">
+										<i class="fa-solid fa-star red-text text-lighten-3"></i>
+										<i class="fa-regular fa-star red-text text-lighten-3"></i>
+										<i class="fa-regular fa-star red-text text-lighten-3"></i>
+										<i class="fa-regular fa-star red-text text-lighten-3"></i>
+										<i class="fa-regular fa-star red-text text-lighten-3"></i>
+									</div>
+								{% elseif com.note == 2 %}
+									<div class="center section">
+										<i class="fa-solid fa-star red-text text-lighten-3"></i>
+										<i class="fa-solid fa-star red-text text-lighten-3"></i>
+										<i class="fa-regular fa-star red-text text-lighten-3"></i>
+										<i class="fa-regular fa-star red-text text-lighten-3"></i>
+										<i class="fa-regular fa-star red-text text-lighten-3"></i>
+									</div>
+								{% elseif com.note == 3 %}
+									<div class="center section">
+										<i class="fa-solid fa-star red-text text-lighten-3"></i>
+										<i class="fa-solid fa-star red-text text-lighten-3"></i>
+										<i class="fa-solid fa-star red-text text-lighten-3"></i>
+										<i class="fa-regular fa-star red-text text-lighten-3"></i>
+										<i class="fa-regular fa-star red-text text-lighten-3"></i>
+									</div>
+								{% elseif com.note == 4 %}
+									<div class="center section">
+										<i class="fa-solid fa-star red-text text-lighten-3"></i>
+										<i class="fa-solid fa-star red-text text-lighten-3"></i>
+										<i class="fa-solid fa-star red-text text-lighten-3"></i>
+										<i class="fa-solid fa-star red-text text-lighten-3"></i>
+										<i class="fa-regular fa-star red-text text-lighten-3"></i>
+									</div>
+								{% elseif com.note == 5 %}
+									<div class="center section">
+										<i class="fa-solid fa-star red-text text-lighten-3"></i>
+										<i class="fa-solid fa-star red-text text-lighten-3"></i>
+										<i class="fa-solid fa-star red-text text-lighten-3"></i>
+										<i class="fa-solid fa-star red-text text-lighten-3"></i>
+										<i class="fa-solid fa-star red-text text-lighten-3"></i>
+									</div>
+								{% endif %}
+							{% endif %}
+						</div>
+				{% endif %}
+				</div>
+					{% if com.commentaire.reponseGardien %}
+						<div class="card">
+							<div class="card-content center brown-text text-darken-1">
+							<p class="brown-text text-lighten-2">{% trans %}Réponse de {% endtrans %} {{prestataire.utilisateur.pseudo }}:</p>
+								<p>{{com.commentaire.reponseGardien }}</p>
+							</div>
+						</div>
+					{% endif %}
+				{% endfor %}
+			{% endif %}
+			</div>
+		</div>
+	</div>
+
+	{% endblock %}

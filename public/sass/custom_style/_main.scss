@@ -1,0 +1,885 @@
+// Alerts
+
+.alert-danger {
+  color: red;
+}
+
+.error-message-form {
+  color: red;
+}
+
+// masquage par defaut de la banière de consentement aux cookies
+#cookie-consent-banner {
+  display: none;
+  border: 1px solid $third-color;
+  margin: 1rem;
+  padding: 1rem;
+  p {
+    color: $secondary-color;
+    text-align: center;
+  }
+  a {
+    color: $third-color;
+    text-decoration: underline;
+  }
+  .cookie-consent-buttons {
+    display: flex;
+    justify-content: center;
+    button {
+      margin: 1rem;
+    }
+  }
+}
+
+.list-gardien-counter-results-wrap {
+  width: 80%;
+  margin: 2rem auto;
+  padding: 0.1rem;
+  border-radius: 16px;
+  background: linear-gradient(145deg, #e6dcda, #ffffff);
+  box-shadow: 27px 27px 44px #c4bcba, -27px -27px 44px #ffffff;
+}
+
+// custom wrap pour les compteurs d'items
+.counter-wrap {
+  margin: 2rem auto 1rem auto;
+  text-align: center;
+  color: $secondary-color;
+}
+
+.gardiens-list-link-to-map {
+  width: 55%;
+  cursor: pointer;
+  font-size: 1.5rem;
+  margin: 0 auto 1rem auto;
+  text-align: center;
+  color: $secondary-color;
+  &:hover {
+    color: $third-color;
+  }
+}
+
+.gardien-list-form-zone-km {
+  margin: 10rem 0 0 0;
+  background-color: $primary-color;
+  padding: 0.5rem;
+  border-radius: 15px;
+}
+
+// custom wrap
+.custom-wrap {
+  margin: 4rem auto;
+}
+
+// navbar mobile tablette
+.sidenav {
+  li a i {
+    color: $third-color;
+  }
+}
+
+.img-language-navbar {
+  height: 1.8rem;
+  position: relative;
+  top: 0.3rem;
+}
+
+.img-language-navbar-mobile {
+  height: 2rem;
+  position: relative;
+  top: 0.6rem;
+}
+
+// Titre principal + annimation de celui-ci
+.main-title {
+  font-family: "Pacifico", cursive;
+  width: 100%;
+  font-size: 4rem;
+  margin: 2rem 1rem 4rem 1rem;
+  padding: 1rem 0 0 0;
+  text-align: center;
+  color: $secondary-color-main-title;
+  animation: slide-in 1200ms ease-in-out;
+  animation-delay: 0ms;
+}
+
+@keyframes slide-in {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(-10px);
+    opacity: 0.7;
+  }
+  70% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
+.home-img {
+  text-align: center;
+  margin: 0 auto;
+  z-index: -1000;
+  position: relative;
+  bottom: 2.5rem;
+  filter: opacity(0.85);
+  filter: saturate(0.75);
+  img {
+    max-width: 100%;
+  }
+}
+
+// bannièrers messages flash (annimation + style)
+.flash-success-message {
+  padding: 20px;
+  background-color: rgba(0, 128, 0, 0.486);
+  color: white;
+  animation: slide-in-flash 100ms ease-in;
+  animation-delay: 0ms;
+
+  @keyframes slide-in-flash {
+    0% {
+      transform: translateY(60%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0%);
+      opacity: 1;
+    }
+  }
+}
+
+.flash-error-message {
+  padding: 20px;
+  background-color: #f443368a;
+  color: white;
+}
+
+.flash-notice-message {
+  padding: 20px;
+  background-color: rgba(0, 102, 255, 0.496);
+  color: white;
+}
+
+.closebtnflash {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+  animation: tilt-n-move-shaking 800ms;
+  animation-delay: 0ms;
+
+  @keyframes tilt-n-move-shaking {
+    0% {
+      transform: translate(0, 0) rotate(0deg);
+      font-size: 3rem;
+    }
+    25% {
+      transform: translate(5px, 5px) rotate(5deg);
+      font-size: 3rem;
+    }
+    50% {
+      transform: translate(0, 0) rotate(0eg);
+      font-size: 3rem;
+    }
+    75% {
+      transform: translate(-5px, 5px) rotate(-5deg);
+      font-size: 3rem;
+    }
+    100% {
+      transform: translate(0, 0) rotate(0deg);
+    }
+  }
+}
+
+.closebtnflash:hover {
+  color: $secondary-color;
+}
+
+// formulaire de recherche
+.main-search-form-title {
+  margin: 4rem 0 0 0;
+  p {
+    text-align: center;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+  color: $third-color;
+  h2 {
+    font-size: 2rem;
+    text-align: center;
+    margin: 1rem 0 0 0;
+  }
+}
+
+.main-search-form {
+  margin: 1rem 0 6rem 0;
+  padding: 2rem 1rem;
+  border-radius: 36px;
+  background: $primary-color;
+  box-shadow: inset 7px 7px 25px #bbb4a5, inset -7px -7px 25px #ffffff;
+
+  h2 {
+    padding: 1rem 0;
+    text-align: center;
+    font-size: 1.5rem;
+    color: $secondary-color;
+  }
+
+  label {
+    color: $third-color;
+    font-size: 1rem;
+  }
+
+  .switch {
+    margin: 2rem 0;
+  }
+}
+
+// Pagination
+.main-pagination {
+  overflow: hidden;
+  margin: 2rem auto;
+  text-align: center;
+  width: 100%;
+  a {
+    color: $secondary-color;
+    font-size: 2rem;
+    &:hover {
+      color: teal;
+    }
+  }
+  span {
+    color: rgba(0, 128, 128, 0.545);
+    font-size: 2rem;
+  }
+}
+
+// Footer
+
+.footer-space-up {
+  margin-top: 6rem;
+}
+
+.footer-link {
+  color: $secondary-color;
+  &:hover {
+    color: teal;
+  }
+}
+
+.footer-social {
+  display: flex;
+  justify-content: space-around;
+  h5 {
+    color: $secondary-color;
+  }
+  a {
+    font-size: 2rem;
+    color: $secondary-color;
+    &:hover {
+      color: $third-color;
+    }
+  }
+}
+
+.footer-content {
+  color: $secondary-color;
+}
+
+.favori-card-icon {
+  margin: 0;
+  display: block;
+  height: 1.8rem;
+  padding: 0;
+  margin: 0;
+  text-align: end;
+}
+
+.link-profile {
+  color: $secondary-color;
+  &:hover {
+    color: teal;
+    text-decoration: underline;
+  }
+}
+
+.profil-module {
+  h3 {
+    margin: 0 0 3rem 0;
+  }
+  margin: 3rem 0;
+  color: $third-color;
+  text-align: center;
+  padding: 2rem;
+  border-radius: 50px;
+  background: linear-gradient(145deg, #e6dcda, #ffffff);
+  box-shadow: 20px 20px 60px #d9cfce, -20px -20px 60px #ffffff;
+}
+
+.profil-maitre-animaux {
+  h3 {
+    margin: 0 0 3rem 0;
+  }
+  margin: 2rem 0;
+  padding: 2rem;
+  border-radius: 50px;
+  background: linear-gradient(145deg, #e6dcda, #ffffff);
+  box-shadow: 20px 20px 60px #d9cfce, -20px -20px 60px #ffffff;
+}
+
+.carte-annimal {
+  text-align: center;
+  margin: 2rem auto;
+  padding: 1rem;
+  border-radius: 5px;
+  border: solid 1px $secondary-color;
+  h3 {
+    text-align: center;
+    font-size: 1.8rem;
+    margin: 0.5rem 0;
+    color: $secondary-color;
+  }
+  span {
+    text-decoration: underline;
+  }
+  p {
+    margin: 1rem 0;
+    color: $third-color;
+  }
+}
+
+.carte-annimal-img {
+  margin: 0 auto;
+  text-align: center;
+  img {
+    width: 100%;
+    max-width: 70vh;
+    text-align: center;
+  }
+}
+
+.profil-reservations-list {
+  margin: 2rem 0;
+  border-radius: 25px;
+  background: linear-gradient(145deg, #e6dcda, #ffffff);
+  box-shadow: 20px 20px 60px #d9cfce, -20px -20px 60px #ffffff;
+  h3 {
+    color: $secondary-color;
+    text-align: center;
+    padding: 1rem 0 0 0;
+  }
+  ul {
+    padding: 0 1rem 1rem 1rem;
+
+    li {
+      padding: 1rem;
+      width: 90%;
+      margin: 0.5rem auto;
+      text-align: center;
+      border: solid 1px $secondary-color;
+      border-radius: 15px;
+      a {
+        color: $third-color;
+      }
+    }
+  }
+}
+
+//***********************************/
+// Modules
+
+#map {
+  height: 30rem;
+  border-radius: 15px;
+}
+
+// champs passwords pour le formulaire d'inscription
+.row-passwords {
+  #registration_form_plainPassword_first {
+    margin: 0 0 8px 0;
+  }
+  #registration_form_plainPassword_second {
+    margin: 0 0 8px 0;
+  }
+}
+
+// icone oeil pour afficher le mot de passe (Login & Signup)
+#show-password-register-maitre,
+#show-password-register-gardien,
+#show-password-login {
+  position: relative;
+  bottom: 3rem;
+  left: 90%;
+  font-size: 1.2rem;
+  cursor: pointer;
+  &:hover {
+    color: teal;
+  }
+}
+
+.link-login {
+  color: $secondary-color;
+  text-decoration: underline;
+  &:hover {
+    color: teal;
+  }
+}
+
+.login-form {
+  background-color: $primary-color;
+  border-radius: 0 15px 15px 0;
+  border: 1px solid $secondary-color;
+  height: 625px;
+}
+
+.login-image {
+  background-image: url("../img/background-login.avif");
+  height: 625px;
+  width: 25rem;
+  border-radius: 15px 0 0 15px;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+// Google sign-in button
+// .google-btn {
+//   display: block;
+//   margin: 0 auto;
+//   width: 12.5rem;
+//   height: 42px;
+//   background-color: $google-blue;
+//   border-radius: 2px;
+//   box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.25);
+//   .google-icon-wrapper {
+//     position: absolute;
+//     margin-top: 1px;
+//     margin-left: 1px;
+//     width: 40px;
+//     height: 40px;
+//     border-radius: 2px;
+//     background-color: $white;
+//   }
+//   .google-icon {
+//     position: absolute;
+//     margin-top: 11px;
+//     margin-left: 11px;
+//     width: 18px;
+//     height: 18px;
+//   }
+//   .btn-text {
+//     float: right;
+//     margin: 11px 11px 0 0;
+//     color: $white;
+//     font-size: 14px;
+//     letter-spacing: 0.2px;
+//     font-family: "Roboto";
+//   }
+//   &:hover {
+//     cursor: pointer;
+//     box-shadow: 0 0 6px $google-blue;
+//   }
+//   &:active {
+//     background: $button-active-blue;
+//   }
+// }
+
+.font-small {
+  font-size: 0.8rem;
+}
+
+// page inscription
+.registration-form-img {
+  background-image: url("../img/form-dog.webp");
+  height: 625px;
+  width: 25rem;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.registration-choice-gardien {
+  text-align: center;
+  font-size: 2rem;
+  color: $secondary-color;
+  text-transform: uppercase;
+  border-radius: 15px;
+  display: block;
+  margin: 3rem auto 0 auto;
+  background-image: url("../img/gardien.webp");
+  height: 15rem;
+  width: 15rem;
+  background-size: cover;
+  background-repeat: no-repeat;
+  div {
+    background-color: rgba(255, 255, 255, 0.644);
+    border-radius: 15px 15px 0 0;
+  }
+}
+
+.registration-choice-maitre {
+  text-align: center;
+  font-size: 2rem;
+  text-transform: uppercase;
+  color: $secondary-color;
+  border-radius: 15px;
+  display: block;
+  margin: 3rem auto 0 auto;
+  background-image: url("../img/maitre.webp");
+  height: 15rem;
+  width: 15rem;
+  background-size: cover;
+  background-repeat: no-repeat;
+  div {
+    background-color: rgba(255, 255, 255, 0.644);
+    border-radius: 15px 15px 0 0;
+  }
+}
+
+// wrapper liste gardiens
+.list-gardien-container {
+  background-image: url("../img/bg-liste-gardiens.avif");
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 1.5rem;
+  background-size: cover;
+  border-radius: 15px;
+  height: 100vh;
+}
+
+// Custom cards img + text
+.custom-card {
+  border-radius: 15px;
+  margin: 1rem 0;
+  padding: 1rem 1rem 0 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 8px 32px 0 rgba(71, 26, 26, 0.285);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border-radius: 10px;
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    box-shadow: 4px 14px 22px 4px rgba(71, 26, 26, 0.285);
+  }
+}
+
+.custom-card-image {
+  img {
+    display: block;
+    border-radius: 5px 5px 0 0;
+    position: relative;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 12rem;
+    object-fit: cover;
+  }
+}
+
+.custom-card-content {
+  text-align: center;
+  h3 {
+    margin: 1rem 0 2rem 0;
+  }
+}
+
+// custom style des collapsible sur les cartes gardiens
+.collapsible-custom {
+  border: none;
+
+  .collapsible-header {
+    background-color: $fourth-color;
+    border: none;
+    color: white;
+    justify-content: center;
+  }
+  .collapsible-body {
+    background-color: $fourth-color;
+    border: none;
+    color: white;
+    justify-content: center;
+  }
+}
+
+.gardien-detail-section-title {
+  margin: 4rem 0 3rem 0;
+  padding: 0.5rem;
+  text-align: center;
+  color: $third-color;
+}
+
+.gardien-detail-informations {
+  margin: 4rem 0;
+  padding: 2rem;
+  color: $third-color;
+  border-radius: 23px;
+  background: linear-gradient(145deg, #ffffff, #e6dcda);
+  box-shadow: 5px 5px 53px #cfc6c4, -5px -5px 53px #ffffff;
+  h2 {
+    text-align: center;
+    margin: 0 0 2rem 0;
+    color: $secondary-color;
+  }
+  h3 {
+    margin: 3.5rem 0 0 0;
+    color: $third-color;
+    font-size: 1.5rem;
+    text-decoration: underline;
+  }
+  span {
+    font-style: italic;
+  }
+}
+
+.gardien-detail-calendar {
+  margin: 4rem 0 6rem 0;
+  padding: 1rem;
+  border-radius: 23px;
+  background: linear-gradient(145deg, #ffffff, #e6dcda);
+  box-shadow: 5px 5px 53px #cfc6c4, -5px -5px 53px #ffffff;
+  h3 {
+    text-align: center;
+    margin: 0 0 2rem 0;
+    color: $secondary-color;
+    font-size: 1.5rem;
+  }
+  .gardien-detail-calendar-title {
+    color: $secondary-color;
+    text-align: center;
+    margin: 0 0 3rem 0;
+  }
+  h2 {
+    color: grey;
+  }
+}
+
+.gardien-detail-commentaire-title {
+  margin: 0 auto 3rem auto;
+  text-align: center;
+  color: $secondary-color;
+}
+
+// gestion icone profil navbar et sidebar
+.icone-profile {
+  a {
+    margin: 0 0 1rem 0;
+  }
+
+  img {
+    filter: opacity(0.75);
+    position: relative;
+    top: 0.5rem;
+    left: -0.2rem;
+    object-fit: cover;
+    width: 3.8rem;
+    height: 4rem;
+    border-radius: 50%;
+    object-fit: contain;
+    border: solid 2px $third-color;
+  }
+  img:hover {
+    filter: opacity(1);
+    cursor: pointer;
+  }
+}
+
+.icone-profile-sidebar {
+  img {
+    position: relative;
+    top: 0.2rem;
+    object-fit: cover;
+    width: 3rem;
+    border-radius: 50%;
+  }
+}
+
+.gallery {
+  margin: 2rem auto;
+  display: flex;
+  width: 100%;
+  height: 20rem;
+  img {
+    min-width: 0;
+    flex: 1 1 10px;
+    object-fit: cover;
+    opacity: 0.5;
+    transition: 1s;
+  }
+  img:hover {
+    flex: 1 1 280px;
+    opacity: 1;
+  }
+}
+
+.single-gallery-img {
+  display: flex;
+  justify-content: center;
+  margin: 1rem;
+  img {
+    max-width: 40rem;
+    width: 100%;
+    height: auto;
+  }
+}
+
+.someSpaceUp {
+  margin: 4rem 0 0 0;
+}
+
+.fav-icon {
+  position: relative;
+  left: 11.2rem;
+  bottom: 0.2rem;
+}
+
+.messageConversationZone {
+  width: 80%;
+  margin: 8rem auto 0 auto;
+}
+
+.messageCardSender {
+  margin: 1rem 0 0 30%;
+  background-color: teal;
+  p {
+    margin: 1rem 0 1rem 1rem;
+    color: antiquewhite;
+  }
+}
+
+.messageCardReceiver {
+  background-color: rgb(186, 135, 69);
+  margin: 1rem 30% 0 0;
+  p {
+    margin: 1rem 0 1rem 1rem;
+    color: antiquewhite;
+  }
+}
+
+.admin-newsletters {
+  margin: 2rem 0;
+  border-radius: 25px;
+  background: linear-gradient(145deg, #e6dcda, #ffffff);
+  box-shadow: 20px 20px 60px #d9cfce, -20px -20px 60px #ffffff;
+  h2 {
+    color: $secondary-color;
+    text-align: center;
+    padding: 1rem 0 0 0;
+  }
+  ul {
+    padding: 0 1rem 1rem 1rem;
+
+    li {
+      padding: 1rem;
+      width: 90%;
+      margin: 0.5rem auto;
+      text-align: center;
+      border: solid 1px $secondary-color;
+      border-radius: 15px;
+      a {
+        color: $third-color;
+        font-size: 1.2rem;
+      }
+      p {
+        color: teal;
+      }
+    }
+  }
+}
+
+.admin-detail-newsletter {
+  padding: 1rem;
+  border-radius: 25px;
+  background: linear-gradient(145deg, #e6dcda, #ffffff);
+  box-shadow: 20px 20px 60px #d9cfce, -20px -20px 60px #ffffff;
+  h2 {
+    color: $secondary-color;
+    text-align: center;
+    padding: 1rem 0 0 0;
+  }
+  p {
+    color: $third-color;
+    text-align: center;
+    padding: 1rem 0 0 0;
+  }
+}
+
+.admin-detail-newsletter-links {
+  display: flex;
+  justify-content: space-around;
+  a {
+    margin: 1rem;
+    color: $secondary-color;
+    &:hover {
+      color: $third-color;
+    }
+  }
+}
+
+.admin-detail-newsletter-back-button {
+  margin: 4rem auto;
+  text-align: center;
+  a {
+    font-size: 1.2rem;
+    color: $secondary-color;
+    &:hover {
+      color: $third-color;
+    }
+  }
+}
+
+.reservation-status {
+  margin: 2rem auto;
+  padding: 1rem;
+  border-radius: 5px;
+  text-align: center;
+  color: white;
+  font-size: 1.2rem;
+  background-color: salmon;
+}
+
+.reservation-recap {
+  h3 {
+    margin: 0 0 3rem 0;
+  }
+  margin: 3rem 0;
+  color: $third-color;
+  text-align: center;
+  padding: 2rem;
+  border-radius: 50px;
+  background: linear-gradient(145deg, #e6dcda, #ffffff);
+  box-shadow: 20px 20px 60px #d9cfce, -20px -20px 60px #ffffff;
+}
+
+//*************************************/
+// Media queries
+
+@media #{$small-and-down} {
+  .registration-choice-maitre {
+    height: 12rem;
+    width: 12rem;
+  }
+
+  .registration-choice-gardien {
+    height: 12rem;
+    width: 12rem;
+  }
+}
+
+@media #{$medium-and-up} {
+  // styles for medium screens and larger
+}
+
+@media #{$large-and-up} {
+  // styles for large screens and up
+}
+
+@media #{$extra-large-and-up} {
+  // styles for extra large screens and up
+}

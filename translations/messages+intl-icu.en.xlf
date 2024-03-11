@@ -1,0 +1,1656 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="fr" target-language="en" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="LVrPxJG" resname="Votre inscription a bien été prise en compte">
+        <source>Votre inscription a bien été prise en compte</source>
+        <target>Your registration has been processed</target>
+      </trans-unit>
+      <trans-unit id="sbguFTd" resname="L'admin principal a déjà été créé">
+        <source>L'admin principal a déjà été créé</source>
+        <target>The main admin has already been created</target>
+      </trans-unit>
+      <trans-unit id="DaDWfac" resname="Un admin a bien été créé, pensez à changer le mot de passe">
+        <source>Un admin a bien été créé, pensez à changer le mot de passe</source>
+        <target>An admin has been created, remember to change the password</target>
+      </trans-unit>
+      <trans-unit id="RJAjDbZ" resname="Vos informations ont bien été mises à jour">
+        <source>Vos informations ont bien été mises à jour</source>
+        <target>Your information has been updated</target>
+      </trans-unit>
+      <trans-unit id="kB7AStv" resname="Votre image a bien été enregistré">
+        <source>Votre image a bien été enregistré</source>
+        <target>Your image has been successfully saved</target>
+      </trans-unit>
+      <trans-unit id="jhZT6A_" resname="L\image n'est pas valide">
+        <source>L\image n'est pas valide</source>
+        <target>The picture is not valid</target>
+      </trans-unit>
+      <trans-unit id="GcaFMME" resname="Votre abonnement à la newsletter a bien été pris en compte">
+        <source>Votre abonnement à la newsletter a bien été pris en compte</source>
+        <target>Your subscription to the newsletter has been taken into account</target>
+      </trans-unit>
+      <trans-unit id="0H3q1_J" resname="Votre abonnement à la newsletter a bien été annulé">
+        <source>Votre abonnement à la newsletter a bien été annulé</source>
+        <target>Your subscription to the newsletter has been cancelled</target>
+      </trans-unit>
+      <trans-unit id="EeLuXC_" resname="Votre animal a bien été enregistré">
+        <source>Votre animal a bien été enregistré</source>
+        <target>Your animal has been successfully registered</target>
+      </trans-unit>
+      <trans-unit id="HJTOcdx" resname="Votre animal a bien été supprimé">
+        <source>Votre animal a bien été supprimé</source>
+        <target>Your animal has been successfully deleted</target>
+      </trans-unit>
+      <trans-unit id="VDgq4L2" resname="Votre photo a bien été enregistrée">
+        <source>Votre photo a bien été enregistrée</source>
+        <target>Your photo has been successfully saved</target>
+      </trans-unit>
+      <trans-unit id="LG0baNz" resname="Vos informations ont bien été modifiées">
+        <source>Vos informations ont bien été modifiées</source>
+        <target>Your information has been successfully modified</target>
+      </trans-unit>
+      <trans-unit id="WmIZ5rn" resname="Votre image n'est pas valide">
+        <source>Votre image n'est pas valide</source>
+        <target>Your image is not valid</target>
+      </trans-unit>
+      <trans-unit id="6gpCZFO" resname="Votre photo a bien été supprimée">
+        <source>Votre photo a bien été supprimée</source>
+        <target>Your photo has been successfully deleted</target>
+      </trans-unit>
+      <trans-unit id="zdMkZ3G" resname="La réservation a bien été acceptée">
+        <source>La réservation a bien été acceptée</source>
+        <target>The reservation has been successfully accepted</target>
+      </trans-unit>
+      <trans-unit id="nRtNK_S" resname="La réservation a bien été annulée">
+        <source>La réservation a bien été annulée</source>
+        <target>The reservation has been successfully canceled</target>
+      </trans-unit>
+      <trans-unit id="ZjBQkNQ" resname="Votre demande de réservation a bien été prise en compte">
+        <source>Votre demande de réservation a bien été prise en compte</source>
+        <target>Your reservation request has been successfully received</target>
+      </trans-unit>
+      <trans-unit id="rCK4dtq" resname="Votre message a bien été envoyé !">
+        <source>Votre message a bien été envoyé !</source>
+        <target>Your message has been successfully sent!</target>
+      </trans-unit>
+      <trans-unit id="YsGPx2O" resname="L'image n'est pas valide">
+        <source>L'image n'est pas valide</source>
+        <target>The image is not valid</target>
+      </trans-unit>
+      <trans-unit id="tb33dpt" resname="Votre image a bien été supprimé">
+        <source>Votre image a bien été supprimé</source>
+        <target>Your image has been successfully deleted</target>
+      </trans-unit>
+      <trans-unit id="zA0EzHe" resname="Votre période d'indisponibilité a bien été enregistré">
+        <source>Votre période d'indisponibilité a bien été enregistré</source>
+        <target>Your unavailable period has been successfully recorded</target>
+      </trans-unit>
+      <trans-unit id="6xgfyOV" resname="Le commentaire a bien été signalé">
+        <source>Le commentaire a bien été signalé</source>
+        <target>The comment has been successfully reported</target>
+      </trans-unit>
+      <trans-unit id="SKWRSz_" resname="Votre réponse a bien été enregistrée">
+        <source>Votre réponse a bien été enregistrée</source>
+        <target>Your response has been successfully recorded</target>
+      </trans-unit>
+      <trans-unit id="TUR0KyK" resname="Paiement effectué avec succès !">
+        <source>Paiement effectué avec succès !</source>
+        <target>Payment made successfully!</target>
+      </trans-unit>
+      <trans-unit id="6pAoiSZ" resname="Trouvez le gardien qui s'occupera de votre compagnon">
+        <source>Trouvez le gardien qui s'occupera de votre compagnon</source>
+        <target>Find the caretaker who will take care of your companion</target>
+      </trans-unit>
+      <trans-unit id="_gpXj_9" resname="Vos compagnons entre de bonnes pattes">
+        <source>Vos compagnons entre de bonnes pattes</source>
+        <target>Your companions in good hands</target>
+      </trans-unit>
+      <trans-unit id=".6LKjOq" resname="Prénom du gardien">
+        <source>Prénom du gardien</source>
+        <target>Caretaker's first name</target>
+      </trans-unit>
+      <trans-unit id="ExLjasK" resname="Nom du gardien">
+        <source>Nom du gardien</source>
+        <target>Caretaker's last name</target>
+      </trans-unit>
+      <trans-unit id="gsVo0sd" resname="Catégorie d'animal">
+        <source>Catégorie d'animal</source>
+        <target>Animal category</target>
+      </trans-unit>
+      <trans-unit id="VX7qU8w" resname="Localité">
+        <source>Localité</source>
+        <target>Location</target>
+      </trans-unit>
+      <trans-unit id="HeGWBtC" resname="région Bruxelles capitale">
+        <source>région Bruxelles capitale</source>
+        <target>Brussels Capital Region</target>
+      </trans-unit>
+      <trans-unit id=".4q0J7r" resname="province de Liège">
+        <source>province de Liège</source>
+        <target>Liège province</target>
+      </trans-unit>
+      <trans-unit id="O56aQm1" resname="province du hainaut">
+        <source>province du hainaut</source>
+        <target>Hainaut province</target>
+      </trans-unit>
+      <trans-unit id="U1jKw.I" resname="province du brabant wallon">
+        <source>province du brabant wallon</source>
+        <target>Walloon Brabant province</target>
+      </trans-unit>
+      <trans-unit id="27F29Um" resname="province d'anvers">
+        <source>province d'anvers</source>
+        <target>Antwerp province</target>
+      </trans-unit>
+      <trans-unit id="_BJ7Fd5" resname="province de flandre occidentale">
+        <source>province de flandre occidentale</source>
+        <target>West Flanders province</target>
+      </trans-unit>
+      <trans-unit id="EK.x1qM" resname="province de flandre orientale">
+        <source>province de flandre orientale</source>
+        <target>East Flanders province</target>
+      </trans-unit>
+      <trans-unit id="lsl1VdL" resname="province du brabant flamand">
+        <source>province du brabant flamand</source>
+        <target>Flemish Brabant province</target>
+      </trans-unit>
+      <trans-unit id="mk2TLYd" resname="province du brabant flamand (Louvain)">
+        <source>province du brabant flamand (Louvain)</source>
+        <target>Flemish Brabant province (Leuven)</target>
+      </trans-unit>
+      <trans-unit id="G3eeIfc" resname="province du luxembourg">
+        <source>province du luxembourg</source>
+        <target>Luxembourg province</target>
+      </trans-unit>
+      <trans-unit id="Ddz63Sa" resname="province du limbourg">
+        <source>province du limbourg</source>
+        <target>Limburg province</target>
+      </trans-unit>
+      <trans-unit id="Kmw7i7i" resname="province de namur">
+        <source>province de namur</source>
+        <target>Namur province</target>
+      </trans-unit>
+      <trans-unit id="6vDcKkM" resname="Commune">
+        <source>Commune</source>
+        <target>Municipality</target>
+      </trans-unit>
+      <trans-unit id="vnBxYSs" resname="Code postal">
+        <source>Code postal</source>
+        <target>Postal code</target>
+      </trans-unit>
+      <trans-unit id="Gr11TBz" resname="Compétences vétérinaire">
+        <source>Compétences vétérinaire</source>
+        <target>Veterinary skills</target>
+      </trans-unit>
+      <trans-unit id="6solaZT" resname="Possède un jardin">
+        <source>Possède un jardin</source>
+        <target>Has a garden</target>
+      </trans-unit>
+      <trans-unit id="b9_aeSg" resname="Possède une voiture">
+        <source>Possède une voiture</source>
+        <target>Has a car</target>
+      </trans-unit>
+      <trans-unit id="9bxmFIY" resname="Garde à domicile">
+        <source>Garde à domicile</source>
+        <target>Home care</target>
+      </trans-unit>
+      <trans-unit id="cz0cdCZ" resname="Rechercher">
+        <source>Rechercher</source>
+        <target>Search</target>
+      </trans-unit>
+      <trans-unit id="GPSITIX" resname="Les derniers gardiens inscrits">
+        <source>Les derniers gardiens inscrits</source>
+        <target>The latest registered guardians</target>
+      </trans-unit>
+      <trans-unit id="fX47qAA" resname="Il n'y a pas encore de prestataire inscrit sur le site">
+        <source>Il n'y a pas encore de prestataire inscrit sur le site</source>
+        <target>There are no registered service providers on the site yet</target>
+      </trans-unit>
+      <trans-unit id="qUtZdfI" resname="Temoignages">
+        <source>Temoignages</source>
+        <target>Testimonials</target>
+      </trans-unit>
+      <trans-unit id="LBdLfTN" resname="Messagerie">
+        <source>Messagerie</source>
+        <target>Messaging</target>
+      </trans-unit>
+      <trans-unit id="b1twrKY" resname="Boite de reception">
+        <source>Boite de reception</source>
+        <target>Inbox</target>
+      </trans-unit>
+      <trans-unit id="caPg4qQ" resname="Vous n'avez pas de nouveau message">
+        <source>Vous n'avez pas de nouveau message</source>
+        <target>You have no new messages</target>
+      </trans-unit>
+      <trans-unit id="M6A9NYM" resname="Conversations en cours">
+        <source>Conversations en cours</source>
+        <target>Ongoing conversations</target>
+      </trans-unit>
+      <trans-unit id="WJW4Zxb" resname="Retour profil">
+        <source>Retour profil</source>
+        <target>Back to profile</target>
+      </trans-unit>
+      <trans-unit id="kWa4J7j" resname="Envoyer un message">
+        <source>Envoyer un message</source>
+        <target>Send a message</target>
+      </trans-unit>
+      <trans-unit id="2iPXUe_" resname="Message à">
+        <source>Message à</source>
+        <target>Message to</target>
+      </trans-unit>
+      <trans-unit id="DFhdcOD" resname="Conversation avec">
+        <source>Conversation avec</source>
+        <target>Conversation with</target>
+      </trans-unit>
+      <trans-unit id="oyeZyBb" resname="Moi">
+        <source>Moi</source>
+        <target>Me</target>
+      </trans-unit>
+      <trans-unit id="FBgJUa2" resname="Envoyé le">
+        <source>Envoyé le</source>
+        <target>Sent on</target>
+      </trans-unit>
+      <trans-unit id="VniyN8L" resname="message lu">
+        <source>message lu</source>
+        <target>Read message</target>
+      </trans-unit>
+      <trans-unit id="sce0GUK" resname="message non lu">
+        <source>message non lu</source>
+        <target>Unread message</target>
+      </trans-unit>
+      <trans-unit id="e16i3R9" resname="Reçu le">
+        <source>Reçu le</source>
+        <target>Received on</target>
+      </trans-unit>
+      <trans-unit id="WKckMkQ" resname="Nouveau message">
+        <source>Nouveau message</source>
+        <target>New message</target>
+      </trans-unit>
+      <trans-unit id="yv2Eka0" resname="Vous n'avez pas encore échangé de messages">
+        <source>Vous n'avez pas encore échangé de messages</source>
+        <target>You haven't exchanged messages yet</target>
+      </trans-unit>
+      <trans-unit id="Pl2DosD" resname="Les gardiens">
+        <source>Les gardiens</source>
+        <target>The guardians</target>
+      </trans-unit>
+      <trans-unit id="IzNoFoa" resname="gardien(s) trouvé(s)">
+        <source>gardien(s) trouvé(s)</source>
+        <target>Guardian(s) found</target>
+      </trans-unit>
+      <trans-unit id="yXivfwx" resname="Catégories animaux">
+        <source>Catégories animaux</source>
+        <target>Animal categories</target>
+      </trans-unit>
+      <trans-unit id="VFB4FMB" resname="Aucune catégorie d'animal">
+        <source>Aucune catégorie d'animal</source>
+        <target>No animal category</target>
+      </trans-unit>
+      <trans-unit id="QTkjKFo" resname="Compétences">
+        <source>Compétences</source>
+        <target>Skills</target>
+      </trans-unit>
+      <trans-unit id="7.eBINn" resname="Hebergement">
+        <source>Hebergement</source>
+        <target>Accommodation</target>
+      </trans-unit>
+      <trans-unit id=".3oygzR" resname="Soins">
+        <source>Soins</source>
+        <target>Care</target>
+      </trans-unit>
+      <trans-unit id="FnYBC2q" resname="Jardin">
+        <source>Jardin</source>
+        <target>Garden</target>
+      </trans-unit>
+      <trans-unit id="i1wArve" resname="Véhicule">
+        <source>Véhicule</source>
+        <target>Vehicle</target>
+      </trans-unit>
+      <trans-unit id="xCoXUTp" resname="Aucun gardien trouvé">
+        <source>Aucun gardien trouvé</source>
+        <target>No guardian found</target>
+      </trans-unit>
+      <trans-unit id="SNPoFla" resname="Commentaire">
+        <source>Commentaire</source>
+        <target>Comment</target>
+      </trans-unit>
+      <trans-unit id="0v6MVcL" resname="Votre commentaire">
+        <source>Votre commentaire</source>
+        <target>Your comment</target>
+      </trans-unit>
+      <trans-unit id="neLlRJ8" resname="Vous aviez donné la note de">
+        <source>Vous aviez donné la note de</source>
+        <target>You had given a rating of</target>
+      </trans-unit>
+      <trans-unit id="tte5aV2" resname="Donnez une note (sur 5) au prestataire">
+        <source>Donnez une note (sur 5) au prestataire</source>
+        <target>Give a rating (out of 5) to the provider</target>
+      </trans-unit>
+      <trans-unit id="cdx0hz4" resname="Enregistrer">
+        <source>Enregistrer</source>
+        <target>Save</target>
+      </trans-unit>
+      <trans-unit id="xehACSR" resname="Detail gardien">
+        <source>Detail gardien</source>
+        <target>Guardian details</target>
+      </trans-unit>
+      <trans-unit id="PAWNtXL" resname="Nombre d'avis:">
+        <source>Nombre d'avis:</source>
+        <target>Number of reviews:</target>
+      </trans-unit>
+      <trans-unit id="h6CGD08" resname="n'a reçu aucun avis">
+        <source>n'a reçu aucun avis</source>
+        <target>has received no reviews</target>
+      </trans-unit>
+      <trans-unit id="FKw0rOW" resname="Bonjour, moi c'est">
+        <source>Bonjour, moi c'est</source>
+        <target>Hello, my name is</target>
+      </trans-unit>
+      <trans-unit id="BlDIMYd" resname="Inscrit(e) depuis le">
+        <source>Inscrit(e) depuis le</source>
+        <target>Registered since</target>
+      </trans-unit>
+      <trans-unit id="P5Q9jTd" resname="Mes tarifs">
+        <source>Mes tarifs</source>
+        <target>My rates</target>
+      </trans-unit>
+      <trans-unit id="FMSgo8Y" resname="Hebergement de votre animal:">
+        <source>Hebergement de votre animal:</source>
+        <target>Accommodation for your pet:</target>
+      </trans-unit>
+      <trans-unit id="LeZemMc" resname="je n'ai pas encore communiqué mon tarif pour l'herbergement de votre animal">
+        <source>je n'ai pas encore communiqué mon tarif pour l'herbergement de votre animal</source>
+        <target>I have not yet provided my rate for accommodating your pet</target>
+      </trans-unit>
+      <trans-unit id="XadlpQc" resname="Visites à domicile:">
+        <source>Visites à domicile:</source>
+        <target>Home visits:</target>
+      </trans-unit>
+      <trans-unit id="D2RvXtm" resname="€/passage">
+        <source>€/passage</source>
+        <target>€/visit</target>
+      </trans-unit>
+      <trans-unit id="LWqsZfV" resname="je n'ai pas encore communiqué mon tarif par passage au domicile">
+        <source>je n'ai pas encore communiqué mon tarif par passage au domicile</source>
+        <target>I have not yet provided my rate per home visit</target>
+      </trans-unit>
+      <trans-unit id="rMOVT89" resname="Mon adresse:">
+        <source>Mon adresse:</source>
+        <target>My address:</target>
+      </trans-unit>
+      <trans-unit id="a3Nt.4G" resname="Ma zone de gardiennage (à partir de mon adresse):">
+        <source>Ma zone de gardiennage (à partir de mon adresse):</source>
+        <target>My pet-sitting area (based on my address):</target>
+      </trans-unit>
+      <trans-unit id="nqVTR1L" resname="Les types d'animaux que je prend en charge:">
+        <source>Les types d'animaux que je prend en charge:</source>
+        <target>The types of animals I care for:</target>
+      </trans-unit>
+      <trans-unit id="YOKXl9K" resname="Oops je n'ai pas encore renseigné de catégorie d'animal">
+        <source>Oops je n'ai pas encore renseigné de catégorie d'animal</source>
+        <target>Oops, I haven't specified any animal categories yet</target>
+      </trans-unit>
+      <trans-unit id="X7F0Y1W" resname="J'ai des compétences véterinaires">
+        <source>J'ai des compétences véterinaires</source>
+        <target>I have veterinary skills</target>
+      </trans-unit>
+      <trans-unit id="VSD7X64" resname="Je peux garder l'animal à mon domicile">
+        <source>Je peux garder l'animal à mon domicile</source>
+        <target>I can keep the animal at my home</target>
+      </trans-unit>
+      <trans-unit id="1VqpmNv" resname="Je possède un jardin">
+        <source>Je possède un jardin</source>
+        <target>I have a garden</target>
+      </trans-unit>
+      <trans-unit id="tr5.eGM" resname="Je suis véhiculé">
+        <source>Je suis véhiculé</source>
+        <target>I have a vehicle</target>
+      </trans-unit>
+      <trans-unit id="tNP5RNV" resname="Oops je n'ai pas encore de photo dans ma gallerie..">
+        <source>Oops je n'ai pas encore de photo dans ma gallerie..</source>
+        <target>Oops, I don't have any photos in my gallery yet..</target>
+      </trans-unit>
+      <trans-unit id="Ldruqhu" resname="Mes disponibilités">
+        <source>Mes disponibilités</source>
+        <target>My availability</target>
+      </trans-unit>
+      <trans-unit id="YmpWavc" resname="Reserver une période de gardiennage">
+        <source>Reserver une période de gardiennage</source>
+        <target>Book a pet-sitting period</target>
+      </trans-unit>
+      <trans-unit id="9516ize" resname="Commentaires">
+        <source>Commentaires</source>
+        <target>Comments</target>
+      </trans-unit>
+      <trans-unit id="NrWa6rJ" resname="Vous avez déjà posté un commentaire">
+        <source>Vous avez déjà posté un commentaire</source>
+        <target>You have already posted a comment</target>
+      </trans-unit>
+      <trans-unit id="3pk2Avb" resname="Par">
+        <source>Par</source>
+        <target>By</target>
+      </trans-unit>
+      <trans-unit id="YQmKS.K" resname="le">
+        <source>le</source>
+        <target>on</target>
+      </trans-unit>
+      <trans-unit id="LzxX0Up" resname="Réponse du gardien:">
+        <source>Réponse du gardien:</source>
+        <target>Guardian's response:</target>
+      </trans-unit>
+      <trans-unit id="3fszCzm" resname="Afin de finaliser la réservation veuillez régler le montant de">
+        <source>Afin de finaliser la réservation veuillez régler le montant de</source>
+        <target>To finalize the reservation, please pay the amount of</target>
+      </trans-unit>
+      <trans-unit id="nQwZfzP" resname="Cette réservation ne vous concerne pas, vous ne pouvez pas la payer">
+        <source>Cette réservation ne vous concerne pas, vous ne pouvez pas la payer</source>
+        <target>This reservation doesn't concern you, you cannot pay for it</target>
+      </trans-unit>
+      <trans-unit id="YRZ5Wpi" resname="Inscription gardien">
+        <source>Inscription gardien</source>
+        <target>Registration guardian</target>
+      </trans-unit>
+      <trans-unit id="9aZJ2Ft" resname="inscription gardien">
+        <source>inscription gardien</source>
+        <target>Registration guardian</target>
+      </trans-unit>
+      <trans-unit id="RnFpyTX" resname="Votre mot de passe doit contenir au minimum 7 caractères dont une majuscule, un chiffre et un symbole">
+        <source>Votre mot de passe doit contenir au minimum 7 caractères dont une majuscule, un chiffre et un symbole</source>
+        <target>Your password must contain at least 7 characters including an uppercase letter, a digit, and a symbol</target>
+      </trans-unit>
+      <trans-unit id="J0b24C_" resname="M'inscrire">
+        <source>M'inscrire</source>
+        <target>Sign me up</target>
+      </trans-unit>
+      <trans-unit id="2nHiMK0" resname="Inscription choix">
+        <source>Inscription choix</source>
+        <target>Registration choice</target>
+      </trans-unit>
+      <trans-unit id="WW2Uu5p" resname="Choix du type d'inscription">
+        <source>Choix du type d'inscription</source>
+        <target>Choose the type of registration</target>
+      </trans-unit>
+      <trans-unit id="7A1uKaE" resname="Maître">
+        <source>Maître</source>
+        <target>Master</target>
+      </trans-unit>
+      <trans-unit id="PHJIVFE" resname="Gardien">
+        <source>Gardien</source>
+        <target>Guardian</target>
+      </trans-unit>
+      <trans-unit id="NSrlGET" resname="Bonjour et bienvenue chez les Gardiens à 2 pattes!">
+        <source>Bonjour et bienvenue chez les Gardiens à 2 pattes!</source>
+        <target>Hello and welcome to the 2-legged Guardians!</target>
+      </trans-unit>
+      <trans-unit id="1N5UB3g" resname="Veuillez s'il vous plait confirmer votre adresse email en cliquant sur le lien suivant:">
+        <source>Veuillez s'il vous plait confirmer votre adresse email en cliquant sur le lien suivant:</source>
+        <target>Please confirm your email address by clicking on the following link:</target>
+      </trans-unit>
+      <trans-unit id="ksW.gM2" resname="Confirmer mon email">
+        <source>Confirmer mon email</source>
+        <target>Confirm my email</target>
+      </trans-unit>
+      <trans-unit id="Y41Dr0j" resname="Ce lien expirera dans">
+        <source>Ce lien expirera dans</source>
+        <target>This link will expire in</target>
+      </trans-unit>
+      <trans-unit id="ZUBKt46" resname="Merci et à tout de suite sur le site!">
+        <source>Merci et à tout de suite sur le site!</source>
+        <target>Thank you and see you soon on the site!</target>
+      </trans-unit>
+      <trans-unit id="0N7XpZb" resname="Inscription maître">
+        <source>Inscription maître</source>
+        <target>Registration master</target>
+      </trans-unit>
+      <trans-unit id="28stWPs" resname="Informations animal">
+        <source>Informations animal</source>
+        <target>Animal information</target>
+      </trans-unit>
+      <trans-unit id="cs19z.l" resname="Modification des informations de votre animal">
+        <source>Modification des informations de votre animal</source>
+        <target>Modify your animal's information</target>
+      </trans-unit>
+      <trans-unit id="6aawQmS" resname="retour profil">
+        <source>retour profil</source>
+        <target>Back to profile</target>
+      </trans-unit>
+      <trans-unit id="JlhV9.T" resname="Gestions infos gardien">
+        <source>Gestions infos gardien</source>
+        <target>Caretaker information management</target>
+      </trans-unit>
+      <trans-unit id="GcZdZx3" resname="Modification de ma présentation">
+        <source>Modification de ma présentation</source>
+        <target>Modify my presentation</target>
+      </trans-unit>
+      <trans-unit id="wcs22b0" resname="Ajout animal">
+        <source>Ajout animal</source>
+        <target>Add animal</target>
+      </trans-unit>
+      <trans-unit id="ylIlicv" resname="Ajout d'un animal">
+        <source>Ajout d'un animal</source>
+        <target>Add an animal</target>
+      </trans-unit>
+      <trans-unit id="T9pWHyC" resname="Ma photo de profil">
+        <source>Ma photo de profil</source>
+        <target>My profile photo</target>
+      </trans-unit>
+      <trans-unit id="m4FRc8c" resname="Modification de ma photo">
+        <source>Modification de ma photo</source>
+        <target>Modify my photo</target>
+      </trans-unit>
+      <trans-unit id="v.IZ.Bz" resname="Désolé, vous n'avez pas les droits pour visiter cette page de profil">
+        <source>Désolé, vous n'avez pas les droits pour visiter cette page de profil</source>
+        <target>Sorry, you do not have the rights to visit this profile page</target>
+      </trans-unit>
+      <trans-unit id="X1.h93Z" resname="Photo de mon animal">
+        <source>Photo de mon animal</source>
+        <target>My animal's photo</target>
+      </trans-unit>
+      <trans-unit id="PorMFur" resname="Désolé, vous n'avez pas les droits pour visiter cette page">
+        <source>Désolé, vous n'avez pas les droits pour visiter cette page</source>
+        <target>Sorry, you do not have the rights to visit this page</target>
+      </trans-unit>
+      <trans-unit id="wKjOb.e" resname="Profil Maître">
+        <source>Profil Maître</source>
+        <target>Master Profile</target>
+      </trans-unit>
+      <trans-unit id="K7Dc7Hs" resname="Modifier ma photo de profil">
+        <source>Modifier ma photo de profil</source>
+        <target>Modify my profile photo</target>
+      </trans-unit>
+      <trans-unit id="rlcZpbE" resname="Vous avez">
+        <source>Vous avez</source>
+        <target>You have</target>
+      </trans-unit>
+      <trans-unit id="e6oju7f" resname="messages non lus">
+        <source>messages non lus</source>
+        <target>unread messages</target>
+      </trans-unit>
+      <trans-unit id="iPVM55_" resname="Ma présentation">
+        <source>Ma présentation</source>
+        <target>My presentation</target>
+      </trans-unit>
+      <trans-unit id="IOGcmUz" resname="Modifier ma présentation">
+        <source>Modifier ma présentation</source>
+        <target>Edit my presentation</target>
+      </trans-unit>
+      <trans-unit id="hZk9TjY" resname="Mes reservations">
+        <source>Mes reservations</source>
+        <target>My reservations</target>
+      </trans-unit>
+      <trans-unit id="4.9.FeY" resname="Voir mes gardiens favoris">
+        <source>Voir mes gardiens favoris</source>
+        <target>View my favorite guardians</target>
+      </trans-unit>
+      <trans-unit id="XgioX.L" resname="Je me désabonne à la newsletter">
+        <source>Je me désabonne à la newsletter</source>
+        <target>Unsubscribe from the newsletter</target>
+      </trans-unit>
+      <trans-unit id=".7EPVs3" resname="Je m'abonne à la newsletter">
+        <source>Je m'abonne à la newsletter</source>
+        <target>Subscribe to the newsletter</target>
+      </trans-unit>
+      <trans-unit id="3_zrnr2" resname="Mes animaux">
+        <source>Mes animaux</source>
+        <target>My animals</target>
+      </trans-unit>
+      <trans-unit id="mX9lPXT" resname="Ajouter un animal">
+        <source>Ajouter un animal</source>
+        <target>Add an animal</target>
+      </trans-unit>
+      <trans-unit id="jlboEa." resname="age:">
+        <source>age:</source>
+        <target>age:</target>
+      </trans-unit>
+      <trans-unit id="ouCkzB8" resname="ans">
+        <source>ans</source>
+        <target>years</target>
+      </trans-unit>
+      <trans-unit id="6NEcMP2" resname="catégorie:">
+        <source>catégorie:</source>
+        <target>category:</target>
+      </trans-unit>
+      <trans-unit id="QuN2BLY" resname="Modifier">
+        <source>Modifier</source>
+        <target>Edit</target>
+      </trans-unit>
+      <trans-unit id="Xk2eIXZ" resname="supprimer l'animal">
+        <source>supprimer l'animal</source>
+        <target>Delete the animal</target>
+      </trans-unit>
+      <trans-unit id="a1hqOKZ" resname="Que voulez-vous modifier?">
+        <source>Que voulez-vous modifier?</source>
+        <target>What do you want to edit?</target>
+      </trans-unit>
+      <trans-unit id="cdJe2Zm" resname="Photo de profil">
+        <source>Photo de profil</source>
+        <target>Profile photo</target>
+      </trans-unit>
+      <trans-unit id="DOKwKVl" resname="Informations de l'animal">
+        <source>Informations de l'animal</source>
+        <target>Animal information</target>
+      </trans-unit>
+      <trans-unit id="Rq05Fva" resname="Annuler">
+        <source>Annuler</source>
+        <target>Cancel</target>
+      </trans-unit>
+      <trans-unit id="076KZH_" resname="Voulez-vous vraiment supprimer cet animal?">
+        <source>Voulez-vous vraiment supprimer cet animal?</source>
+        <target>Do you really want to delete this animal?</target>
+      </trans-unit>
+      <trans-unit id="Xl0CFs4" resname="Supprimer">
+        <source>Supprimer</source>
+        <target>Delete</target>
+      </trans-unit>
+      <trans-unit id="xJEqTrI" resname="Gestions des photo du carrousel">
+        <source>Gestions des photo du carrousel</source>
+        <target>Carousel Photo Management</target>
+      </trans-unit>
+      <trans-unit id="QAEN1XB" resname="Vous avez atteint le nombre maximum d'images autorisées">
+        <source>Vous avez atteint le nombre maximum d'images autorisées</source>
+        <target>You have reached the maximum number of allowed images</target>
+      </trans-unit>
+      <trans-unit id="kWI1BFl" resname="Mes favoris">
+        <source>Mes favoris</source>
+        <target>My favorites</target>
+      </trans-unit>
+      <trans-unit id="Dr5Gse3" resname="Mes gardiens favoris">
+        <source>Mes gardiens favoris</source>
+        <target>My favorite guardians</target>
+      </trans-unit>
+      <trans-unit id="wAMb62R" resname="Gestion des indisponibilités">
+        <source>Gestion des indisponibilités</source>
+        <target>Availability management</target>
+      </trans-unit>
+      <trans-unit id="tX1P9.Z" resname="Ajout période d'indisponibilité">
+        <source>Ajout période d'indisponibilité</source>
+        <target>Add unavailable period</target>
+      </trans-unit>
+      <trans-unit id="zITGwTk" resname="Adresse gardien">
+        <source>Adresse gardien</source>
+        <target>Guardian address</target>
+      </trans-unit>
+      <trans-unit id="lE0I1JM" resname="Modification de mon adresse">
+        <source>Modification de mon adresse</source>
+        <target>Modify my address</target>
+      </trans-unit>
+      <trans-unit id="lSg0K24" resname="Modifier mes informations">
+        <source>Modifier mes informations</source>
+        <target>Edit my information</target>
+      </trans-unit>
+      <trans-unit id="f_.6xc4" resname="Reponse commentaire">
+        <source>Reponse commentaire</source>
+        <target>Reply to comment</target>
+      </trans-unit>
+      <trans-unit id="y1mToi3" resname="Repondre au commentaire">
+        <source>Repondre au commentaire</source>
+        <target>Reply to comment</target>
+      </trans-unit>
+      <trans-unit id="hlfZW8L" resname="Gestion des photos">
+        <source>Gestion des photos</source>
+        <target>Photo management</target>
+      </trans-unit>
+      <trans-unit id="zAKPv_T" resname="Choisir une image">
+        <source>Choisir une image</source>
+        <target>Choose an image</target>
+      </trans-unit>
+      <trans-unit id="GqTLC8y" resname="Image">
+        <source>Image</source>
+        <target>Image</target>
+      </trans-unit>
+      <trans-unit id="YdaVBBA" resname="Connexion">
+        <source>Connexion</source>
+        <target>Login</target>
+      </trans-unit>
+      <trans-unit id="z7GsDIB" resname="Inscription">
+        <source>Inscription</source>
+        <target>Registration</target>
+      </trans-unit>
+      <trans-unit id="UzFhc1Y" resname="Accueil">
+        <source>Accueil</source>
+        <target>Home</target>
+      </trans-unit>
+      <trans-unit id="w0278nY" resname="Gardiens">
+        <source>Gardiens</source>
+        <target>Guardians</target>
+      </trans-unit>
+      <trans-unit id="DL02fX6" resname="Deconnexion">
+        <source>Deconnexion</source>
+        <target>Logout</target>
+      </trans-unit>
+      <trans-unit id="JxMJ_zB" resname="Me connecter">
+        <source>Me connecter</source>
+        <target>Login</target>
+      </trans-unit>
+      <trans-unit id="nziugJj" resname="Nous contacter">
+        <source>Nous contacter</source>
+        <target>Contact us</target>
+      </trans-unit>
+      <trans-unit id=".NDFyIj" resname="Retrouvez-nous sur les réseaux sociaux">
+        <source>Retrouvez-nous sur les réseaux sociaux</source>
+        <target>Follow us on social media</target>
+      </trans-unit>
+      <trans-unit id="51taprB" resname="Reinitialisation mot de passe">
+        <source>Reinitialisation mot de passe</source>
+        <target>Password reset</target>
+      </trans-unit>
+      <trans-unit id="ETuF12G" resname="Entrez votre adresse email afin de recevoir un lien de réinitialisation pour votre mot de passe.">
+        <source>Entrez votre adresse email afin de recevoir un lien de réinitialisation pour votre mot de passe.</source>
+        <target>Enter your email address to receive a password reset link.</target>
+      </trans-unit>
+      <trans-unit id="eQdSCfK" resname="Envoyer">
+        <source>Envoyer</source>
+        <target>Send</target>
+      </trans-unit>
+      <trans-unit id="kJgi9GH" resname="Réinitialisation du mot de passe">
+        <source>Réinitialisation du mot de passe</source>
+        <target>Password Reset</target>
+      </trans-unit>
+      <trans-unit id="HDKZT1A" resname="Email de réinitialisation envoyé!">
+        <source>Email de réinitialisation envoyé!</source>
+        <target>Password Reset Email Sent!</target>
+      </trans-unit>
+      <trans-unit id="Bqfva86" resname="Si un compte correspondant à votre email est trouvé, un email vient de vous etre envoyé.">
+        <source>Si un compte correspondant à votre email est trouvé, un email vient de vous etre envoyé.</source>
+        <target>If an account matching your email is found, an email has been sent to you.</target>
+      </trans-unit>
+      <trans-unit id="a09p6Sj" resname="Si vous n'avez pas reçu l'email, veuillez s'il vous plait vérifier dans votre boite de spam">
+        <source>Si vous n'avez pas reçu l'email, veuillez s'il vous plait vérifier dans votre boite de spam</source>
+        <target>If you haven't received the email, please check your spam folder</target>
+      </trans-unit>
+      <trans-unit id="Mc304jz" resname="Essayer à nouveau">
+        <source>Essayer à nouveau</source>
+        <target>Try Again</target>
+      </trans-unit>
+      <trans-unit id="CD3jGsH" resname="Bonjour!">
+        <source>Bonjour!</source>
+        <target>Hello!</target>
+      </trans-unit>
+      <trans-unit id="i.axTph" resname="Pour réinitialiser votre mot de passe veuillez cliquer sur le lien suivant">
+        <source>Pour réinitialiser votre mot de passe veuillez cliquer sur le lien suivant</source>
+        <target>To reset your password, please click on the following link</target>
+      </trans-unit>
+      <trans-unit id="kljm8Fx" resname="Connectez-vous">
+        <source>Connectez-vous</source>
+        <target>Login</target>
+      </trans-unit>
+      <trans-unit id="QpnLir." resname="Heureux de vous revoir!">
+        <source>Heureux de vous revoir!</source>
+        <target>Welcome back!</target>
+      </trans-unit>
+      <trans-unit id="sBFnVlo" resname="Vous êtes connecté en tant que">
+        <source>Vous êtes connecté en tant que</source>
+        <target>You are logged in as</target>
+      </trans-unit>
+      <trans-unit id=".5yLjAZ" resname="Mot de passe">
+        <source>Mot de passe</source>
+        <target>Password</target>
+      </trans-unit>
+      <trans-unit id="yrFEeRj" resname="Se souvenir de moi">
+        <source>Se souvenir de moi</source>
+        <target>Remember me</target>
+      </trans-unit>
+      <trans-unit id=".sIpuLh" resname="Mot de passe oublié ?">
+        <source>Mot de passe oublié ?</source>
+        <target>Forgot password?</target>
+      </trans-unit>
+      <trans-unit id="XCELJ7C" resname="Reservations">
+        <source>Reservations</source>
+        <target>Reservations</target>
+      </trans-unit>
+      <trans-unit id="XpzvjGC" resname="Gestion de mes réservations">
+        <source>Gestion de mes réservations</source>
+        <target>Manage My Reservations</target>
+      </trans-unit>
+      <trans-unit id="8VpJepu" resname="En attente de validation">
+        <source>En attente de validation</source>
+        <target>Pending Validation</target>
+      </trans-unit>
+      <trans-unit id="jjqrTt9" resname="Demandeur:">
+        <source>Demandeur:</source>
+        <target>Requester:</target>
+      </trans-unit>
+      <trans-unit id="FVO4.iV" resname="Du:">
+        <source>Du:</source>
+        <target>From:</target>
+      </trans-unit>
+      <trans-unit id="CGdtKJ6" resname="au:">
+        <source>au:</source>
+        <target>To:</target>
+      </trans-unit>
+      <trans-unit id="coO.HFi" resname="Voir les details">
+        <source>Voir les details</source>
+        <target>View Details</target>
+      </trans-unit>
+      <trans-unit id="zX2GLi2" resname="Gardiennages à venir">
+        <source>Gardiennages à venir</source>
+        <target>Upcoming Guardianships</target>
+      </trans-unit>
+      <trans-unit id="L2hvTsC" resname="Gardiennages effectués">
+        <source>Gardiennages effectués</source>
+        <target>Completed Guardianships</target>
+      </trans-unit>
+      <trans-unit id="kkVR9UR" resname="Details reservation">
+        <source>Details reservation</source>
+        <target>Reservation details</target>
+      </trans-unit>
+      <trans-unit id="GD_dasJ" resname="Details reservation avec">
+        <source>Details reservation avec</source>
+        <target>Reservation details with</target>
+      </trans-unit>
+      <trans-unit id="7g.A3vV" resname="Reservation en attente d'acceptation par">
+        <source>Reservation en attente d'acceptation par</source>
+        <target>Reservation pending acceptance by</target>
+      </trans-unit>
+      <trans-unit id=".XwPfrF" resname="Reservation confirmée par">
+        <source>Reservation confirmée par</source>
+        <target>Reservation confirmed by</target>
+      </trans-unit>
+      <trans-unit id="zKcGDXu" resname="En attente de paiement.">
+        <source>En attente de paiement.</source>
+        <target>Awaiting payment.</target>
+      </trans-unit>
+      <trans-unit id="XYwwIFW" resname="La réservation a été payée le">
+        <source>La réservation a été payée le</source>
+        <target>The reservation has been paid on</target>
+      </trans-unit>
+      <trans-unit id="s.yd5Sb" resname="à">
+        <source>à</source>
+        <target>at</target>
+      </trans-unit>
+      <trans-unit id=".bMzo87" resname="Discuter avec">
+        <source>Discuter avec</source>
+        <target>Chat with</target>
+      </trans-unit>
+      <trans-unit id="UluYCBF" resname="Récapitulatif de la reservation:">
+        <source>Récapitulatif de la reservation:</source>
+        <target>Reservation summary:</target>
+      </trans-unit>
+      <trans-unit id="R273u9X" resname="Gardiennage de">
+        <source>Gardiennage de</source>
+        <target>Pet sitting for</target>
+      </trans-unit>
+      <trans-unit id="C2ciqK3" resname="Du">
+        <source>Du</source>
+        <target>From</target>
+      </trans-unit>
+      <trans-unit id="YyzS.qc" resname="au">
+        <source>au</source>
+        <target>to</target>
+      </trans-unit>
+      <trans-unit id="pKYbeiR" resname="Details:">
+        <source>Details:</source>
+        <target>Details:</target>
+      </trans-unit>
+      <trans-unit id="NLok7zA" resname="Nombre de passage par jour:">
+        <source>Nombre de passage par jour:</source>
+        <target>Number of visits per day:</target>
+      </trans-unit>
+      <trans-unit id="ELv8A.h" resname="Hebergement au domicile du gardien">
+        <source>Hebergement au domicile du gardien</source>
+        <target>Home stay at the guardian's place</target>
+      </trans-unit>
+      <trans-unit id="Kw0fTQ2" resname="Prix de la prestation:">
+        <source>Prix de la prestation:</source>
+        <target>Service price:</target>
+      </trans-unit>
+      <trans-unit id="f6IctgT" resname="Veuillez régler le montant afin de finaliser la reservation">
+        <source>Veuillez régler le montant afin de finaliser la reservation</source>
+        <target>Please pay the amount to finalize the reservation</target>
+      </trans-unit>
+      <trans-unit id="urVzVx8" resname="Regler la reservation">
+        <source>Regler la reservation</source>
+        <target>Pay for the reservation</target>
+      </trans-unit>
+      <trans-unit id="5uAxYMe" resname="demande de reservation">
+        <source>demande de reservation</source>
+        <target>Reservation request</target>
+      </trans-unit>
+      <trans-unit id="X8bP6VN" resname="Reserver un gardiennage">
+        <source>Reserver un gardiennage</source>
+        <target>Book pet sitting</target>
+      </trans-unit>
+      <trans-unit id="SoOgs.M" resname="Detail reservation">
+        <source>Detail reservation</source>
+        <target>Reservation details</target>
+      </trans-unit>
+      <trans-unit id="zz3wgdU" resname="Reservation de">
+        <source>Reservation de</source>
+        <target>Reservation for</target>
+      </trans-unit>
+      <trans-unit id="N87Hk76" resname="Reservation en attente d'acceptation">
+        <source>Reservation en attente d'acceptation</source>
+        <target>Reservation awaiting acceptance</target>
+      </trans-unit>
+      <trans-unit id="JyMzRUj" resname="Reservation confirmée">
+        <source>Reservation confirmée</source>
+        <target>Reservation confirmed</target>
+      </trans-unit>
+      <trans-unit id="DHctVJR" resname="Date début:">
+        <source>Date début:</source>
+        <target>Start date:</target>
+      </trans-unit>
+      <trans-unit id="0G6foQO" resname="Date de fin:">
+        <source>Date de fin:</source>
+        <target>End date:</target>
+      </trans-unit>
+      <trans-unit id="Yyk0rMQ" resname="Prix total:">
+        <source>Prix total:</source>
+        <target>Total price:</target>
+      </trans-unit>
+      <trans-unit id="aNqfB_1" resname="Paiement effectué">
+        <source>Paiement effectué</source>
+        <target>Payment made</target>
+      </trans-unit>
+      <trans-unit id="dtGWFdZ" resname="Paiement non effectué">
+        <source>Paiement non effectué</source>
+        <target>Payment not made</target>
+      </trans-unit>
+      <trans-unit id="FON0BJI" resname="Nombre de passages:">
+        <source>Nombre de passages:</source>
+        <target>Number of visits:</target>
+      </trans-unit>
+      <trans-unit id="xxe.Fop" resname="Accepter la reservation">
+        <source>Accepter la reservation</source>
+        <target>Accept the reservation</target>
+      </trans-unit>
+      <trans-unit id="qcfe0ri" resname="Annuler l'acceptation de la reservation">
+        <source>Annuler l'acceptation de la reservation</source>
+        <target>Cancel the reservation acceptance</target>
+      </trans-unit>
+      <trans-unit id="K4RpWZk" resname="L'animal sera hebergé à votre domicile">
+        <source>L'animal sera hebergé à votre domicile</source>
+        <target>The animal will be hosted at your home</target>
+      </trans-unit>
+      <trans-unit id="7zudA1." resname="Vous effectuerez">
+        <source>Vous effectuerez</source>
+        <target>You will perform</target>
+      </trans-unit>
+      <trans-unit id="ggnb_HD" resname="passage(s) par jour">
+        <source>passage(s) par jour</source>
+        <target>visit(s) per day</target>
+      </trans-unit>
+      <trans-unit id="TDKAs_4" resname="Voir à la reservation">
+        <source>Voir à la reservation</source>
+        <target>See the reservation</target>
+      </trans-unit>
+      <trans-unit id="EDpEMfc" resname="Vous pouvez contacter">
+        <source>Vous pouvez contacter</source>
+        <target>You can contact</target>
+      </trans-unit>
+      <trans-unit id="uJjyXBq" resname="depuis la messagerie du &#10;&#9;site ou par">
+        <source>depuis la messagerie du 
+	site ou par</source>
+        <target>through the website messaging or by</target>
+      </trans-unit>
+      <trans-unit id="c8AQVXL" resname="Bonjour,">
+        <source>Bonjour,</source>
+        <target>Hello,</target>
+      </trans-unit>
+      <trans-unit id="TvzI3il" resname="votre demande de reservation pour le gardiennage de">
+        <source>votre demande de reservation pour le gardiennage de</source>
+        <target>your reservation request for pet sitting</target>
+      </trans-unit>
+      <trans-unit id="JgFwjlu" resname="a été &#10;    annulée par">
+        <source>a été 
+    annulée par</source>
+        <target>has been 
+          canceled by</target>
+      </trans-unit>
+      <trans-unit id="7Crim7O" resname="Vous pouvez contacter le gardien à tout moment depuis la messagerie du &#10;    site ou par">
+        <source>Vous pouvez contacter le gardien à tout moment depuis la messagerie du 
+    site ou par</source>
+        <target>You can contact the caretaker at any time through the site's messaging or by</target>
+      </trans-unit>
+      <trans-unit id="cvPcZxy" resname="Nous vous confirmons le paiement pour le gardiennage de">
+        <source>Nous vous confirmons le paiement pour le gardiennage de</source>
+        <target>We confirm your payment for pet sitting</target>
+      </trans-unit>
+      <trans-unit id="qWtcrJC" resname="avec">
+        <source>avec</source>
+        <target>with</target>
+      </trans-unit>
+      <trans-unit id="1YD561C" resname="Votre animal sera hebergé chez">
+        <source>Votre animal sera hebergé chez</source>
+        <target>Your pet will be hosted at</target>
+      </trans-unit>
+      <trans-unit id="VRZMN4b" resname="effectuera">
+        <source>effectuera</source>
+        <target>will be performed by</target>
+      </trans-unit>
+      <trans-unit id="Ojy41hz" resname="Vous pouvez contacter le gardien à tout moment depuis la messagerie du site ou par">
+        <source>Vous pouvez contacter le gardien à tout moment depuis la messagerie du site ou par</source>
+        <target>You can contact the caretaker at any time through the site's messaging or by</target>
+      </trans-unit>
+      <trans-unit id="y4nRl0l" resname="Prénom *">
+        <source>Prénom *</source>
+        <target>Firstname *</target>
+      </trans-unit>
+      <trans-unit id="KWUekAn" resname="Nom *">
+        <source>Nom *</source>
+        <target>Lastname *</target>
+      </trans-unit>
+      <trans-unit id="laFi360" resname="Pseudo *">
+        <source>Pseudo *</source>
+        <target>Nickname *</target>
+      </trans-unit>
+      <trans-unit id="5jdArSd" resname="Tél.">
+        <source>Tél.</source>
+        <target>Phone</target>
+      </trans-unit>
+      <trans-unit id="FLBruLA" resname="Rue">
+        <source>Rue</source>
+        <target>Street</target>
+      </trans-unit>
+      <trans-unit id="pheUJw5" resname="Numéro">
+        <source>Numéro</source>
+        <target>Number</target>
+      </trans-unit>
+      <trans-unit id="fb5NU9e" resname="J'accepte les conditions">
+        <source>J'accepte les conditions</source>
+        <target>I agree terms</target>
+      </trans-unit>
+      <trans-unit id="RyQopOK" resname="Veuillez entrer un mot de passe *">
+        <source>Veuillez entrer un mot de passe *</source>
+        <target>Please enter a password *</target>
+      </trans-unit>
+      <trans-unit id="kn67jpO" resname="Repetez le mot de passe *">
+        <source>Repetez le mot de passe *</source>
+        <target>Repeat the password *</target>
+      </trans-unit>
+      <trans-unit id="Hp1Xk7C" resname="Inscription à la newsletter">
+        <source>Inscription à la newsletter</source>
+        <target>Subscribe to Newsletter</target>
+      </trans-unit>
+      <trans-unit id="JbuTXx0" resname="Rue *">
+        <source>Rue *</source>
+        <target>street *</target>
+      </trans-unit>
+      <trans-unit id="3PB0MJv" resname="Numéro *">
+        <source>Numéro *</source>
+        <target>Number *</target>
+      </trans-unit>
+      <trans-unit id="7uIgHou" resname="Code postal *">
+        <source>Code postal *</source>
+        <target>Zip code *</target>
+      </trans-unit>
+      <trans-unit id="fpCHu9R" resname="Commune *">
+        <source>Commune *</source>
+        <target>City *</target>
+      </trans-unit>
+      <trans-unit id="o9ZcpWl" resname="Nouveau mot de passe">
+        <source>Nouveau mot de passe</source>
+        <target>New password</target>
+      </trans-unit>
+      <trans-unit id="7lFNEiJ" resname="Repetez le mot de passe">
+        <source>Repetez le mot de passe</source>
+        <target>Repeat password</target>
+      </trans-unit>
+      <trans-unit id="WwE_PQH" resname="Notez le prestataire">
+        <source>Notez le prestataire</source>
+        <target>Rate the petsitter</target>
+      </trans-unit>
+      <trans-unit id="ssEkU20" resname="Nom">
+        <source>Nom</source>
+        <target>Name</target>
+      </trans-unit>
+      <trans-unit id="sEw.yQS" resname="Votre photo a bien été ajoutée">
+        <source>Votre photo a bien été ajoutée</source>
+        <target>your photos has been added succesfully</target>
+      </trans-unit>
+      <trans-unit id="1Tn4bqe" resname="Un admin a bien été créé -&gt; admin@gardiens2pattes.be, mot de passe: &quot;admin&quot; /!\ Changez le mot de passe /!\ ">
+        <source>Un admin a bien été créé -&gt; admin@gardiens2pattes.be, mot de passe: "admin" /!\ Changez le mot de passe /!\ </source>
+        <target>An admin has been created : admin@gardiens2pattes.be, password: "admin" /!\ Change your password /!\</target>
+      </trans-unit>
+      <trans-unit id="GgO_B4s" resname="On sait à quel point il est important de trouver la personne parfaite pour &#10;&#9;&#9;&#9;&#9;&#9;s'occuper de votre boule de poils lorsque vous devez vous absenter.">
+        <source>On sait à quel point il est important de trouver la personne parfaite pour 
+					s'occuper de votre boule de poils lorsque vous devez vous absenter.</source>
+        <target>We know how important it is to find the perfect person to look after your pet when you're away from home.</target>
+      </trans-unit>
+      <trans-unit id="naVo_jf" resname="Chercher un gardien par:">
+        <source>Chercher un gardien par:</source>
+        <target>Search for a petsitter by:</target>
+      </trans-unit>
+      <trans-unit id="AsLqgWU" resname="Catégorie d'animal prise en charge">
+        <source>Catégorie d'animal prise en charge</source>
+        <target>Category of animal covered</target>
+      </trans-unit>
+      <trans-unit id="viiQJB_" resname="Choix rôle">
+        <source>Choix rôle</source>
+        <target>Role selection</target>
+      </trans-unit>
+      <trans-unit id="10a8OrK" resname="Choisissez votre rôle">
+        <source>Choisissez votre rôle</source>
+        <target>Choose your role</target>
+      </trans-unit>
+      <trans-unit id="x8IiXum" resname="Modifier mon pseudo">
+        <source>Modifier mon pseudo</source>
+        <target>Update my avatar</target>
+      </trans-unit>
+      <trans-unit id="j3e.UCF" resname="Adresse maitre">
+        <source>Adresse maitre</source>
+        <target>Master's adress</target>
+      </trans-unit>
+      <trans-unit id="GaodJDT" resname="Me déconnecter">
+        <source>Me déconnecter</source>
+        <target>Logout</target>
+      </trans-unit>
+      <trans-unit id="iIfGAhx" resname="&amp;ensp;Mes reservations">
+        <source>&amp;ensp;Mes reservations</source>
+        <target><![CDATA[__&ensp;Mes reservations]]></target>
+      </trans-unit>
+      <trans-unit id="NcnvhdM" resname="&lt;i class=&quot;fa-solid fa-star&quot;&gt;&lt;/i&gt;&amp;ensp;Mes gardiens favoris">
+        <source>&lt;i class="fa-solid fa-star"&gt;&lt;/i&gt;&amp;ensp;Mes gardiens favoris</source>
+        <target><![CDATA[__<i class="fa-solid fa-star"></i>&ensp;Mes gardiens favoris]]></target>
+      </trans-unit>
+      <trans-unit id="iQd8x8e" resname="Je me désabonne">
+        <source>Je me désabonne</source>
+        <target>Unsubscribe</target>
+      </trans-unit>
+      <trans-unit id="2G_p49v" resname="Je m'abonne">
+        <source>Je m'abonne</source>
+        <target>Subscribe</target>
+      </trans-unit>
+      <trans-unit id="wmqmW2e" resname="Mon adresse">
+        <source>Mon adresse</source>
+        <target>My adress</target>
+      </trans-unit>
+      <trans-unit id="n2i1igN" resname="Ajouter des photos">
+        <source>Ajouter des photos</source>
+        <target>Ad photos</target>
+      </trans-unit>
+      <trans-unit id="0NARHGG" resname="Gestions des photos de ma gallerie">
+        <source>Gestions des photos de ma gallerie</source>
+        <target>Manage my gallery photos</target>
+      </trans-unit>
+      <trans-unit id="WUf2Ibf" resname="Il n'y a pas encore de photo dans ma gallerie">
+        <source>Il n'y a pas encore de photo dans ma gallerie</source>
+        <target>There are no photos in my gallery yet.</target>
+      </trans-unit>
+      <trans-unit id="ljal3KR" resname="Profil gardien">
+        <source>Profil gardien</source>
+        <target>Petsitter profile</target>
+      </trans-unit>
+      <trans-unit id="Zkfq7hR" resname="Modifier mon adresse">
+        <source>Modifier mon adresse</source>
+        <target>Update my adress</target>
+      </trans-unit>
+      <trans-unit id="h02B3Wp" resname="Voir message">
+        <source>Voir message</source>
+        <target>Read message</target>
+      </trans-unit>
+      <trans-unit id="BO0ifVE" resname="demandes de réservation à valider">
+        <source>demandes de réservation à valider</source>
+        <target>booking requests to be validated</target>
+      </trans-unit>
+      <trans-unit id="lKvPZer" resname="demande de réservation à valider">
+        <source>demande de réservation à valider</source>
+        <target>booking requests to be validated</target>
+      </trans-unit>
+      <trans-unit id="bocCrhS" resname="Gérer mes réservations">
+        <source>Gérer mes réservations</source>
+        <target>Manage my reservations</target>
+      </trans-unit>
+      <trans-unit id="X8e0oA6" resname="Hebergement animal:">
+        <source>Hebergement animal:</source>
+        <target>animal hosting:</target>
+      </trans-unit>
+      <trans-unit id="qwESnIx" resname="tarif herbergement:">
+        <source>tarif herbergement:</source>
+        <target>accommodation rates:</target>
+      </trans-unit>
+      <trans-unit id="vomha_3" resname="tarif par passage à domicile">
+        <source>tarif par passage à domicile</source>
+        <target>rate per home visit</target>
+      </trans-unit>
+      <trans-unit id="LoqDCYW" resname="Tarif par promenade:">
+        <source>Tarif par promenade:</source>
+        <target>Price per walk:</target>
+      </trans-unit>
+      <trans-unit id="gxsJkoG" resname="€/promenade">
+        <source>€/promenade</source>
+        <target>€/walk</target>
+      </trans-unit>
+      <trans-unit id="IY5EDr_" resname="Ma zone de gardiennage:">
+        <source>Ma zone de gardiennage:</source>
+        <target>My guard zone:</target>
+      </trans-unit>
+      <trans-unit id="IDhzf.6" resname="km à partir de mon adresse">
+        <source>km à partir de mon adresse</source>
+        <target>km from my address</target>
+      </trans-unit>
+      <trans-unit id="4A7u6AH" resname="Pas encore de zone définie">
+        <source>Pas encore de zone définie</source>
+        <target>No zone defined yet</target>
+      </trans-unit>
+      <trans-unit id="5MjrAE0" resname="Les animaux que je prend en charge">
+        <source>Les animaux que je prend en charge</source>
+        <target>The animals I take care of</target>
+      </trans-unit>
+      <trans-unit id="B5vwuFE" resname="Je n'ai pas encore renseigné de catégorie d'animal">
+        <source>Je n'ai pas encore renseigné de catégorie d'animal</source>
+        <target>I have not yet entered an animal category</target>
+      </trans-unit>
+      <trans-unit id="IlSD0By" resname="Mes compétences">
+        <source>Mes compétences</source>
+        <target>My skills</target>
+      </trans-unit>
+      <trans-unit id="ASTKm6i" resname="Gérer les photos de la gallerie">
+        <source>Gérer les photos de la gallerie</source>
+        <target>Manage gallery photos</target>
+      </trans-unit>
+      <trans-unit id="ASlcae5" resname="Les commentaires que j'ai reçus">
+        <source>Les commentaires que j'ai reçus</source>
+        <target>The comments I received</target>
+      </trans-unit>
+      <trans-unit id="RDoDxx8" resname="Note donnée:">
+        <source>Note donnée:</source>
+        <target>Note given:</target>
+      </trans-unit>
+      <trans-unit id="d9k3bNd" resname="Vous avez signalé ce commentaire">
+        <source>Vous avez signalé ce commentaire</source>
+        <target>You reported this comment</target>
+      </trans-unit>
+      <trans-unit id="niHJQLP" resname="Ma réponse:">
+        <source>Ma réponse:</source>
+        <target>My answer:</target>
+      </trans-unit>
+      <trans-unit id="dJ.5t7c" resname="je n'ai pas encore reçu de commentaire">
+        <source>je n'ai pas encore reçu de commentaire</source>
+        <target>I haven't received any comments yet</target>
+      </trans-unit>
+      <trans-unit id="c6BXB5r" resname="Modification adresse">
+        <source>Modification adresse</source>
+        <target>Address modification</target>
+      </trans-unit>
+      <trans-unit id="lf1YCsg" resname="Boite de réception">
+        <source>Boite de réception</source>
+        <target>Inbox</target>
+      </trans-unit>
+      <trans-unit id="V08w_5B" resname="Reinitialiser votre mot de passe">
+        <source>Reinitialiser votre mot de passe</source>
+        <target>Reset your password</target>
+      </trans-unit>
+      <trans-unit id="BF_nh7E" resname="Reinitialiser">
+        <source>Reinitialiser</source>
+        <target>Reset</target>
+      </trans-unit>
+      <trans-unit id="CsPSyzA" resname="Se connecter">
+        <source>Se connecter</source>
+        <target>Login</target>
+      </trans-unit>
+      <trans-unit id="gv8.Eo0" resname="Connexion Google">
+        <source>Connexion Google</source>
+        <target>Login with Google</target>
+      </trans-unit>
+      <trans-unit id="8.XW2Ss" resname="Pas encore membre?">
+        <source>Pas encore membre?</source>
+        <target>Not a member yet?</target>
+      </trans-unit>
+      <trans-unit id="wjmlnqu" resname="du:">
+        <source>du:</source>
+        <target>from:</target>
+      </trans-unit>
+      <trans-unit id="QOvT59D" resname="Gardiennages annulés">
+        <source>Gardiennages annulés</source>
+        <target>Cancelled petsittings</target>
+      </trans-unit>
+      <trans-unit id="Ah._7N7" resname="Réservation avec">
+        <source>Réservation avec</source>
+        <target>Book with</target>
+      </trans-unit>
+      <trans-unit id="zxRlrP3" resname="Regler la reservation avant le">
+        <source>Regler la reservation avant le</source>
+        <target>Pay before</target>
+      </trans-unit>
+      <trans-unit id="enX4ptA" resname="retour reservations">
+        <source>retour reservations</source>
+        <target>back to reservations</target>
+      </trans-unit>
+      <trans-unit id="tFbm1a5" resname="Reservation">
+        <source>Reservation</source>
+        <target>Reservation</target>
+      </trans-unit>
+      <trans-unit id="HEjLTWX" resname="Reserver une prestatation">
+        <source>Reserver une prestatation</source>
+        <target>Book a service</target>
+      </trans-unit>
+      <trans-unit id="a0G91pt" resname="a été acceptée par">
+        <source>a été acceptée par</source>
+        <target>has been accepted by</target>
+      </trans-unit>
+      <trans-unit id="yW9JwHA" resname="Hebergement souhaité">
+        <source>Hebergement souhaité</source>
+        <target>Accommodation required</target>
+      </trans-unit>
+      <trans-unit id="xsXZX5t" resname="€/jour">
+        <source>€/jour</source>
+        <target>€/day</target>
+      </trans-unit>
+      <trans-unit id="kO_oXbO" resname="Nombre de passages par jour désirés:">
+        <source>Nombre de passages par jour désirés:</source>
+        <target>Desired number of passages per day:</target>
+      </trans-unit>
+      <trans-unit id="GKCTMQj" resname="Pour une durée de">
+        <source>Pour une durée de</source>
+        <target>For a period of</target>
+      </trans-unit>
+      <trans-unit id="GzqLwCS" resname="jours le prix du gardiennage est de:">
+        <source>jours le prix du gardiennage est de:</source>
+        <target>days, the price of babysitting is:</target>
+      </trans-unit>
+      <trans-unit id="AXPOfrc" resname="pour finaliser la réservation, nous vous invitons à finaliser le paiement sur le site :">
+        <source>pour finaliser la réservation, nous vous invitons à finaliser le paiement sur le site :</source>
+        <target>To finalize your reservation, we invite you to complete your payment on the website :</target>
+      </trans-unit>
+      <trans-unit id="Ogb8Lya" resname="Vous pouvez contacter le gardien à tout moment depuis la messagerie du &#10;&#9;site ou par email:">
+        <source>Vous pouvez contacter le gardien à tout moment depuis la messagerie du 
+	site ou par email:</source>
+        <target>You can contact the janitor at any time using the messaging system on the or by email:</target>
+      </trans-unit>
+      <trans-unit id="LXEgUMk" resname="Vous avez reçu une nouvelle demande de reservation de la part de">
+        <source>Vous avez reçu une nouvelle demande de reservation de la part de</source>
+        <target>You have received a new reservation request from</target>
+      </trans-unit>
+      <trans-unit id="noQV2dt" resname="Informations de l'animal:">
+        <source>Informations de l'animal:</source>
+        <target>Information about the animal:</target>
+      </trans-unit>
+      <trans-unit id="ABCkxAR" resname="nom:">
+        <source>nom:</source>
+        <target>name:</target>
+      </trans-unit>
+      <trans-unit id="XrjVGXB" resname="Type de gardiennage souhaité:">
+        <source>Type de gardiennage souhaité:</source>
+        <target>Type of guarding required:</target>
+      </trans-unit>
+      <trans-unit id="yP6kvIw" resname="Nombre de passages désirés:">
+        <source>Nombre de passages désirés:</source>
+        <target>Number of passes required:</target>
+      </trans-unit>
+      <trans-unit id="VJRaWmv" resname="jours, le prix total est:">
+        <source>jours, le prix total est:</source>
+        <target>days, the total price is:</target>
+      </trans-unit>
+      <trans-unit id="33qCQPm" resname="Voir la demande de reservation">
+        <source>Voir la demande de reservation</source>
+        <target>See reservation request</target>
+      </trans-unit>
+      <trans-unit id="TDVLrdA" resname="gardiennage effectué">
+        <source>gardiennage effectué</source>
+        <target>guarding provided</target>
+      </trans-unit>
+      <trans-unit id="zuMHqhf" resname="gardiennages effectués">
+        <source>gardiennages effectués</source>
+        <target>guards performed</target>
+      </trans-unit>
+      <trans-unit id="EUHLfCj" resname="n'a pas encore reçu d'avis">
+        <source>n'a pas encore reçu d'avis</source>
+        <target>has not yet been notified</target>
+      </trans-unit>
+      <trans-unit id="xA3_Rdj" resname="Tarifs:">
+        <source>Tarifs:</source>
+        <target>Price list:</target>
+      </trans-unit>
+      <trans-unit id="8o8MoRw" resname="Hebergement de l'animal:">
+        <source>Hebergement de l'animal:</source>
+        <target>Animal accommodation:</target>
+      </trans-unit>
+      <trans-unit id="QjfOQqH" resname="Je n'ai pas encore communiqué de tarif pour l'herbergement d'animal">
+        <source>Je n'ai pas encore communiqué de tarif pour l'herbergement d'animal</source>
+        <target>I have not yet communicated a rate for pet boarding.</target>
+      </trans-unit>
+      <trans-unit id="KrUvBA_" resname="Visite à domicile:">
+        <source>Visite à domicile:</source>
+        <target>Home visit:</target>
+      </trans-unit>
+      <trans-unit id="HlHnXRn" resname="€ par passage">
+        <source>€ par passage</source>
+        <target>€ per passage</target>
+      </trans-unit>
+      <trans-unit id="QSXPxWJ" resname="je n'ai pas encore communiqué de tarif pour les visites à domicile">
+        <source>je n'ai pas encore communiqué de tarif pour les visites à domicile</source>
+        <target>I have not yet communicated a rate for home visits.</target>
+      </trans-unit>
+      <trans-unit id="vPNth6V" resname="Animaux pris en charge:">
+        <source>Animaux pris en charge:</source>
+        <target>Pets taken care of:</target>
+      </trans-unit>
+      <trans-unit id="vnFx_Nb" resname="Autres:">
+        <source>Autres:</source>
+        <target>Others:</target>
+      </trans-unit>
+      <trans-unit id="UGoVxrg" resname="Les réservations ne sont pas encore disponibles">
+        <source>Les réservations ne sont pas encore disponibles</source>
+        <target>Reservations not yet available</target>
+      </trans-unit>
+      <trans-unit id="_DQwDjQ" resname="Votre commentaire:">
+        <source>Votre commentaire:</source>
+        <target>Your comment:</target>
+      </trans-unit>
+      <trans-unit id="wAd0w0b" resname="Laisser un commentaire">
+        <source>Laisser un commentaire</source>
+        <target>Leave a comment</target>
+      </trans-unit>
+      <trans-unit id="ze807d0" resname="modifier mon commentaire">
+        <source>modifier mon commentaire</source>
+        <target>edit my comment</target>
+      </trans-unit>
+      <trans-unit id="..P1IWs" resname="Réponse de">
+        <source>Réponse de</source>
+        <target>Reply from</target>
+      </trans-unit>
+      <trans-unit id="0CyAzP5" resname="Ajouter une image">
+        <source>Ajouter une image</source>
+        <target>Add an image</target>
+      </trans-unit>
+      <trans-unit id="50iW901" resname="rgpd">
+        <source>rgpd</source>
+        <target>rgpd</target>
+      </trans-unit>
+      <trans-unit id="5SWsx.t" resname="Un admin a bien été créé : admin@gardiens2pattes.be, mot de passe: &quot;admin&quot; /!\ Changez le mot de passe /!\ ">
+        <source>Un admin a bien été créé : admin@gardiens2pattes.be, mot de passe: "admin" /!\ Changez le mot de passe /!\ </source>
+        <target>An admin has been created: admin@gardiens2pattes.be, password: "admin" /!\ Change the password /!\</target>
+      </trans-unit>
+      <trans-unit id="jc4hFwH" resname="Contact / Assistance">
+        <source>Contact / Assistance</source>
+        <target>Contact / Support</target>
+      </trans-unit>
+      <trans-unit id="_HO33Mj" resname="Politique de confidentialité">
+        <source>Politique de confidentialité</source>
+        <target>Privacy policy</target>
+      </trans-unit>
+      <trans-unit id="c_Gaiv2" resname="Mes informations">
+        <source>Mes informations</source>
+        <target>My information</target>
+      </trans-unit>
+      <trans-unit id="KKatr.V" resname="Promenade (minimum 20min):">
+        <source>Promenade (minimum 20min):</source>
+        <target>Walk (minimum 20min):</target>
+      </trans-unit>
+      <trans-unit id="0Lewerf" resname="€ par promenade">
+        <source>€ par promenade</source>
+        <target>€ per walk</target>
+      </trans-unit>
+      <trans-unit id="OCeYMmf" resname="je n'ai pas encore communiqué de tarif pour les promenades">
+        <source>je n'ai pas encore communiqué de tarif pour les promenades</source>
+        <target>I have not yet communicated a price for the walks.</target>
+      </trans-unit>
+      <trans-unit id="xLnkirj" resname="Qui suis-je:">
+        <source>Qui suis-je:</source>
+        <target>Who I am:</target>
+      </trans-unit>
+      <trans-unit id="1lLVFeu" resname="Email *">
+        <source>Email *</source>
+        <target>Email *</target>
+      </trans-unit>
+      <trans-unit id="mARyQy_" resname="Date de début">
+        <source>Date de début</source>
+        <target>Start date</target>
+      </trans-unit>
+      <trans-unit id="JI9FaCH" resname="date fin">
+        <source>date fin</source>
+        <target>end date</target>
+      </trans-unit>
+      <trans-unit id="z13Ex1n" resname="nouveau mot de passe">
+        <source>nouveau mot de passe</source>
+        <target>new password</target>
+      </trans-unit>
+      <trans-unit id="oV1rEzv" resname="Entrez un nouveau mot de passe">
+        <source>Entrez un nouveau mot de passe</source>
+        <target>Enter a new password</target>
+      </trans-unit>
+      <trans-unit id="eZjMREl" resname="Les deux mots de passe doivent correspondre">
+        <source>Les deux mots de passe doivent correspondre</source>
+        <target>The two passwords must match</target>
+      </trans-unit>
+      <trans-unit id="k069AJT" resname="Mon IBAN">
+        <source>Mon IBAN</source>
+        <target>My IBAN</target>
+      </trans-unit>
+      <trans-unit id="b7JL9HE" resname="Je propose mes services de garde à domicile">
+        <source>Je propose mes services de garde à domicile</source>
+        <target>I propose my services of guard at residence</target>
+      </trans-unit>
+      <trans-unit id="dzRVB2f" resname="Je possède un véhicule">
+        <source>Je possède un véhicule</source>
+        <target>I own a vehicle</target>
+      </trans-unit>
+      <trans-unit id="RE4bvZw" resname="Tarif hebergement par jour (€)">
+        <source>Tarif hebergement par jour (€)</source>
+        <target>Accommodation rate per day (€)</target>
+      </trans-unit>
+      <trans-unit id="NmVeMqS" resname="Je propose mes services de soins vétérinaires">
+        <source>Je propose mes services de soins vétérinaires</source>
+        <target>I offer my veterinary care services</target>
+      </trans-unit>
+      <trans-unit id="xWyE1O8" resname="Tarif par déplacement (€)">
+        <source>Tarif par déplacement (€)</source>
+        <target>Rate per trip (€)</target>
+      </trans-unit>
+      <trans-unit id="FkEybO3" resname="Tarif promenade par jour (€)">
+        <source>Tarif promenade par jour (€)</source>
+        <target>Price per day (€)</target>
+      </trans-unit>
+      <trans-unit id="vZPKddp" resname="Zone de gardiennage à partir de mon domicile (en km)">
+        <source>Zone de gardiennage à partir de mon domicile (en km)</source>
+        <target>Guarding zone from my home (in km)</target>
+      </trans-unit>
+      <trans-unit id="z6l7qMJ" resname="Mes catégories d'animal prises en charge">
+        <source>Mes catégories d'animal prises en charge</source>
+        <target>My animal categories covered</target>
+      </trans-unit>
+      <trans-unit id="OG_N1os" resname="titre">
+        <source>titre</source>
+        <target>title</target>
+      </trans-unit>
+      <trans-unit id="0o_ykG2" resname="commentaire">
+        <source>commentaire</source>
+        <target>comment</target>
+      </trans-unit>
+      <trans-unit id="CoLUeOc" resname="ma présentation">
+        <source>ma présentation</source>
+        <target>my presentation</target>
+      </trans-unit>
+      <trans-unit id="yQRveje" resname="description">
+        <source>description</source>
+        <target>description</target>
+      </trans-unit>
+      <trans-unit id="PoLTDsc" resname="categorie animal">
+        <source>categorie animal</source>
+        <target>animal category</target>
+      </trans-unit>
+      <trans-unit id="zDFVTPN" resname="poids">
+        <source>poids</source>
+        <target>weight</target>
+      </trans-unit>
+      <trans-unit id="FBvhVfq" resname="antedecents medicaux">
+        <source>antedecents medicaux</source>
+        <target>medical antedecents</target>
+      </trans-unit>
+      <trans-unit id="Pv2dWf2" resname="sociabilite">
+        <source>sociabilite</source>
+        <target>sociability</target>
+      </trans-unit>
+      <trans-unit id="eOeSABC" resname="Titre">
+        <source>Titre</source>
+        <target>Title</target>
+      </trans-unit>
+      <trans-unit id="MBbviOM" resname="contenu">
+        <source>contenu</source>
+        <target>content</target>
+      </trans-unit>
+      <trans-unit id="QERVmkw" resname="Votre message">
+        <source>Votre message</source>
+        <target>Your message</target>
+      </trans-unit>
+      <trans-unit id="giREF.l" resname="email">
+        <source>email</source>
+        <target>email</target>
+      </trans-unit>
+      <trans-unit id="KcFzACF" resname="prenom">
+        <source>prenom</source>
+        <target>firstname</target>
+      </trans-unit>
+      <trans-unit id="L1iK.hS" resname="nom">
+        <source>nom</source>
+        <target>lastname</target>
+      </trans-unit>
+      <trans-unit id="C8eeJmx" resname="inscription maître">
+        <source>inscription maître</source>
+        <target>Registration master</target>
+      </trans-unit>
+      <trans-unit id="p.Q1HI5" resname="Newsletter envoyée avec succès !">
+        <source>Newsletter envoyée avec succès !</source>
+        <target>__Newsletter envoyée avec succès !</target>
+      </trans-unit>
+      <trans-unit id="Xf84PX2" resname="Newsletter créée avec succès !">
+        <source>Newsletter créée avec succès !</source>
+        <target>Newsletter successfully sent!</target>
+      </trans-unit>
+      <trans-unit id="akpKKLm" resname="Formulaire de contact">
+        <source>Formulaire de contact</source>
+        <target>Contact form</target>
+      </trans-unit>
+      <trans-unit id="FBTqWMn" resname="Vous n'etes pas authentifié. Renseignez votre email ou">
+        <source>Vous n'etes pas authentifié. Renseignez votre email ou</source>
+        <target>You are not authenticated. Enter your email or</target>
+      </trans-unit>
+      <trans-unit id="L12sg7u" resname="connectez-vous">
+        <source>connectez-vous</source>
+        <target>Login</target>
+      </trans-unit>
+      <trans-unit id="Z1gl2rA" resname="Demande de renseignement">
+        <source>Demande de renseignement</source>
+        <target>Information request</target>
+      </trans-unit>
+      <trans-unit id="XZ6eROG" resname="Paiement">
+        <source>Paiement</source>
+        <target>Payment</target>
+      </trans-unit>
+      <trans-unit id="AH_.PA5" resname="Réservation">
+        <source>Réservation</source>
+        <target>Reservation</target>
+      </trans-unit>
+      <trans-unit id="0fwcAfT" resname="Compte bloqué">
+        <source>Compte bloqué</source>
+        <target>Locked account</target>
+      </trans-unit>
+      <trans-unit id="uWVuEWP" resname="Signalement commentaire&lt;">
+        <source>Report comments&lt;</source>
+        <target><![CDATA[__Signalement commentaire<]]></target>
+      </trans-unit>
+      <trans-unit id="_wGXWQN" resname="problème technique">
+        <source>problème technique</source>
+        <target>technical problem</target>
+      </trans-unit>
+      <trans-unit id="63LhaDu" resname="Autre">
+        <source>Autre</source>
+        <target>Other</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

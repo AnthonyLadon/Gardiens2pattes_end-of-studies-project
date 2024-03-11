@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Detail newsletter{% endblock %}
+
+{% block titreh1 %}
+    Modifier la newsletter
+{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    {{ form_start(form) }}
+        <div class="input-field">
+            {{ form_label(form.nom) }}
+            {{ form_widget(form.nom, {'attr': {'class': 'secondary-color validate'}}) }}
+        </div>
+        <div class="input-field">
+            {{ form_label(form.contenu) }}
+            {{ form_widget(form.contenu, {'attr': {'class': 'secondary-color validate'}}) }}
+        </div>
+    {{ form_end(form) }}
+
+    <div class='admin-detail-newsletter-back-button'>
+        <a href="{{path('newsletters') }}">retour liste newsletters</a>
+    </div>
+</div>
+
+{% endblock %}
+
+
