@@ -2,7 +2,7 @@
 
 This is my final project for the Saint Laurent Institute of Liège, which allowed me to obtain my Higher Education Diploma in Web Development (BES - Brevet d'Études Supérieures).
 
-I have removed all the API keys and sensitive data from the .env file, but the project will soon be online to allow you to test its functionalities.
+I have removed the ".env" file that contains sensitive data (API Keys, data bases, email credentials ...etc.)
 
 ## ✍️ Auteur
 
@@ -14,9 +14,4 @@ I have removed all the API keys and sensitive data from the .env file, but the p
 
 **Server:** php, symfony
 
-**API's & external services:** OpenCage Geocoding API, Stripe API, Google OAuth 2.0 API, Mailtrap, SurveyMonkey
-
-- https://opencagedata.com/ (Geocoding)
-- https://mailtrap.io/home
-- https://developers.google.com/identity/protocols/oauth2?hl=fr
-- https://dashboard.stripe.com
+**API's & external services:** OpenCage API (Geocoding), Mailtrap (only for testing), SurveyMonkey
